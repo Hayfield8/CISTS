@@ -36,7 +36,7 @@ public class CISTSCoord {
     public boolean aVomited;
    
     /**
-    * Variable used to create vomit object.
+    * Variable used to create the cf object.
     * @see Vomit
     */ 
     public int aNoOfVomit;
