@@ -2,6 +2,7 @@ package gui;
 
 import CISTS.*;
 import static cists.Condition.Mood.happy;
+import static cists.CustomField.FieldType;
 import cists.CISTS;
 import cists.Event;
 import static cists.Event.EventBeginTime.morning;
@@ -13,9 +14,11 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import cists.Condition.Mood;
+import cists.CustomField;
 import cists.CustomFields;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
+import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -104,12 +107,23 @@ public class GUI1 extends javax.swing.JFrame {
     /**
      * List to hold the events created by the user.
      */
-    ArrayList<Event> events;
+    List<Event> events;
+    List<CustomField> customFields;
+    public List<javax.swing.JLabel> customLabels; 
+    public List<Object> customInputs;
+    public List<String> tempMultiOptions;
+    
+    int customCount = 0;
+    public Box cFBox = Box.createVerticalBox(); 
+    
+    
     
     /**
      * List model used to populate the jList.
      */
     DefaultListModel model;
+    
+    DefaultListModel cFModel;
 
     /**
      * Creates new form GUI loads and displays the events list, loads the new
@@ -123,14 +137,28 @@ public class GUI1 extends javax.swing.JFrame {
         
       events = cISTSCoord.getEvents();
       
+      //customFields = cISTSCoord.customFieldBoss.getCustomFieldList();
+      
+      customInputs = new ArrayList<>();
+      customLabels = new ArrayList<>();
+      tempMultiOptions = new ArrayList<>();
+      
       model = new DefaultListModel();
-      for (Event eachCvsEvent : events){
-          model.addElement(eachCvsEvent);
+      for (Event eachEvent : events){
+          model.addElement(eachEvent);
       }
+      
+      //cFModel = new DefaultListModel();
+      //for (CustomField eachCF : customFields){
+          //cFModel.addElement(eachCF);
+      //}
+      
       
       eventList1.setModel(model);
       eventList3.setModel(model);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialise the form.
@@ -377,6 +405,15 @@ public class GUI1 extends javax.swing.JFrame {
         sleptDisplay3 = new javax.swing.JTextField();
         hrsSleptDisplay4 = new javax.swing.JTextField();
         medicationDisplay4 = new javax.swing.JTextField();
+        createCFDialog = new javax.swing.JDialog();
+        jLabel133 = new javax.swing.JLabel();
+        fieldTypeCombo = new javax.swing.JComboBox<>();
+        jLabel134 = new javax.swing.JLabel();
+        newFieldNameField = new javax.swing.JTextField();
+        jLabel135 = new javax.swing.JLabel();
+        multiChoiceField = new javax.swing.JTextField();
+        addToMultiOptionsButton = new javax.swing.JButton();
+        addNewCFButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
@@ -428,6 +465,7 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         notesArea = new javax.swing.JTextArea();
+        goToCustomInputButton = new javax.swing.JToggleButton();
         eventListTab = new javax.swing.JPanel();
         listLabel = new javax.swing.JLabel();
         selectEventButton = new javax.swing.JButton();
@@ -489,6 +527,7 @@ public class GUI1 extends javax.swing.JFrame {
         listScrollPane6 = new javax.swing.JScrollPane();
         eventList3 = new javax.swing.JList();
         select2EventButton = new javax.swing.JButton();
+        addCFButton = new javax.swing.JButton();
 
         eventDetailsDialog.setTitle("Event Information");
 
@@ -2053,6 +2092,89 @@ public class GUI1 extends javax.swing.JFrame {
             .addComponent(jScrollPane23)
         );
 
+        jLabel133.setText("New Field Type     :");
+
+        fieldTypeCombo.setModel(new DefaultComboBoxModel(FieldType.values()));
+        fieldTypeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldTypeComboActionPerformed(evt);
+            }
+        });
+
+        jLabel134.setText("New Field Name    :");
+
+        newFieldNameField.setText("jTextField1");
+        newFieldNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newFieldNameFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel135.setText("If you have selected multiChoice enter the options you would like one by one :");
+
+        addToMultiOptionsButton.setText("Add to List");
+        addToMultiOptionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToMultiOptionsButtonActionPerformed(evt);
+            }
+        });
+
+        addNewCFButton.setText("Save New Field");
+        addNewCFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewCFButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout createCFDialogLayout = new javax.swing.GroupLayout(createCFDialog.getContentPane());
+        createCFDialog.getContentPane().setLayout(createCFDialogLayout);
+        createCFDialogLayout.setHorizontalGroup(
+            createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createCFDialogLayout.createSequentialGroup()
+                .addGroup(createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createCFDialogLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(createCFDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel133)
+                                .addGap(18, 18, 18)
+                                .addComponent(fieldTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(createCFDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel134)
+                                .addGap(18, 18, 18)
+                                .addComponent(newFieldNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel135)
+                            .addGroup(createCFDialogLayout.createSequentialGroup()
+                                .addComponent(multiChoiceField, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(addToMultiOptionsButton))))
+                    .addGroup(createCFDialogLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(addNewCFButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        createCFDialogLayout.setVerticalGroup(
+            createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createCFDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel133)
+                    .addComponent(fieldTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel134)
+                    .addComponent(newFieldNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel135)
+                .addGap(18, 18, 18)
+                .addGroup(createCFDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(multiChoiceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addToMultiOptionsButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(addNewCFButton)
+                .addGap(19, 19, 19))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CVS Tracker");
 
@@ -2143,6 +2265,11 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel13.setText("What was your mood?");
 
         moodCombo.setModel(new DefaultComboBoxModel(Mood.values()));
+        moodCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moodComboActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Are you ill?");
 
@@ -2224,6 +2351,13 @@ public class GUI1 extends javax.swing.JFrame {
         notesArea.setText("nothing");
         jScrollPane3.setViewportView(notesArea);
 
+        goToCustomInputButton.setText("View Custom Inputs");
+        goToCustomInputButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goToCustomInputButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addEventTabLayout = new javax.swing.GroupLayout(addEventTab);
         addEventTab.setLayout(addEventTabLayout);
         addEventTabLayout.setHorizontalGroup(
@@ -2255,6 +2389,10 @@ public class GUI1 extends javax.swing.JFrame {
                                     .addComponent(jLabel19))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3))
                             .addGroup(addEventTabLayout.createSequentialGroup()
                                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(addEventTabLayout.createSequentialGroup()
@@ -2315,11 +2453,7 @@ public class GUI1 extends javax.swing.JFrame {
                                         .addComponent(jLabel23)
                                         .addGap(18, 18, 18)
                                         .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3))))
+                                .addGap(181, 181, 181))))
                     .addGroup(addEventTabLayout.createSequentialGroup()
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addEventTabLayout.createSequentialGroup()
@@ -2328,10 +2462,14 @@ public class GUI1 extends javax.swing.JFrame {
                             .addGroup(addEventTabLayout.createSequentialGroup()
                                 .addGap(252, 252, 252)
                                 .addComponent(createCustomFields)))
+                        .addGap(255, 255, 255))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(goToCustomInputButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(addEventTabLayout.createSequentialGroup()
-                .addGap(232, 232, 232)
+                .addGap(238, 238, 238)
                 .addComponent(createEvent)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2428,9 +2566,11 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel24)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(goToCustomInputButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(createEvent)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Add CVS Event", addEventTab);
@@ -2801,6 +2941,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        addCFButton.setText("Add Custom Field");
+        addCFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCFButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -2814,7 +2961,10 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(selectEventButton))
                         .addGap(43, 43, 43)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(saveListButton)
+                            .addGroup(eventListTabLayout.createSequentialGroup()
+                                .addComponent(saveListButton)
+                                .addGap(64, 64, 64)
+                                .addComponent(addCFButton))
                             .addComponent(select2EventButton)))
                     .addComponent(listLabel)
                     .addGroup(eventListTabLayout.createSequentialGroup()
@@ -2851,7 +3001,8 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selectEventButton)
-                            .addComponent(saveListButton))
+                            .addComponent(saveListButton)
+                            .addComponent(addCFButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editEventButton)
@@ -2867,228 +3018,16 @@ public class GUI1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
 
         setBounds(0, 0, 1031, 699);
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * Creates a new instance of the vomit class when the user has clicked the 
-     * button.
-     * @see Vomit
-     * @param evt
-     */
-    private void createCustomFieldsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCustomFieldsMouseClicked
-        // TODO add your handling code here:
-        vomitedString = vomitCombo.getSelectedItem().toString();
-        if ("yes".equals(vomitedString)){
-            cISTSCoord.aVomited = true;
-        }
-        else {
-            cISTSCoord.aVomited = false;
-        }
-
-        cISTSCoord.aNoOfVomit = Integer.parseInt(noOfVomitField.getText());
-
-        violentString = violentCombo.getSelectedItem().toString();
-        if ("yes".equals(violentString)){
-            cISTSCoord.aViolent = true;
-        }
-        else {
-            cISTSCoord.aViolent = false;
-        }
-
-        eatenString = eatenCombo.getSelectedItem().toString();
-        if ("yes".equals(eatenString)){
-                cISTSCoord.aEatenBefore = true;
-        }
-        else {
-            cISTSCoord.aEatenBefore = false;
-        }
-
-        cISTSCoord.aEatenWhat = eatenWhatField.getText();
-        
-        drunkString = drunkCombo.getSelectedItem().toString();
-        if ("yes".equals(drunkString)){
-            cISTSCoord.aDrunkAlcohol = true;
-        }
-        else {
-            cISTSCoord.aDrunkAlcohol = false;
-        }
-        
-        cISTSCoord.aDrunkWhat = drunkWhatField.getText();
-        
-        hungoverString = hungoverCombo.getSelectedItem().toString();
-        if ("yes".equals(hungoverString)){
-            cISTSCoord.aHungover = true;
-        }
-        else {
-            cISTSCoord.aHungover = false;
-        }
-        
-        cISTSCoord.aCustomFields = new CustomFields(cISTSCoord.aVomited, 
-        cISTSCoord.aNoOfVomit, cISTSCoord.aViolent, 
-        cISTSCoord.aEatenBefore, cISTSCoord.aEatenWhat, 
-        cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
-        cISTSCoord.aHungover);
-
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-
-    }//GEN-LAST:event_createCustomFieldsMouseClicked
-
-    private void eatenWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eatenWhatFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eatenWhatFieldActionPerformed
-
-    private void drunkComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_drunkComboActionPerformed
-
-    private void drunkWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkWhatFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_drunkWhatFieldActionPerformed
-
-    private void hungoverComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hungoverComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hungoverComboActionPerformed
-
-    private void anxiousComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anxiousComboActionPerformed
-
-    private void createConditionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConditionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createConditionActionPerformed
-
-    /**
-     * Create a new instance of the Condition class when the user has clicked the 
-     * button.
-     * @see Condition
-     * @param evt 
-     */
-    private void createConditionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createConditionMouseClicked
-        // 
-        
-        anxiousString = anxiousCombo.getSelectedItem().toString();
-        if ("yes".equals(anxiousString)){
-            cISTSCoord.aAnxious = true;
-        }
-        else {
-            cISTSCoord.aAnxious = false;
-        }
-        
-        cISTSCoord.aMood = Mood.valueOf(moodCombo.getSelectedItem().
-        toString());
-        
-        areYouIllString = areYouIllCombo.getSelectedItem().toString();
-        if ("yes".equals(areYouIllString)){
-            cISTSCoord.aAreYouIll = true;
-        }
-        else {
-            cISTSCoord.aAreYouIll = false;
-        }
-        
-        cISTSCoord.aIllWithWhat = illWithWhatField.getText();
-        
-        sleptString = sleptCombo.getSelectedItem().toString();
-        if ("yes".equals(sleptString)){
-            cISTSCoord.aSlept = true;
-        }
-        else {
-            cISTSCoord.aSlept = false;
-        }
-        
-        cISTSCoord.aHrsSlept = Integer.parseInt(hrsSleptField.getText());
-        
-        cISTSCoord.aMedicationTaken = medicationTakenArea.getText();
-        
-        cISTSCoord.aCondition = new Condition(cISTSCoord.aAnxious, 
-        cISTSCoord.aMood, cISTSCoord.aAreYouIll,
-        cISTSCoord.aIllWithWhat, cISTSCoord.aSlept, 
-        cISTSCoord.aHrsSlept, cISTSCoord.aMedicationTaken);
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-        
-        
-            
-    }//GEN-LAST:event_createConditionMouseClicked
-
-    private void illWithWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_illWithWhatFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_illWithWhatFieldActionPerformed
-
-    private void hrsSleptFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hrsSleptFieldActionPerformed
-
-    /**
-     * Creates a new instance of the Event class and adds it to the event list
-     * if the user has created a Vomit and Condition object otherwise it prompts
-     * the user to create them when they have clicked the button.
-     * @see CvsEvent
-     * @param evt 
-     */
-    private void createEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventMouseClicked
-        // TODO add your handling code here:
-        
-        cISTSCoord.aEventBeginTime = EventBeginTime.valueOf(
-        beginTimeCombo.getSelectedItem().toString());
-        
-        cISTSCoord.aLocation = Location.valueOf(
-        locationCombo.getSelectedItem().toString());
-        
-        cISTSCoord.aHoursLasted = Integer.parseInt(hoursLastedField.getText
-        ());
-        
-        cISTSCoord.aDaysLasted = Integer.parseInt(daysLastedField.getText
-        ());
-        
-        cISTSCoord.aNotes = notesArea.getText();
-        
-        if (cISTSCoord.aCustomFields != null && cISTSCoord.aCondition != null)
-        {
-            cISTSCoord.aEvent = new Event (cISTSCoord.aEventBeginTime,
-                    cISTSCoord.aLocation, cISTSCoord.aHoursLasted,
-                    cISTSCoord.aDaysLasted, cISTSCoord.aNotes,
-                    cISTSCoord.aCustomFields, cISTSCoord.aCondition);
-            
-            cISTSCoord.events.add(cISTSCoord.aEvent);
-            
-            
-            model.addElement(cISTSCoord.aEvent);
-            
-            eventCreatedDialog.pack();
-            eventCreatedDialog.setVisible(true);
-            eventCreatedDialog.setLocation(500, 500);
-        }
-        else
-        {
-            createEventError.pack();
-            createEventError.setVisible(true);
-            createEventError.setLocation(500, 500);
-        }
-        
-        
-    }//GEN-LAST:event_createEventMouseClicked
-
-    private void hoursLastedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursLastedFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hoursLastedFieldActionPerformed
-
-    private void daysLastedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_daysLastedFieldActionPerformed
-
+ 
     private void vomitDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vomitDisplayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vomitDisplayActionPerformed
@@ -3500,10 +3439,6 @@ public class GUI1 extends javax.swing.JFrame {
         infoStoredDialog.setLocation(500, 500);
         
     }//GEN-LAST:event_editHungoverButtonActionPerformed
-
-    private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createEventActionPerformed
 
     private void hrsSleptDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay2ActionPerformed
         // TODO add your handling code here:
@@ -4013,6 +3948,277 @@ public class GUI1 extends javax.swing.JFrame {
         dualEventDetailsDialog.setVisible(true);
     }//GEN-LAST:event_select2EventButtonActionPerformed
 
+    private void addCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCFButtonActionPerformed
+        createCFDialog.pack();
+        createCFDialog.setVisible(true);
+        tempMultiOptions.clear();
+    }//GEN-LAST:event_addCFButtonActionPerformed
+
+    private void fieldTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTypeComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldTypeComboActionPerformed
+
+    private void newFieldNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFieldNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newFieldNameFieldActionPerformed
+
+    private void addNewCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewCFButtonActionPerformed
+        
+        CustomField tempCustomField;
+        FieldType tempFieldType;
+        String tempFieldName;
+        this.invalidate();
+        if ("multiChoice".equals(fieldTypeCombo.getSelectedItem().toString())){
+        
+        
+            tempFieldType = FieldType.valueOf(fieldTypeCombo.getSelectedItem().
+            toString());
+        
+            tempFieldName = newFieldNameField.getText();
+        
+            tempCustomField = cISTSCoord.customFieldBoss.createCustomFieldMulti(tempMultiOptions, 
+                tempFieldType, tempFieldName);}
+        
+        else {
+            tempFieldType = FieldType.valueOf(fieldTypeCombo.getSelectedItem().
+            toString());
+        
+            tempFieldName = newFieldNameField.getText();
+            
+            tempCustomField = cISTSCoord.customFieldBoss.createCustomField(tempFieldType,
+                    tempFieldName);
+        }
+        
+        //this.GenerateCustomField(tempCustomField);
+        this.validate();
+        
+    }//GEN-LAST:event_addNewCFButtonActionPerformed
+
+    private void addToMultiOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToMultiOptionsButtonActionPerformed
+        tempMultiOptions.add(multiChoiceField.getText());
+    }//GEN-LAST:event_addToMultiOptionsButtonActionPerformed
+
+    private void daysLastedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daysLastedFieldActionPerformed
+
+    private void hoursLastedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursLastedFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hoursLastedFieldActionPerformed
+
+    private void createEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createEventActionPerformed
+
+    /**
+     * Creates a new instance of the Event class and adds it to the event list
+     * if the user has created a Vomit and Condition object otherwise it prompts
+     * the user to create them when they have clicked the button.
+     * @see CvsEvent
+     * @param evt 
+     */
+    private void createEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventMouseClicked
+        // TODO add your handling code here:
+
+        cISTSCoord.aEventBeginTime = EventBeginTime.valueOf(
+            beginTimeCombo.getSelectedItem().toString());
+
+        cISTSCoord.aLocation = Location.valueOf(
+            locationCombo.getSelectedItem().toString());
+
+        cISTSCoord.aHoursLasted = Integer.parseInt(hoursLastedField.getText
+            ());
+
+        cISTSCoord.aDaysLasted = Integer.parseInt(daysLastedField.getText
+            ());
+
+        cISTSCoord.aNotes = notesArea.getText();
+
+        if (cISTSCoord.aCustomFields != null && cISTSCoord.aCondition != null)
+        {
+            cISTSCoord.aEvent = new Event (cISTSCoord.aEventBeginTime,
+                cISTSCoord.aLocation, cISTSCoord.aHoursLasted,
+                cISTSCoord.aDaysLasted, cISTSCoord.aNotes,
+                cISTSCoord.aCustomFields, cISTSCoord.aCondition);
+
+            cISTSCoord.events.add(cISTSCoord.aEvent);
+
+            model.addElement(cISTSCoord.aEvent);
+
+            eventCreatedDialog.pack();
+            eventCreatedDialog.setVisible(true);
+            eventCreatedDialog.setLocation(500, 500);
+        }
+        else
+        {
+            createEventError.pack();
+            createEventError.setVisible(true);
+            createEventError.setLocation(500, 500);
+        }
+
+        this.revalidate();
+
+    }//GEN-LAST:event_createEventMouseClicked
+
+    private void hrsSleptFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hrsSleptFieldActionPerformed
+
+    private void illWithWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_illWithWhatFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_illWithWhatFieldActionPerformed
+
+    private void moodComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moodComboActionPerformed
+
+    private void createConditionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConditionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createConditionActionPerformed
+
+    /**
+     * Create a new instance of the Condition class when the user has clicked the 
+     * button.
+     * @see Condition
+     * @param evt 
+     */
+    private void createConditionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createConditionMouseClicked
+        //
+
+        anxiousString = anxiousCombo.getSelectedItem().toString();
+        if ("yes".equals(anxiousString)){
+            cISTSCoord.aAnxious = true;
+        }
+        else {
+            cISTSCoord.aAnxious = false;
+        }
+
+        cISTSCoord.aMood = Mood.valueOf(moodCombo.getSelectedItem().
+            toString());
+
+        areYouIllString = areYouIllCombo.getSelectedItem().toString();
+        if ("yes".equals(areYouIllString)){
+            cISTSCoord.aAreYouIll = true;
+        }
+        else {
+            cISTSCoord.aAreYouIll = false;
+        }
+
+        cISTSCoord.aIllWithWhat = illWithWhatField.getText();
+
+        sleptString = sleptCombo.getSelectedItem().toString();
+        if ("yes".equals(sleptString)){
+            cISTSCoord.aSlept = true;
+        }
+        else {
+            cISTSCoord.aSlept = false;
+        }
+
+        cISTSCoord.aHrsSlept = Integer.parseInt(hrsSleptField.getText());
+
+        cISTSCoord.aMedicationTaken = medicationTakenArea.getText();
+
+        cISTSCoord.aCondition = new Condition(cISTSCoord.aAnxious,
+            cISTSCoord.aMood, cISTSCoord.aAreYouIll,
+            cISTSCoord.aIllWithWhat, cISTSCoord.aSlept,
+            cISTSCoord.aHrsSlept, cISTSCoord.aMedicationTaken);
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_createConditionMouseClicked
+
+    private void anxiousComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anxiousComboActionPerformed
+
+    private void hungoverComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hungoverComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hungoverComboActionPerformed
+
+    private void drunkWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkWhatFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drunkWhatFieldActionPerformed
+
+    private void drunkComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drunkComboActionPerformed
+
+    private void eatenWhatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eatenWhatFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eatenWhatFieldActionPerformed
+
+    /**
+     * Creates a new instance of the vomit class when the user has clicked the 
+     * button.
+     * @see Vomit
+     * @param evt
+     */
+    private void createCustomFieldsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCustomFieldsMouseClicked
+        // TODO add your handling code here:
+        vomitedString = vomitCombo.getSelectedItem().toString();
+        if ("yes".equals(vomitedString)){
+            cISTSCoord.aVomited = true;
+        }
+        else {
+            cISTSCoord.aVomited = false;
+        }
+
+        cISTSCoord.aNoOfVomit = Integer.parseInt(noOfVomitField.getText());
+
+        violentString = violentCombo.getSelectedItem().toString();
+        if ("yes".equals(violentString)){
+            cISTSCoord.aViolent = true;
+        }
+        else {
+            cISTSCoord.aViolent = false;
+        }
+
+        eatenString = eatenCombo.getSelectedItem().toString();
+        if ("yes".equals(eatenString)){
+            cISTSCoord.aEatenBefore = true;
+        }
+        else {
+            cISTSCoord.aEatenBefore = false;
+        }
+
+        cISTSCoord.aEatenWhat = eatenWhatField.getText();
+
+        drunkString = drunkCombo.getSelectedItem().toString();
+        if ("yes".equals(drunkString)){
+            cISTSCoord.aDrunkAlcohol = true;
+        }
+        else {
+            cISTSCoord.aDrunkAlcohol = false;
+        }
+
+        cISTSCoord.aDrunkWhat = drunkWhatField.getText();
+
+        hungoverString = hungoverCombo.getSelectedItem().toString();
+        if ("yes".equals(hungoverString)){
+            cISTSCoord.aHungover = true;
+        }
+        else {
+            cISTSCoord.aHungover = false;
+        }
+
+        cISTSCoord.aCustomFields = new CustomFields(cISTSCoord.aVomited,
+            cISTSCoord.aNoOfVomit, cISTSCoord.aViolent,
+            cISTSCoord.aEatenBefore, cISTSCoord.aEatenWhat,
+            cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
+            cISTSCoord.aHungover);
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_createCustomFieldsMouseClicked
+
+    private void goToCustomInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToCustomInputButtonActionPerformed
+        CustomFieldGUI customFieldGUI;
+        customFieldGUI = new CustomFieldGUI(cISTSCoord.customFieldBoss);
+    }//GEN-LAST:event_goToCustomInputButtonActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -4052,8 +4258,14 @@ public class GUI1 extends javax.swing.JFrame {
         /*  */        
     }
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCFButton;
     private javax.swing.JPanel addEventTab;
+    private javax.swing.JButton addNewCFButton;
+    private javax.swing.JButton addToMultiOptionsButton;
     private javax.swing.JComboBox<String> anxiousCombo;
     private javax.swing.JComboBox<String> anxiousCombo1;
     private javax.swing.JTextField anxiousDisplay;
@@ -4073,6 +4285,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JPanel conditionDetailsTab2;
     private javax.swing.JPanel conditionDetailsTab3;
     private javax.swing.JPanel conditionDetailsTab4;
+    private javax.swing.JDialog createCFDialog;
     private javax.swing.JButton createCondition;
     private javax.swing.JButton createCustomFields;
     private javax.swing.JButton createEvent;
@@ -4140,11 +4353,13 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JList eventList1;
     private javax.swing.JList eventList3;
     private javax.swing.JPanel eventListTab;
+    private javax.swing.JComboBox<String> fieldTypeCombo;
     private javax.swing.JPanel generalDetailsTab;
     private javax.swing.JPanel generalDetailsTab1;
     private javax.swing.JPanel generalDetailsTab2;
     private javax.swing.JPanel generalDetailsTab3;
     private javax.swing.JPanel generalDetailsTab4;
+    private javax.swing.JToggleButton goToCustomInputButton;
     private javax.swing.JTextField hoursLastedField;
     private javax.swing.JTextField hrsLastedDisplay;
     private javax.swing.JTextField hrsLastedDisplay1;
@@ -4213,6 +4428,9 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel134;
+    private javax.swing.JLabel jLabel135;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -4363,6 +4581,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField moodDisplay1;
     private javax.swing.JTextField moodDisplay2;
     private javax.swing.JTextField moodDisplay3;
+    private javax.swing.JTextField multiChoiceField;
+    private javax.swing.JTextField newFieldNameField;
     private javax.swing.JTextField noOfVomitDisplay;
     private javax.swing.JTextField noOfVomitDisplay1;
     private javax.swing.JTextField noOfVomitDisplay2;

@@ -4,6 +4,7 @@ import static cists.Condition.Mood.*;
 import static cists.Event.EventBeginTime.*;
 import static cists.Event.Location.*;
 import gui.GUI;
+import gui.GUI1;
 import java.io.Serializable;
 import java.util.*;
 
@@ -27,20 +28,25 @@ public class CISTS implements Serializable {
      * Creates and displays the GUI and creates a new Coordinating object.
      *
      */
+    
     public static void main(String[] args) {
         
-        CISTSCoord cISTSCoord = new CISTSCoord();
         
-        
-        
-        GUI gui = new GUI();
-        gui.setVisible(true);
-        
-        gui.setBounds(250, 30, 700, 700);
-        
+        openGUI();
+    
         
     }
     
+    static GUI1 gui1 = new GUI1();
+    static void openGUI(){
+        
+        CISTS.gui1.setVisible(true);
+        CISTS.gui1.setBounds(250, 30, 700, 700);
+    }
+    
+   
+    
+   
     
 }
     
