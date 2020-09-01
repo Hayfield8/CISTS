@@ -66,6 +66,8 @@ public class Event implements Serializable {
      * @see Vomit
      */
     CustomFields customFields;
+    EventCustomFields eventCF;
+   
     
     /**
      * Link to condition object.
@@ -94,7 +96,7 @@ public class Event implements Serializable {
     
     public Event (EventBeginTime aEventBeginTime, Location aLocation, int 
     aHoursLasted, int aDaysLasted, String aNotes, CustomFields aCustomFields,
-    Condition aCondition){
+    Condition aCondition, EventCustomFields aEventCF){
         
         eventBeginTime = aEventBeginTime;
         location = aLocation;
@@ -105,6 +107,7 @@ public class Event implements Serializable {
         customFields = aCustomFields;
         condition = aCondition;
         count = count++;
+        eventCF = aEventCF;
         
         System.out.println("CvsEvent created successfully");
     }

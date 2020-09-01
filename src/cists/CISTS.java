@@ -33,6 +33,7 @@ public class CISTS implements Serializable {
         
         
         openGUI();
+        gui1.setSize(1100, 700);
     
         
     }

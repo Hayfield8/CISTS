@@ -115,6 +115,8 @@ public class GUI1 extends javax.swing.JFrame {
     
     int customCount = 0;
     public Box cFBox = Box.createVerticalBox(); 
+    CustomFieldGUI customFieldGUI;
+    CustomFieldGUIView customFieldGUIView;
     
     
     
@@ -489,6 +491,7 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane14 = new javax.swing.JScrollPane();
         notesDisplay2 = new javax.swing.JTextArea();
         dateDisplay2 = new javax.swing.JTextField();
+        ViewECFButton = new javax.swing.JToggleButton();
         vomitDetailsTab2 = new javax.swing.JPanel();
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
@@ -528,6 +531,7 @@ public class GUI1 extends javax.swing.JFrame {
         eventList3 = new javax.swing.JList();
         select2EventButton = new javax.swing.JButton();
         addCFButton = new javax.swing.JButton();
+        saveCFButton = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
 
@@ -2192,6 +2196,11 @@ public class GUI1 extends javax.swing.JFrame {
                 createCustomFieldsMouseClicked(evt);
             }
         });
+        createCustomFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCustomFieldsActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("How many times did you vomit?");
 
@@ -2655,6 +2664,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        ViewECFButton.setText("View Events Custom Details");
+        ViewECFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewECFButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout generalDetailsTab2Layout = new javax.swing.GroupLayout(generalDetailsTab2);
         generalDetailsTab2.setLayout(generalDetailsTab2Layout);
         generalDetailsTab2Layout.setHorizontalGroup(
@@ -2662,20 +2678,25 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(generalDetailsTab2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel70)
-                    .addComponent(jLabel71)
-                    .addComponent(jLabel72)
-                    .addComponent(jLabel73)
-                    .addComponent(jLabel74)
-                    .addComponent(jLabel75))
-                .addGap(64, 64, 64)
-                .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane14)
-                    .addComponent(daysLastedDisplay2)
-                    .addComponent(hrsLastedDisplay2)
-                    .addComponent(locationDisplay1)
-                    .addComponent(beginTimeDisplay1)
-                    .addComponent(dateDisplay2))
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel70)
+                            .addComponent(jLabel71)
+                            .addComponent(jLabel72)
+                            .addComponent(jLabel73)
+                            .addComponent(jLabel74)
+                            .addComponent(jLabel75))
+                        .addGap(64, 64, 64)
+                        .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane14)
+                            .addComponent(daysLastedDisplay2)
+                            .addComponent(hrsLastedDisplay2)
+                            .addComponent(locationDisplay1)
+                            .addComponent(beginTimeDisplay1)
+                            .addComponent(dateDisplay2)))
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addComponent(ViewECFButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         generalDetailsTab2Layout.setVerticalGroup(
@@ -2705,6 +2726,8 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
                     .addComponent(dateDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addComponent(ViewECFButton)
                 .addContainerGap())
         );
 
@@ -2948,6 +2971,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        saveCFButton.setText("Save Custom Fields");
+        saveCFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveCFButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -2965,7 +2995,10 @@ public class GUI1 extends javax.swing.JFrame {
                                 .addComponent(saveListButton)
                                 .addGap(64, 64, 64)
                                 .addComponent(addCFButton))
-                            .addComponent(select2EventButton)))
+                            .addGroup(eventListTabLayout.createSequentialGroup()
+                                .addComponent(select2EventButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(saveCFButton))))
                     .addComponent(listLabel)
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addComponent(listScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3006,7 +3039,8 @@ public class GUI1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editEventButton)
-                            .addComponent(select2EventButton))))
+                            .addComponent(select2EventButton)
+                            .addComponent(saveCFButton))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -4039,7 +4073,7 @@ public class GUI1 extends javax.swing.JFrame {
             cISTSCoord.aEvent = new Event (cISTSCoord.aEventBeginTime,
                 cISTSCoord.aLocation, cISTSCoord.aHoursLasted,
                 cISTSCoord.aDaysLasted, cISTSCoord.aNotes,
-                cISTSCoord.aCustomFields, cISTSCoord.aCondition);
+                cISTSCoord.aCustomFields, cISTSCoord.aCondition ,customFieldGUI.tempEventCF);
 
             cISTSCoord.events.add(cISTSCoord.aEvent);
 
@@ -4215,9 +4249,21 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_createCustomFieldsMouseClicked
 
     private void goToCustomInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToCustomInputButtonActionPerformed
-        CustomFieldGUI customFieldGUI;
+
         customFieldGUI = new CustomFieldGUI(cISTSCoord.customFieldBoss);
     }//GEN-LAST:event_goToCustomInputButtonActionPerformed
+
+    private void createCustomFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomFieldsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createCustomFieldsActionPerformed
+
+    private void ViewECFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButtonActionPerformed
+        customFieldGUIView = new CustomFieldGUIView(customFieldGUI.tempEventCF);
+    }//GEN-LAST:event_ViewECFButtonActionPerformed
+
+    private void saveCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCFButtonActionPerformed
+        cISTSCoord.saveCustomFieldBoss();
+    }//GEN-LAST:event_saveCFButtonActionPerformed
 
     
     /**
@@ -4262,6 +4308,7 @@ public class GUI1 extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton ViewECFButton;
     private javax.swing.JButton addCFButton;
     private javax.swing.JPanel addEventTab;
     private javax.swing.JButton addNewCFButton;
@@ -4595,6 +4642,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextArea notesDisplay2;
     private javax.swing.JTextArea notesDisplay3;
     private javax.swing.JTextArea notesDisplay4;
+    private javax.swing.JToggleButton saveCFButton;
     private javax.swing.JButton saveListButton;
     private javax.swing.JButton select2EventButton;
     private javax.swing.JButton selectEventButton;

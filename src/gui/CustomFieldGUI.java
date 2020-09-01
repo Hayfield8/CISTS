@@ -7,22 +7,41 @@ package gui;
 
 import cists.CustomField;
 import cists.CustomFieldBoss;
+import cists.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
  * @author m_hay
  */
-public class CustomFieldGUI extends javax.swing.JFrame{
+public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener {
  
     JPanel cFPanel;
-    public List<javax.swing.JLabel> customLabels; 
+    EventCustomFields tempEventCF;
+    
+    public List<javax.swing.JLabel> customLabels;
+    public List<javax.swing.JLabel> customTFLabels;
+    public List<javax.swing.JLabel> customYNLabels;
+    public List<javax.swing.JLabel> customMCLabels;
+    public List<javax.swing.JLabel> customSLDLabels;
+    
     public List<Object> customInputs;
+    public List<javax.swing.JTextField> customTextFields;
+    public List<javax.swing.JComboBox> customYesNos;
+    public List<javax.swing.JComboBox> customMultiCombo;
+    public List<javax.swing.JSlider> customSliders;
+    
+    
     //public Box cFBox = Box.createVerticalBox(); 
    
     public CustomFieldGUI(CustomFieldBoss aCFBoss){
@@ -31,16 +50,74 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         this.cFPanel = new JPanel();
         this.cFPanel.setLayout(new FlowLayout());
         add(cFPanel, BorderLayout.CENTER);
+        
+        JButton createCFButton = new JButton("Store Custom Info");
+        add(createCFButton, BorderLayout.SOUTH);
+        createCFButton.addActionListener(this);
+        
+        customInputs = new ArrayList<>();
+        customTFLabels = new ArrayList<>();
+        customYNLabels = new ArrayList<>();
+        customMCLabels = new ArrayList<>();
+        customSLDLabels = new ArrayList<>();
+        customTextFields = new ArrayList<>();
+        customYesNos = new ArrayList<>();
+        customMultiCombo = new ArrayList<>();
+        customSliders = new ArrayList<>();
+        
+        generateCustomFields(aCFBoss.getCustomFieldList());
         setSize(700, 700);
         setVisible(true);
-        customInputs = new ArrayList<>();
-        customLabels = new ArrayList<>();
-        generateCustomFields(aCFBoss.getCustomFieldList());
-        
         
     }
     
-    
+    /**
+     * action performed method for creation of ECF object.
+     */
+
+    public void actionPerformed(ActionEvent evt){
+         List<String> customFieldNames; 
+         List<String> customFieldInputs;
+         
+         customFieldNames = new ArrayList<>();
+         customFieldInputs = new ArrayList<>();
+         
+         for (JTextField eachCFInput : customTextFields){
+            customFieldInputs.add(eachCFInput.getText());  
+         }
+         
+         for (JComboBox eachCFInput : customYesNos){
+            customFieldInputs.add(eachCFInput.getSelectedItem().toString());  
+         }
+         
+         for (JComboBox eachCFInput : customMultiCombo){
+            customFieldInputs.add(eachCFInput.getSelectedItem().toString());  
+         }
+         
+         for (JSlider eachCFInput : customSliders){
+            customFieldInputs.add(Integer.toString(eachCFInput.getValue()));  
+         }
+         
+         for (JLabel eachCFLabel : customTFLabels){
+            customFieldNames.add(eachCFLabel.getText());  
+         }
+         
+         for (JLabel eachCFLabel : customYNLabels){
+            customFieldNames.add(eachCFLabel.getText());  
+         }
+         
+         for (JLabel eachCFLabel : customMCLabels){
+            customFieldNames.add(eachCFLabel.getText());  
+         }
+         
+         for (JLabel eachCFLabel : customSLDLabels){
+            customFieldNames.add(eachCFLabel.getText());  
+         }
+         
+         tempEventCF = new EventCustomFields(customFieldNames ,customFieldInputs);
+         
+         JOptionPane.showMessageDialog(null, "Custom Inputs Saved Successully.");
+    }
     
     /**
      * methods to add input fields to the gui
@@ -57,8 +134,10 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         this.cFPanel.add(customField);
         //this.customFieldsInputDialog.add(cFBox);
         this.cFPanel.setVisible(true);
-        this.customLabels.add(customLabel);
+        //this.customLabels.add(customLabel);
+        this.customTFLabels.add(customLabel);
         this.customInputs.add(customField);
+        this.customTextFields.add(customField);
         
         
         this.revalidate();
@@ -77,9 +156,12 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         customLabel = new javax.swing.JLabel(aFieldName);
         
         
-        this.cFPanel.add(customLabel, customCombo);
-        this.customLabels.add(customLabel);
+        this.cFPanel.add(customLabel);
+        this.cFPanel.add(customCombo);
+        //this.customLabels.add(customLabel);
+        this.customYNLabels.add(customLabel);
         this.customInputs.add(customCombo);
+        this.customYesNos.add(customCombo);
         
         revalidate();
         repaint();
@@ -95,9 +177,13 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         customField = new javax.swing.JTextField();
         customField.setText("0");
         
-        this.cFPanel.add(customLabel, customField);
-        this.customLabels.add(customLabel);
+        this.cFPanel.add(customLabel);
+        this.cFPanel.add(customField);
+        //this.customLabels.add(customLabel);
+        this.customTFLabels.add(customLabel);
         this.customInputs.add(customField);
+        this.customTextFields.add(customField);
+       
         
         
         revalidate();
@@ -112,9 +198,12 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         javax.swing.JSlider customSlider;
         customLabel = new javax.swing.JLabel(aFieldName);
         customSlider = new javax.swing.JSlider(1, 10);
-        this.cFPanel.add(customLabel, customSlider);
-        this.customLabels.add(customLabel);
+        this.cFPanel.add(customLabel);
+        this.cFPanel.add(customSlider);
+        //this.customLabels.add(customLabel);
+        this.customSLDLabels.add(customLabel);
         this.customInputs.add(customSlider);
+        this.customSliders.add(customSlider);
         
         revalidate();
         repaint();
@@ -133,9 +222,12 @@ public class CustomFieldGUI extends javax.swing.JFrame{
         customLabel = new javax.swing.JLabel(aFieldName);
         
         
-        this.cFPanel.add(customLabel, customMulti);
-        this.customLabels.add(customLabel);
+        this.cFPanel.add(customLabel);
+        this.cFPanel.add(customMulti);
+        //this.customLabels.add(customLabel);
+        this.customMCLabels.add(customLabel);
         this.customInputs.add(customMulti);
+        this.customMultiCombo.add(customMulti);
         
         
         revalidate();
