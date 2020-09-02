@@ -10,14 +10,8 @@ import java.io.Serializable;
  * @since 20-07-2019
  * @version 1.0
  */
-public class CustomFields implements Serializable {
+public class EventDiet implements Serializable {
     
-    //vomit variables
-    
-    /**
-     * Whether the user vomited during the event.
-     */
-    boolean vomited = false;
     
     /**
      * Number of times the user vomited during the event.
@@ -67,13 +61,9 @@ public class CustomFields implements Serializable {
      * @param aHungover whether the user was hung-over
      */
     
-    public CustomFields (boolean aVomited, int aNoOfVomit, boolean aViolent, 
-    boolean aEatenBefore, String aEatenWhat, boolean aDrunkAlcohol,
+    public EventDiet (boolean aEatenBefore, String aEatenWhat, boolean aDrunkAlcohol,
     String aDrunkWhat, boolean aHungover){
-            
-        vomited = aVomited;
-        noOfVomit = aNoOfVomit;
-        violent = aViolent;
+        
         eatenBefore = aEatenBefore;
         eatenWhat = aEatenWhat;
         drunkAlcohol = aDrunkAlcohol;
@@ -86,29 +76,6 @@ public class CustomFields implements Serializable {
     
     //Getters
     
-    /**
-     * Returns whether the user vomited during the event.
-     * @return vomited
-     */
-    public boolean getVomited() {
-        return this.vomited;
-    }
-    
-    /**
-     * Returns the number of times the user vomited.
-     * @return noOfVomit
-     */
-    public int getNoOfVomit(){
-        return this.noOfVomit;
-    }
-    
-    /**
-     * Returns whether the vomiting was violent.
-     * @return violent
-     */
-    public boolean getViolent(){
-        return this.violent;
-    }
     
     /**
      * Returns whether the user had eaten before the event.
@@ -152,30 +119,6 @@ public class CustomFields implements Serializable {
     
     //setters
     
-    /**
-     * Sets whether the user vomited during the event with the answer provided.
-     * @param aVomited whether the user vomited or not
-     */
-    public void setVomited(boolean aVomited){
-        this.vomited = aVomited;
-    }
-    
-    /**
-      * Sets the number of times the user vomited during the event with the 
-      * number provided.
-      * @param aNoOfVomit the number of times the user vomited
-     */
-    public void setNoOfVomit(int aNoOfVomit){
-        this.noOfVomit = aNoOfVomit;
-    }
-    
-    /**
-     * Sets whether the vomiting was violent or not with the answer provided.
-     * @param aViolent whether the vomited was violent or not
-     */
-    public void setViolent(boolean aViolent){
-        this.violent = aViolent;
-    }
     
     /**
      * Sets whether the user has eaten before the event began with the answer provided.

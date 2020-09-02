@@ -9,6 +9,7 @@ import cists.CustomField;
 import cists.CustomFieldBoss;
 import cists.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -28,6 +30,7 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
  
     JPanel cFPanel;
     EventCustomFields tempEventCF;
+    public Boolean customFieldsCreated = false;
     
     public List<javax.swing.JLabel> customLabels;
     public List<javax.swing.JLabel> customTFLabels;
@@ -46,9 +49,9 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
    
     public CustomFieldGUI(CustomFieldBoss aCFBoss){
         super("Custom Fields Input Form");
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         this.cFPanel = new JPanel();
-        this.cFPanel.setLayout(new FlowLayout());
+        this.cFPanel.setLayout(new BoxLayout(this.cFPanel, BoxLayout.Y_AXIS));
         add(cFPanel, BorderLayout.CENTER);
         
         JButton createCFButton = new JButton("Store Custom Info");
@@ -66,7 +69,8 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         customSliders = new ArrayList<>();
         
         generateCustomFields(aCFBoss.getCustomFieldList());
-        setSize(700, 700);
+        setSize(400, 800);
+        setLocation(500, 200);
         setVisible(true);
         
     }
@@ -83,7 +87,7 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
          customFieldInputs = new ArrayList<>();
          
          for (JTextField eachCFInput : customTextFields){
-            customFieldInputs.add(eachCFInput.getText());  
+            customFieldInputs.add(eachCFInput.getText());
          }
          
          for (JComboBox eachCFInput : customYesNos){
@@ -115,8 +119,11 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
          }
          
          tempEventCF = new EventCustomFields(customFieldNames ,customFieldInputs);
-         
+         setCustomFieldsCreated(true);
          JOptionPane.showMessageDialog(null, "Custom Inputs Saved Successully.");
+         this.dispose();
+        
+         
     }
     
     /**
@@ -128,13 +135,25 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         javax.swing.JTextField customField;
         customLabel = new javax.swing.JLabel(aFieldName);
         customField = new javax.swing.JTextField(20);
+        customField.setBorder(new LineBorder(Color.BLACK, 1));
         
+        javax.swing.JLabel customLabelSPACE;
+        customLabelSPACE = new javax.swing.JLabel("  ");
+        
+        javax.swing.JLabel customLabelSPACE2;
+        customLabelSPACE2 = new javax.swing.JLabel("****");
+        
+        javax.swing.JLabel customLabelSPACE3;
+        customLabelSPACE3 = new javax.swing.JLabel("  ");
         
         this.cFPanel.add(customLabel);
+        this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customField);
-        //this.customFieldsInputDialog.add(cFBox);
+        this.cFPanel.add(customLabelSPACE2);
+        this.cFPanel.add(customLabelSPACE3);
+        
         this.cFPanel.setVisible(true);
-        //this.customLabels.add(customLabel);
+        
         this.customTFLabels.add(customLabel);
         this.customInputs.add(customField);
         this.customTextFields.add(customField);
@@ -155,9 +174,21 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         customCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
         customLabel = new javax.swing.JLabel(aFieldName);
         
+        javax.swing.JLabel customLabelSPACE;
+        customLabelSPACE = new javax.swing.JLabel("  ");
+        
+        javax.swing.JLabel customLabelSPACE2;
+        customLabelSPACE2 = new javax.swing.JLabel("****");
+        
+        javax.swing.JLabel customLabelSPACE3;
+        customLabelSPACE3 = new javax.swing.JLabel("  ");
         
         this.cFPanel.add(customLabel);
+        this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customCombo);
+        this.cFPanel.add(customLabelSPACE2);
+        this.cFPanel.add(customLabelSPACE3);
+        
         //this.customLabels.add(customLabel);
         this.customYNLabels.add(customLabel);
         this.customInputs.add(customCombo);
@@ -176,9 +207,23 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         customLabel = new javax.swing.JLabel(aFieldName);
         customField = new javax.swing.JTextField();
         customField.setText("0");
+        customField.setBorder(new LineBorder(Color.BLACK, 1));
+        
+        javax.swing.JLabel customLabelSPACE;
+        customLabelSPACE = new javax.swing.JLabel("  ");
+        
+        javax.swing.JLabel customLabelSPACE2;
+        customLabelSPACE2 = new javax.swing.JLabel("****");
+        
+        javax.swing.JLabel customLabelSPACE3;
+        customLabelSPACE3 = new javax.swing.JLabel("  ");
         
         this.cFPanel.add(customLabel);
+        this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customField);
+        this.cFPanel.add(customLabelSPACE2);
+        this.cFPanel.add(customLabelSPACE3);
+        
         //this.customLabels.add(customLabel);
         this.customTFLabels.add(customLabel);
         this.customInputs.add(customField);
@@ -198,8 +243,22 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         javax.swing.JSlider customSlider;
         customLabel = new javax.swing.JLabel(aFieldName);
         customSlider = new javax.swing.JSlider(1, 10);
+        
+        javax.swing.JLabel customLabelSPACE;
+        customLabelSPACE = new javax.swing.JLabel("  ");
+        
+        javax.swing.JLabel customLabelSPACE2;
+        customLabelSPACE2 = new javax.swing.JLabel("****");
+        
+        javax.swing.JLabel customLabelSPACE3;
+        customLabelSPACE3 = new javax.swing.JLabel("  ");
+        
         this.cFPanel.add(customLabel);
+        this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customSlider);
+        this.cFPanel.add(customLabelSPACE2);
+        this.cFPanel.add(customLabelSPACE3);
+        
         //this.customLabels.add(customLabel);
         this.customSLDLabels.add(customLabel);
         this.customInputs.add(customSlider);
@@ -221,9 +280,21 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         
         customLabel = new javax.swing.JLabel(aFieldName);
         
+        javax.swing.JLabel customLabelSPACE;
+        customLabelSPACE = new javax.swing.JLabel("  ");
+        
+        javax.swing.JLabel customLabelSPACE2;
+        customLabelSPACE2 = new javax.swing.JLabel("****");
+        
+        javax.swing.JLabel customLabelSPACE3;
+        customLabelSPACE3 = new javax.swing.JLabel("  ");
+        
         
         this.cFPanel.add(customLabel);
+        this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customMulti);
+        this.cFPanel.add(customLabelSPACE2);
+        this.cFPanel.add(customLabelSPACE3);
         //this.customLabels.add(customLabel);
         this.customMCLabels.add(customLabel);
         this.customInputs.add(customMulti);
@@ -287,4 +358,11 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
 
     }
     
+    public Boolean getCustomFieldsCreated(){
+        return this.customFieldsCreated;
+    }
+    
+    public void setCustomFieldsCreated(Boolean a){
+        this.customFieldsCreated = a;
+    }
 }

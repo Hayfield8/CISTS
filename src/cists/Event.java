@@ -51,6 +51,10 @@ public class Event implements Serializable {
      */
     int daysLasted = 0;
     
+    int overallIntensity = 0;
+    int anxietyLevel = 0;
+           
+    
     /**
      * The date when the event started.
      */
@@ -65,7 +69,7 @@ public class Event implements Serializable {
      * Link to vomit object.
      * @see Vomit
      */
-    CustomFields customFields;
+    EventDiet eventDiet;
     EventCustomFields eventCF;
    
     
@@ -92,11 +96,12 @@ public class Event implements Serializable {
      * @param aNotes notes regarding the event
      * @param aCustomFields vomit object
      * @param aDaysLasted days the event lasted
+     * @param aEventCF
      */
     
     public Event (EventBeginTime aEventBeginTime, Location aLocation, int 
-    aHoursLasted, int aDaysLasted, String aNotes, CustomFields aCustomFields,
-    Condition aCondition, EventCustomFields aEventCF){
+    aHoursLasted, int aDaysLasted, String aNotes, EventDiet aCustomFields,
+    Condition aCondition, EventCustomFields aEventCF, int aIntensity, int aAnxietyLevel){
         
         eventBeginTime = aEventBeginTime;
         location = aLocation;
@@ -104,9 +109,11 @@ public class Event implements Serializable {
         daysLasted = aDaysLasted;
         date = new Date();
         notes = aNotes;
-        customFields = aCustomFields;
+        eventDiet = aCustomFields;
         condition = aCondition;
         count = count++;
+        overallIntensity = aIntensity;
+        anxietyLevel = aAnxietyLevel;
         eventCF = aEventCF;
         
         System.out.println("CvsEvent created successfully");
@@ -154,12 +161,24 @@ public class Event implements Serializable {
         return this.notes;
     }
     
+    public int getOverallIntensity(){
+        return this.overallIntensity;
+    }
+    
+    public int getAnxietyLevel(){
+        return this.anxietyLevel;
+    }
+    
     /**
      * Returns the vomit object linked to this event.
      * @return vomit
      */
-    public CustomFields getCustomFields(){
-        return this.customFields;
+    public EventDiet getCustomFields(){
+        return this.eventDiet;
+    }
+    
+    public EventCustomFields getECF(){
+        return this.eventCF;
     }
     
     /**
@@ -228,43 +247,27 @@ public class Event implements Serializable {
         this.notes = aNotes;
     }
     
+    public void setOverallIntensity(int aIntensity){
+        this.overallIntensity = aIntensity;
+    }
+    
+    public void setAnxietyLevel(int aAnxietyLevel){
+        this.anxietyLevel = aAnxietyLevel;
+    }
+    
+    
+    
+    
 //vomit setters
     
-    
-    /**
-     * Sets whether the user vomited during the event in the linked Vomit object
-     * with the answer provided.
-     * @param aVomited whether the user vomited or not
-     */
-     public void setVomitVomited(boolean aVomited){
-        this.customFields.setVomited(aVomited);
-    }
-    
-     /**
-      * Sets the number of times the user vomited during the event in the linked Vomit object
-      * with the number provided.
-      * @param aNoOfVomit the number of times the user vomited
-      */
-    public void setVomitNoOfVomit(int aNoOfVomit){
-        this.customFields.setNoOfVomit(aNoOfVomit);
-    }
-    
-    /**
-     * Sets whether the vomiting was violent or not in the linked Vomit object with 
-     * the answer provided.
-     * @param aViolent whether the vomited was violent or not
-     */
-    public void setVomitViolent(boolean aViolent){
-        this.customFields.setViolent(aViolent);
-    }
     
     /**
      * Sets whether the user has eaten before the event began in the linked Vomit object
      * with the answer provided.
      * @param aEatenBefore whether they had eaten before the event
      */
-    public void setVomitEatenBefore(boolean aEatenBefore){
-        this.customFields.setEatenBefore(aEatenBefore);
+    public void setEDEatenBefore(boolean aEatenBefore){
+        this.eventDiet.setEatenBefore(aEatenBefore);
     }
     
     /**
@@ -272,8 +275,8 @@ public class Event implements Serializable {
      * the string provided.
      * @param aEatenWhat what was eaten before the event began
      */
-    public void setVomitEatenWhat(String aEatenWhat){
-        this.customFields.setEatenWhat(aEatenWhat);
+    public void setEDEatenWhat(String aEatenWhat){
+        this.eventDiet.setEatenWhat(aEatenWhat);
     }
     
     /**
@@ -281,8 +284,8 @@ public class Event implements Serializable {
      * with the answer provided.
      * @param aDrunkAlcohol whether alcohol was drunk before the event or not
      */
-    public void setVomitDrunkAlcohol(boolean aDrunkAlcohol){
-        this.customFields.setDrunkAlcohol(aDrunkAlcohol);
+    public void setEDDrunkAlcohol(boolean aDrunkAlcohol){
+        this.eventDiet.setDrunkAlcohol(aDrunkAlcohol);
     }
     
     /**
@@ -290,8 +293,8 @@ public class Event implements Serializable {
      * with the string provided.
      * @param aDrunkWhat what the user drunk before the event 
      */
-    public void setVomitDrunkWhat(String aDrunkWhat){
-        this.customFields.setDrunkWhat(aDrunkWhat);
+    public void setEDDrunkWhat(String aDrunkWhat){
+        this.eventDiet.setDrunkWhat(aDrunkWhat);
     }
     
     /**
@@ -299,8 +302,8 @@ public class Event implements Serializable {
      * Vomit object with the answer provided.
      * @param aHungover whether the user was hung-over during the event
      */
-    public void setVomitHungover(boolean aHungover){
-        this.customFields.setHungover(aHungover);
+    public void setEDHungover(boolean aHungover){
+        this.eventDiet.setHungover(aHungover);
     }
     
 // condition setters
@@ -389,7 +392,10 @@ public class Event implements Serializable {
      */
     @Override
     public String toString(){
-        return this.dateToString();
+        
+        String string = this.dateToString()+ " : " + 
+                Integer.toString(this.getOverallIntensity());
+        return string;
         
     }
 }

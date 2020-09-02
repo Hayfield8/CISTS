@@ -91,7 +91,7 @@ public class CISTSCoord {
     * Vomit object used to create CvsEvent object.
     * @see Vomit
     */ 
-    public CustomFields aCustomFields;
+    public EventDiet aCustomFields;
    
 //vriables to create condition
    
@@ -185,8 +185,13 @@ public class CISTSCoord {
     */ 
     public Event aEvent;
     
+    public Boolean conditionCreated = false;
     
-   
+    public Boolean vomitCreated = false;
+    
+    public int aIntensity;
+    
+    public int aAnxietyLVL;
    
    
     /**
@@ -312,7 +317,25 @@ public class CISTSCoord {
         return customFieldBoss;
     }          
 
+    public Boolean getConditionCreated(){
+        return this.conditionCreated;
+    }
     
+    
+    
+    public Boolean getVomitCreated(){
+        return this.vomitCreated;
+    }
+    
+    public void setConditionCreated(Boolean a){
+        this.conditionCreated = a;
+    }
+    
+    
+    
+    public void setVomitCreated(Boolean a){
+        this.vomitCreated = a;
+    }
     
     
     

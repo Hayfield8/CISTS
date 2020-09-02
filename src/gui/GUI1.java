@@ -15,7 +15,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import cists.Condition.Mood;
 import cists.CustomField;
-import cists.CustomFields;
+import cists.EventDiet;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
 import javax.swing.Box;
@@ -136,7 +136,7 @@ public class GUI1 extends javax.swing.JFrame {
       initComponents();
       
       cISTSCoord.loadEventsList();  
-        
+      customFields = cISTSCoord.customFieldBoss.getCustomFieldList();
       events = cISTSCoord.getEvents();
       
       //customFields = cISTSCoord.customFieldBoss.getCustomFieldList();
@@ -150,14 +150,15 @@ public class GUI1 extends javax.swing.JFrame {
           model.addElement(eachEvent);
       }
       
-      //cFModel = new DefaultListModel();
-      //for (CustomField eachCF : customFields){
-          //cFModel.addElement(eachCF);
-      //}
+      cFModel = new DefaultListModel();
+      for (CustomField eachCF : customFields){
+          cFModel.addElement(eachCF);
+      }
       
       
       eventList1.setModel(model);
       eventList3.setModel(model);
+      customFieldList.setModel(cFModel);
     }
     
     
@@ -174,32 +175,12 @@ public class GUI1 extends javax.swing.JFrame {
         eventDetailsDialog = new javax.swing.JDialog();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        generalDetailsTab = new javax.swing.JPanel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        beginTimeDisplay = new javax.swing.JTextField();
-        locationDisplay = new javax.swing.JTextField();
-        hrsLastedDisplay = new javax.swing.JTextField();
-        daysLastedDisplay = new javax.swing.JTextField();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        notesDisplay = new javax.swing.JTextArea();
-        dateDisplay = new javax.swing.JTextField();
         vomitDetailsTab = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        vomitDisplay = new javax.swing.JTextField();
-        noOfVomitDisplay = new javax.swing.JTextField();
-        violentDisplay = new javax.swing.JTextField();
         eatenDisplay = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         eatenWhatDisplay = new javax.swing.JTextArea();
@@ -207,6 +188,7 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         drunkWhatDisplay = new javax.swing.JTextArea();
         hungoverDisplay = new javax.swing.JTextField();
+        ViewECFButton1 = new javax.swing.JToggleButton();
         conditionDetailsTab = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -223,6 +205,28 @@ public class GUI1 extends javax.swing.JFrame {
         sleptDisplay = new javax.swing.JTextField();
         hrsSleptDisplay = new javax.swing.JTextField();
         medicationDisplay = new javax.swing.JTextField();
+        generalDetailsTab = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        beginTimeDisplay = new javax.swing.JTextField();
+        locationDisplay = new javax.swing.JTextField();
+        hrsLastedDisplay = new javax.swing.JTextField();
+        daysLastedDisplay = new javax.swing.JTextField();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        notesDisplay = new javax.swing.JTextArea();
+        dateDisplay = new javax.swing.JTextField();
+        intensitySliderDisplay1 = new javax.swing.JSlider();
+        anxietySliderDisplay1 = new javax.swing.JSlider();
+        jLabel142 = new javax.swing.JLabel();
+        jLabel143 = new javax.swing.JLabel();
+        jLabel144 = new javax.swing.JLabel();
+        jLabel145 = new javax.swing.JLabel();
+        jLabel146 = new javax.swing.JLabel();
+        jLabel147 = new javax.swing.JLabel();
         createEventError = new javax.swing.JDialog();
         jLabel45 = new javax.swing.JLabel();
         listSavedDialog = new javax.swing.JDialog();
@@ -253,32 +257,32 @@ public class GUI1 extends javax.swing.JFrame {
         editHrsLastedButton = new javax.swing.JButton();
         editDaysLastedButton = new javax.swing.JButton();
         editNotesButton = new javax.swing.JButton();
+        intensitySliderDisplay4 = new javax.swing.JSlider();
+        anxietySliderDisplay4 = new javax.swing.JSlider();
+        jLabel161 = new javax.swing.JLabel();
+        jLabel162 = new javax.swing.JLabel();
+        editIntensityButton = new javax.swing.JButton();
+        editAnxietyLVLButton = new javax.swing.JButton();
+        jLabel163 = new javax.swing.JLabel();
+        jLabel164 = new javax.swing.JLabel();
+        jLabel165 = new javax.swing.JLabel();
+        jLabel166 = new javax.swing.JLabel();
         vomitDetailsTab1 = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
-        noOfVomitDisplay1 = new javax.swing.JTextField();
         jScrollPane11 = new javax.swing.JScrollPane();
         eatenWhatDisplay1 = new javax.swing.JTextArea();
         jScrollPane12 = new javax.swing.JScrollPane();
         drunkWhatDisplay1 = new javax.swing.JTextArea();
-        vomitCombo2 = new javax.swing.JComboBox<>();
-        violentCombo1 = new javax.swing.JComboBox<>();
         eatenCombo1 = new javax.swing.JComboBox<>();
         drunkCombo1 = new javax.swing.JComboBox<>();
         hungoverCombo1 = new javax.swing.JComboBox<>();
         editDrunkButton = new javax.swing.JButton();
-        editNoOfVomitButton = new javax.swing.JButton();
-        editViolentButton = new javax.swing.JButton();
         editEatenButton = new javax.swing.JButton();
-        editVomitButton = new javax.swing.JButton();
         editEatenWhatButton = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
         editDrunkWhatButton = new javax.swing.JButton();
         editHungoverButton = new javax.swing.JButton();
         conditionDetailsTab1 = new javax.swing.JPanel();
@@ -321,18 +325,20 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane19 = new javax.swing.JScrollPane();
         notesDisplay3 = new javax.swing.JTextArea();
         dateDisplay3 = new javax.swing.JTextField();
+        anxietySliderDisplay2 = new javax.swing.JSlider();
+        intensitySliderDisplay2 = new javax.swing.JSlider();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel148 = new javax.swing.JLabel();
+        jLabel149 = new javax.swing.JLabel();
+        jLabel150 = new javax.swing.JLabel();
         vomitDetailsTab3 = new javax.swing.JPanel();
-        jLabel97 = new javax.swing.JLabel();
-        jLabel98 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        vomitDisplay2 = new javax.swing.JTextField();
-        noOfVomitDisplay3 = new javax.swing.JTextField();
-        violentDisplay2 = new javax.swing.JTextField();
         eatenDisplay2 = new javax.swing.JTextField();
         jScrollPane20 = new javax.swing.JScrollPane();
         eatenWhatDisplay3 = new javax.swing.JTextArea();
@@ -340,6 +346,7 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane21 = new javax.swing.JScrollPane();
         drunkWhatDisplay3 = new javax.swing.JTextArea();
         hungoverDisplay2 = new javax.swing.JTextField();
+        ViewECFButton2 = new javax.swing.JToggleButton();
         conditionDetailsTab3 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
         jLabel106 = new javax.swing.JLabel();
@@ -372,18 +379,20 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane24 = new javax.swing.JScrollPane();
         notesDisplay4 = new javax.swing.JTextArea();
         dateDisplay4 = new javax.swing.JTextField();
+        anxietySliderDisplay3 = new javax.swing.JSlider();
+        intensitySliderDisplay3 = new javax.swing.JSlider();
+        jLabel151 = new javax.swing.JLabel();
+        jLabel152 = new javax.swing.JLabel();
+        jLabel153 = new javax.swing.JLabel();
+        jLabel154 = new javax.swing.JLabel();
+        jLabel155 = new javax.swing.JLabel();
+        jLabel156 = new javax.swing.JLabel();
         vomitDetailsTab4 = new javax.swing.JPanel();
-        jLabel118 = new javax.swing.JLabel();
-        jLabel119 = new javax.swing.JLabel();
-        jLabel120 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
         jLabel124 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
-        vomitDisplay3 = new javax.swing.JTextField();
-        noOfVomitDisplay4 = new javax.swing.JTextField();
-        violentDisplay3 = new javax.swing.JTextField();
         eatenDisplay3 = new javax.swing.JTextField();
         jScrollPane25 = new javax.swing.JScrollPane();
         eatenWhatDisplay4 = new javax.swing.JTextArea();
@@ -391,6 +400,7 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane26 = new javax.swing.JScrollPane();
         drunkWhatDisplay4 = new javax.swing.JTextArea();
         hungoverDisplay3 = new javax.swing.JTextField();
+        ViewECFButton3 = new javax.swing.JToggleButton();
         conditionDetailsTab4 = new javax.swing.JPanel();
         jLabel126 = new javax.swing.JLabel();
         jLabel127 = new javax.swing.JLabel();
@@ -416,18 +426,19 @@ public class GUI1 extends javax.swing.JFrame {
         multiChoiceField = new javax.swing.JTextField();
         addToMultiOptionsButton = new javax.swing.JButton();
         addNewCFButton = new javax.swing.JButton();
+        cFListDialog = new javax.swing.JDialog();
+        jScrollPane28 = new javax.swing.JScrollPane();
+        customFieldList = new javax.swing.JList<>();
+        select2EventErrorDialog = new javax.swing.JDialog();
+        jLabel55 = new javax.swing.JLabel();
+        cFBossSavedDialog = new javax.swing.JDialog();
+        jLabel56 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        vomitCombo = new javax.swing.JComboBox<>();
-        createCustomFields = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        noOfVomitField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        violentCombo = new javax.swing.JComboBox<>();
+        createEventDietButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         eatenCombo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -468,6 +479,14 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         notesArea = new javax.swing.JTextArea();
         goToCustomInputButton = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
+        intensitySlider = new javax.swing.JSlider();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        anxietySlider = new javax.swing.JSlider();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
         eventListTab = new javax.swing.JPanel();
         listLabel = new javax.swing.JLabel();
         selectEventButton = new javax.swing.JButton();
@@ -492,18 +511,20 @@ public class GUI1 extends javax.swing.JFrame {
         notesDisplay2 = new javax.swing.JTextArea();
         dateDisplay2 = new javax.swing.JTextField();
         ViewECFButton = new javax.swing.JToggleButton();
+        intensitySliderDisplay = new javax.swing.JSlider();
+        jLabel136 = new javax.swing.JLabel();
+        jLabel137 = new javax.swing.JLabel();
+        jLabel138 = new javax.swing.JLabel();
+        anxietySliderDisplay = new javax.swing.JSlider();
+        jLabel139 = new javax.swing.JLabel();
+        jLabel140 = new javax.swing.JLabel();
+        jLabel141 = new javax.swing.JLabel();
         vomitDetailsTab2 = new javax.swing.JPanel();
-        jLabel76 = new javax.swing.JLabel();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
-        vomitDisplay1 = new javax.swing.JTextField();
-        noOfVomitDisplay2 = new javax.swing.JTextField();
-        violentDisplay1 = new javax.swing.JTextField();
         eatenDisplay1 = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
         eatenWhatDisplay2 = new javax.swing.JTextArea();
@@ -532,103 +553,9 @@ public class GUI1 extends javax.swing.JFrame {
         select2EventButton = new javax.swing.JButton();
         addCFButton = new javax.swing.JButton();
         saveCFButton = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
-
-        jLabel40.setText("When did the event begin?");
-
-        jLabel41.setText("Where were you when it began?");
-
-        jLabel42.setText("How many hours did the event last?");
-
-        jLabel43.setText("How many days did the event last?");
-
-        jLabel44.setText("Notes");
-
-        jLabel3.setText("Date recorded");
-
-        beginTimeDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                beginTimeDisplayActionPerformed(evt);
-            }
-        });
-
-        daysLastedDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                daysLastedDisplayActionPerformed(evt);
-            }
-        });
-
-        notesDisplay.setColumns(20);
-        notesDisplay.setRows(5);
-        jScrollPane8.setViewportView(notesDisplay);
-
-        dateDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateDisplayActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout generalDetailsTabLayout = new javax.swing.GroupLayout(generalDetailsTab);
-        generalDetailsTab.setLayout(generalDetailsTabLayout);
-        generalDetailsTabLayout.setHorizontalGroup(
-            generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(generalDetailsTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel43)
-                    .addComponent(jLabel44)
-                    .addComponent(jLabel3))
-                .addGap(64, 64, 64)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                    .addComponent(daysLastedDisplay)
-                    .addComponent(hrsLastedDisplay)
-                    .addComponent(locationDisplay)
-                    .addComponent(beginTimeDisplay)
-                    .addComponent(dateDisplay))
-                .addContainerGap())
-        );
-        generalDetailsTabLayout.setVerticalGroup(
-            generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(generalDetailsTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
-                    .addComponent(beginTimeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel41)
-                    .addComponent(locationDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel42)
-                    .addComponent(hrsLastedDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel43)
-                    .addComponent(daysLastedDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(dateDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("General Details", generalDetailsTab);
-
-        jLabel25.setText("Did you vomit?");
-
-        jLabel26.setText("How many times did you vomit?");
-
-        jLabel27.setText("Was it violent?");
 
         jLabel28.setText("Had you eaten beforehand?");
 
@@ -640,18 +567,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jLabel32.setText("Were you hungover?");
 
-        vomitDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vomitDisplayActionPerformed(evt);
-            }
-        });
-
-        noOfVomitDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noOfVomitDisplayActionPerformed(evt);
-            }
-        });
-
         eatenWhatDisplay.setColumns(20);
         eatenWhatDisplay.setRows(5);
         jScrollPane5.setViewportView(eatenWhatDisplay);
@@ -660,6 +575,13 @@ public class GUI1 extends javax.swing.JFrame {
         drunkWhatDisplay.setRows(5);
         jScrollPane6.setViewportView(drunkWhatDisplay);
 
+        ViewECFButton1.setText("View Events Custom Details");
+        ViewECFButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewECFButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout vomitDetailsTabLayout = new javax.swing.GroupLayout(vomitDetailsTab);
         vomitDetailsTab.setLayout(vomitDetailsTabLayout);
         vomitDetailsTabLayout.setHorizontalGroup(
@@ -667,42 +589,29 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(vomitDetailsTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel32))
-                .addGap(85, 85, 85)
-                .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6)
-                    .addComponent(vomitDisplay)
-                    .addComponent(eatenDisplay)
-                    .addComponent(drunkDisplay)
-                    .addComponent(hungoverDisplay)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                    .addComponent(noOfVomitDisplay, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(violentDisplay, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(vomitDetailsTabLayout.createSequentialGroup()
+                        .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel32))
+                        .addGap(99, 99, 99)
+                        .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6)
+                            .addComponent(eatenDisplay)
+                            .addComponent(drunkDisplay)
+                            .addComponent(hungoverDisplay)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
+                    .addGroup(vomitDetailsTabLayout.createSequentialGroup()
+                        .addComponent(ViewECFButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         vomitDetailsTabLayout.setVerticalGroup(
             vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vomitDetailsTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(vomitDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(noOfVomitDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(violentDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(eatenDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -722,10 +631,12 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(vomitDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(hungoverDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(ViewECFButton1)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Vomit Details", vomitDetailsTab);
+        jTabbedPane1.addTab("Diet Details", vomitDetailsTab);
 
         jLabel33.setText("Were you anxious?");
 
@@ -836,6 +747,156 @@ public class GUI1 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Condition Details", conditionDetailsTab);
 
+        jLabel40.setText("When did the event begin?");
+
+        jLabel41.setText("Where were you when it began?");
+
+        jLabel42.setText("How many hours did the event last?");
+
+        jLabel43.setText("How many days did the event last?");
+
+        jLabel44.setText("Notes");
+
+        jLabel3.setText("Date recorded");
+
+        beginTimeDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beginTimeDisplayActionPerformed(evt);
+            }
+        });
+
+        daysLastedDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daysLastedDisplayActionPerformed(evt);
+            }
+        });
+
+        notesDisplay.setColumns(20);
+        notesDisplay.setRows(5);
+        jScrollPane8.setViewportView(notesDisplay);
+
+        dateDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateDisplayActionPerformed(evt);
+            }
+        });
+
+        intensitySliderDisplay1.setMaximum(10);
+        intensitySliderDisplay1.setMinimum(1);
+        intensitySliderDisplay1.setMinorTickSpacing(1);
+        intensitySliderDisplay1.setPaintLabels(true);
+        intensitySliderDisplay1.setPaintTicks(true);
+        intensitySliderDisplay1.setSnapToTicks(true);
+        intensitySliderDisplay1.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySliderDisplay1.setValue(1);
+
+        anxietySliderDisplay1.setMaximum(10);
+        anxietySliderDisplay1.setMinimum(1);
+        anxietySliderDisplay1.setMinorTickSpacing(1);
+        anxietySliderDisplay1.setPaintLabels(true);
+        anxietySliderDisplay1.setPaintTicks(true);
+        anxietySliderDisplay1.setSnapToTicks(true);
+        anxietySliderDisplay1.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySliderDisplay1.setValue(1);
+
+        jLabel142.setText("1");
+
+        jLabel143.setText("10");
+
+        jLabel144.setText("1");
+
+        jLabel145.setText("10");
+
+        jLabel146.setText("Overall Intensity");
+
+        jLabel147.setText("Anxiety Level");
+
+        javax.swing.GroupLayout generalDetailsTabLayout = new javax.swing.GroupLayout(generalDetailsTab);
+        generalDetailsTab.setLayout(generalDetailsTabLayout);
+        generalDetailsTabLayout.setHorizontalGroup(
+            generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalDetailsTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel146)
+                    .addComponent(jLabel147))
+                .addGap(64, 64, 64)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalDetailsTabLayout.createSequentialGroup()
+                        .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel142, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel144, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(generalDetailsTabLayout.createSequentialGroup()
+                                .addComponent(anxietySliderDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel145))
+                            .addGroup(generalDetailsTabLayout.createSequentialGroup()
+                                .addComponent(intensitySliderDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel143)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                    .addComponent(daysLastedDisplay)
+                    .addComponent(hrsLastedDisplay)
+                    .addComponent(locationDisplay)
+                    .addComponent(beginTimeDisplay)
+                    .addComponent(dateDisplay))
+                .addContainerGap())
+        );
+        generalDetailsTabLayout.setVerticalGroup(
+            generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalDetailsTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(intensitySliderDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel142)
+                        .addComponent(jLabel146))
+                    .addComponent(jLabel143))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(anxietySliderDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel144)
+                        .addComponent(jLabel147))
+                    .addComponent(jLabel145))
+                .addGap(30, 30, 30)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(beginTimeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(locationDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(hrsLastedDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(daysLastedDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(dateDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("General Details", generalDetailsTab);
+
         jScrollPane4.setViewportView(jTabbedPane1);
 
         javax.swing.GroupLayout eventDetailsDialogLayout = new javax.swing.GroupLayout(eventDetailsDialog.getContentPane());
@@ -849,7 +910,7 @@ public class GUI1 extends javax.swing.JFrame {
             .addComponent(jScrollPane4)
         );
 
-        jLabel45.setText("        Please ensure you have store the vomit and condition informtion.");
+        jLabel45.setText("   Please ensure you have store the diet, custom and condition informtion.");
 
         javax.swing.GroupLayout createEventErrorLayout = new javax.swing.GroupLayout(createEventError.getContentPane());
         createEventError.getContentPane().setLayout(createEventErrorLayout);
@@ -985,6 +1046,50 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        intensitySliderDisplay4.setMaximum(10);
+        intensitySliderDisplay4.setMinimum(1);
+        intensitySliderDisplay4.setMinorTickSpacing(1);
+        intensitySliderDisplay4.setPaintLabels(true);
+        intensitySliderDisplay4.setPaintTicks(true);
+        intensitySliderDisplay4.setSnapToTicks(true);
+        intensitySliderDisplay4.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySliderDisplay4.setValue(1);
+
+        anxietySliderDisplay4.setMaximum(10);
+        anxietySliderDisplay4.setMinimum(1);
+        anxietySliderDisplay4.setMinorTickSpacing(1);
+        anxietySliderDisplay4.setPaintLabels(true);
+        anxietySliderDisplay4.setPaintTicks(true);
+        anxietySliderDisplay4.setSnapToTicks(true);
+        anxietySliderDisplay4.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySliderDisplay4.setValue(1);
+
+        jLabel161.setText("10");
+
+        jLabel162.setText("10");
+
+        editIntensityButton.setText("Update");
+        editIntensityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editIntensityButtonActionPerformed(evt);
+            }
+        });
+
+        editAnxietyLVLButton.setText("Update");
+        editAnxietyLVLButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAnxietyLVLButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel163.setText("1");
+
+        jLabel164.setText("1");
+
+        jLabel165.setText("Overall Intensity");
+
+        jLabel166.setText("Anxiety Level");
+
         javax.swing.GroupLayout generalDetailsTab1Layout = new javax.swing.GroupLayout(generalDetailsTab1);
         generalDetailsTab1.setLayout(generalDetailsTab1Layout);
         generalDetailsTab1Layout.setHorizontalGroup(
@@ -992,39 +1097,88 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(generalDetailsTab1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel49)
-                    .addComponent(jLabel50)
-                    .addComponent(jLabel51)
-                    .addComponent(jLabel52)
-                    .addComponent(jLabel53)
-                    .addComponent(jLabel54))
-                .addGap(64, 64, 64)
-                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(generalDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(locationCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editLocationButton))
-                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(beginTimeCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editBeginTimeButton))
-                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
-                        .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                            .addComponent(daysLastedDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hrsLastedDisplay1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
                         .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editDaysLastedButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(editNotesButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(editHrsLastedButton, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(dateDisplay1))
+                            .addComponent(jLabel165)
+                            .addComponent(jLabel166))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editAnxietyLVLButton))
+                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49)
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel51)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel53)
+                            .addComponent(jLabel54))
+                        .addGap(55, 55, 55)
+                        .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                        .addComponent(jLabel164)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(intensitySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel162))
+                                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                        .addComponent(jLabel163)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(anxietySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel161)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editIntensityButton))
+                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                .addComponent(locationCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editLocationButton))
+                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                .addComponent(beginTimeCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editBeginTimeButton))
+                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                    .addComponent(daysLastedDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hrsLastedDisplay1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editDaysLastedButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editNotesButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editHrsLastedButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(dateDisplay1))))
                 .addContainerGap())
         );
         generalDetailsTab1Layout.setVerticalGroup(
             generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
+                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                        .addComponent(editIntensityButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(editAnxietyLVLButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel162)
+                            .addComponent(intensitySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel164)
+                                .addComponent(jLabel165)))
+                        .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(anxietySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel163)
+                                        .addComponent(jLabel166))
+                                    .addComponent(jLabel161, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(43, 43, 43)))
                 .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
                     .addComponent(beginTimeCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1058,12 +1212,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("General Details", generalDetailsTab1);
 
-        jLabel55.setText("Did you vomit?");
-
-        jLabel56.setText("How many times did you vomit?");
-
-        jLabel57.setText("Was it violent?");
-
         jLabel58.setText("Had you eaten beforehand?");
 
         jLabel59.setText("If so what?");
@@ -1074,12 +1222,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jLabel62.setText("Were you hungover?");
 
-        noOfVomitDisplay1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noOfVomitDisplay1ActionPerformed(evt);
-            }
-        });
-
         eatenWhatDisplay1.setColumns(20);
         eatenWhatDisplay1.setRows(5);
         jScrollPane11.setViewportView(eatenWhatDisplay1);
@@ -1087,10 +1229,6 @@ public class GUI1 extends javax.swing.JFrame {
         drunkWhatDisplay1.setColumns(20);
         drunkWhatDisplay1.setRows(5);
         jScrollPane12.setViewportView(drunkWhatDisplay1);
-
-        vomitCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
-
-        violentCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         eatenCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
@@ -1115,31 +1253,10 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
-        editNoOfVomitButton.setText("Update");
-        editNoOfVomitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editNoOfVomitButtonActionPerformed(evt);
-            }
-        });
-
-        editViolentButton.setText("Update");
-        editViolentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editViolentButtonActionPerformed(evt);
-            }
-        });
-
         editEatenButton.setText("Update");
         editEatenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editEatenButtonActionPerformed(evt);
-            }
-        });
-
-        editVomitButton.setText("Update");
-        editVomitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editVomitButtonActionPerformed(evt);
             }
         });
 
@@ -1149,8 +1266,6 @@ public class GUI1 extends javax.swing.JFrame {
                 editEatenWhatButtonActionPerformed(evt);
             }
         });
-
-        jButton17.setText("Update");
 
         editDrunkWhatButton.setText("Update");
         editDrunkWhatButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1173,101 +1288,68 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel55)
                     .addComponent(jLabel59)
                     .addComponent(jLabel58)
-                    .addComponent(jLabel57)
-                    .addComponent(jLabel56)
                     .addComponent(jLabel61)
                     .addComponent(jLabel60)
                     .addComponent(jLabel62))
-                .addGap(85, 85, 85)
                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(violentCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editViolentButton))
+                        .addGap(85, 85, 85)
+                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                                .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editEatenButton))
+                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                                .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editDrunkButton))
+                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                                .addComponent(hungoverCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editHungoverButton))))
                     .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editEatenButton))
-                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editDrunkButton))
-                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editVomitButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editEatenWhatButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton17, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(editDrunkWhatButton, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(hungoverCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editHungoverButton))
-                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addComponent(vomitCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(180, 180, 180))
-                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addComponent(noOfVomitDisplay1)
-                                .addGap(22, 22, 22)))
-                        .addComponent(editNoOfVomitButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(editDrunkWhatButton, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         vomitDetailsTab1Layout.setVerticalGroup(
             vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vomitDetailsTab1Layout.createSequentialGroup()
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel55)
-                                                    .addComponent(vomitCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel56)
-                                                    .addComponent(noOfVomitDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(editNoOfVomitButton))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel57)
-                                                    .addComponent(violentCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(editViolentButton))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel58)
-                                                    .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(editEatenButton)))
-                                            .addComponent(editVomitButton))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel59)
-                                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(editEatenWhatButton))
-                                .addGap(18, 18, 18)
                                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel60)
-                                    .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(editDrunkButton)))
-                            .addComponent(jButton17))
+                                    .addComponent(jLabel58)
+                                    .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(editEatenButton))
+                                .addGap(18, 18, 18)
+                                .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel59)
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(editEatenWhatButton)))
+                        .addGap(18, 18, 18)
+                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel60)
+                            .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editDrunkButton))
                         .addGap(18, 18, 18)
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel61)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(editDrunkWhatButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vomitDetailsTab1Layout.createSequentialGroup()
+                        .addComponent(editDrunkWhatButton)))
                 .addGap(18, 18, 18)
                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel62)
@@ -1276,7 +1358,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Vomit Details", vomitDetailsTab1);
+        jTabbedPane3.addTab("Diet Details", vomitDetailsTab1);
 
         jLabel63.setText("Were you anxious?");
 
@@ -1388,7 +1470,7 @@ public class GUI1 extends javax.swing.JFrame {
                                     .addComponent(medicationDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(hrsSleptDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                                 .addGroup(conditionDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(editIllWithWhatButton, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(editHrsSleptButton, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1508,33 +1590,98 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        anxietySliderDisplay2.setMaximum(10);
+        anxietySliderDisplay2.setMinimum(1);
+        anxietySliderDisplay2.setMinorTickSpacing(1);
+        anxietySliderDisplay2.setPaintLabels(true);
+        anxietySliderDisplay2.setPaintTicks(true);
+        anxietySliderDisplay2.setSnapToTicks(true);
+        anxietySliderDisplay2.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySliderDisplay2.setValue(1);
+
+        intensitySliderDisplay2.setMaximum(10);
+        intensitySliderDisplay2.setMinimum(1);
+        intensitySliderDisplay2.setMinorTickSpacing(1);
+        intensitySliderDisplay2.setPaintLabels(true);
+        intensitySliderDisplay2.setPaintTicks(true);
+        intensitySliderDisplay2.setSnapToTicks(true);
+        intensitySliderDisplay2.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySliderDisplay2.setValue(1);
+
+        jLabel25.setText("1");
+
+        jLabel26.setText("1");
+
+        jLabel27.setText("10");
+
+        jLabel148.setText("10");
+
+        jLabel149.setText("Overall Intensity");
+
+        jLabel150.setText("Anxiety Level");
+
         javax.swing.GroupLayout generalDetailsTab3Layout = new javax.swing.GroupLayout(generalDetailsTab3);
         generalDetailsTab3.setLayout(generalDetailsTab3Layout);
         generalDetailsTab3Layout.setHorizontalGroup(
             generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel91)
-                    .addComponent(jLabel92)
-                    .addComponent(jLabel93)
-                    .addComponent(jLabel94)
-                    .addComponent(jLabel95)
-                    .addComponent(jLabel96))
-                .addGap(64, 64, 64)
-                .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(locationDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hrsLastedDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(daysLastedDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(beginTimeDisplay2, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab3Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel149)
+                            .addComponent(jLabel150))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(generalDetailsTab3Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel91)
+                            .addComponent(jLabel92)
+                            .addComponent(jLabel93)
+                            .addComponent(jLabel94)
+                            .addComponent(jLabel95)
+                            .addComponent(jLabel96))
+                        .addGap(64, 64, 64)))
+                .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(generalDetailsTab3Layout.createSequentialGroup()
+                        .addComponent(intensitySliderDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(generalDetailsTab3Layout.createSequentialGroup()
+                        .addComponent(anxietySliderDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(locationDisplay2)
+                    .addComponent(hrsLastedDisplay3)
+                    .addComponent(daysLastedDisplay3)
+                    .addComponent(dateDisplay3)
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(beginTimeDisplay2))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         generalDetailsTab3Layout.setVerticalGroup(
             generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab3Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jLabel150))
+                    .addGroup(generalDetailsTab3Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel148)
+                            .addComponent(intensitySliderDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel25)
+                                .addComponent(jLabel149)))
+                        .addGap(16, 16, 16)
+                        .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anxietySliderDisplay2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(18, 18, 18)
                 .addGroup(generalDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel91)
                     .addComponent(beginTimeDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1563,12 +1710,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("General Details", generalDetailsTab3);
 
-        jLabel97.setText("Did you vomit?");
-
-        jLabel98.setText("How many times did you vomit?");
-
-        jLabel99.setText("Was it violent?");
-
         jLabel100.setText("Had you eaten beforehand?");
 
         jLabel101.setText("If so what?");
@@ -1579,18 +1720,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jLabel104.setText("Were you hungover?");
 
-        vomitDisplay2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vomitDisplay2ActionPerformed(evt);
-            }
-        });
-
-        noOfVomitDisplay3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noOfVomitDisplay3ActionPerformed(evt);
-            }
-        });
-
         eatenWhatDisplay3.setColumns(20);
         eatenWhatDisplay3.setRows(5);
         jScrollPane20.setViewportView(eatenWhatDisplay3);
@@ -1599,6 +1728,13 @@ public class GUI1 extends javax.swing.JFrame {
         drunkWhatDisplay3.setRows(5);
         jScrollPane21.setViewportView(drunkWhatDisplay3);
 
+        ViewECFButton2.setText("View Events Custom Details");
+        ViewECFButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewECFButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout vomitDetailsTab3Layout = new javax.swing.GroupLayout(vomitDetailsTab3);
         vomitDetailsTab3.setLayout(vomitDetailsTab3Layout);
         vomitDetailsTab3Layout.setHorizontalGroup(
@@ -1606,42 +1742,27 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(vomitDetailsTab3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel97)
-                    .addComponent(jLabel101)
-                    .addComponent(jLabel100)
-                    .addComponent(jLabel99)
-                    .addComponent(jLabel98)
-                    .addComponent(jLabel103)
-                    .addComponent(jLabel102)
-                    .addComponent(jLabel104))
-                .addGap(85, 85, 85)
-                .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(drunkDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eatenDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(violentDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(noOfVomitDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vomitDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hungoverDisplay2))
-                .addGap(10, 10, 10))
+                    .addGroup(vomitDetailsTab3Layout.createSequentialGroup()
+                        .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel101)
+                            .addComponent(jLabel100)
+                            .addComponent(jLabel103)
+                            .addComponent(jLabel102)
+                            .addComponent(jLabel104))
+                        .addGap(99, 99, 99)
+                        .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addComponent(drunkDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eatenDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hungoverDisplay2)))
+                    .addComponent(ViewECFButton2))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         vomitDetailsTab3Layout.setVerticalGroup(
             vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vomitDetailsTab3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel97)
-                    .addComponent(vomitDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel98)
-                    .addComponent(noOfVomitDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel99)
-                    .addComponent(violentDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel100)
                     .addComponent(eatenDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1661,6 +1782,8 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(vomitDetailsTab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel104)
                     .addComponent(hungoverDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(ViewECFButton2)
                 .addContainerGap())
         );
 
@@ -1811,33 +1934,104 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        anxietySliderDisplay3.setMaximum(10);
+        anxietySliderDisplay3.setMinimum(1);
+        anxietySliderDisplay3.setMinorTickSpacing(1);
+        anxietySliderDisplay3.setPaintLabels(true);
+        anxietySliderDisplay3.setPaintTicks(true);
+        anxietySliderDisplay3.setSnapToTicks(true);
+        anxietySliderDisplay3.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySliderDisplay3.setValue(1);
+
+        intensitySliderDisplay3.setMaximum(10);
+        intensitySliderDisplay3.setMinimum(1);
+        intensitySliderDisplay3.setMinorTickSpacing(1);
+        intensitySliderDisplay3.setPaintLabels(true);
+        intensitySliderDisplay3.setPaintTicks(true);
+        intensitySliderDisplay3.setSnapToTicks(true);
+        intensitySliderDisplay3.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySliderDisplay3.setValue(1);
+
+        jLabel151.setText("Overall Intensity");
+
+        jLabel152.setText("Anxiety Level");
+
+        jLabel153.setText("10");
+
+        jLabel154.setText("10");
+
+        jLabel155.setText("1");
+
+        jLabel156.setText("1");
+
         javax.swing.GroupLayout generalDetailsTab4Layout = new javax.swing.GroupLayout(generalDetailsTab4);
         generalDetailsTab4.setLayout(generalDetailsTab4Layout);
         generalDetailsTab4Layout.setHorizontalGroup(
             generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel112)
+                            .addComponent(jLabel113)
+                            .addComponent(jLabel114)
+                            .addComponent(jLabel115)
+                            .addComponent(jLabel116)
+                            .addComponent(jLabel117))
+                        .addGap(64, 64, 64))
+                    .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel151)
+                            .addComponent(jLabel152))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel156))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel112)
-                    .addComponent(jLabel113)
-                    .addComponent(jLabel114)
-                    .addComponent(jLabel115)
-                    .addComponent(jLabel116)
-                    .addComponent(jLabel117))
-                .addGap(64, 64, 64)
-                .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(locationDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hrsLastedDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(daysLastedDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(beginTimeDisplay3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(locationDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(hrsLastedDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(daysLastedDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dateDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                        .addComponent(beginTimeDisplay3, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(intensitySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(anxietySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel153, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel154))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         generalDetailsTab4Layout.setVerticalGroup(
             generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel153)
+                            .addComponent(intensitySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(anxietySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel154)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel156)
+                                .addComponent(jLabel152))
+                            .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                                .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel155)
+                                    .addComponent(jLabel151))
+                                .addGap(47, 47, 47)))))
+                .addGap(22, 22, 22)
                 .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel112)
                     .addComponent(beginTimeDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1866,12 +2060,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("General Details", generalDetailsTab4);
 
-        jLabel118.setText("Did you vomit?");
-
-        jLabel119.setText("How many times did you vomit?");
-
-        jLabel120.setText("Was it violent?");
-
         jLabel121.setText("Had you eaten beforehand?");
 
         jLabel122.setText("If so what?");
@@ -1882,18 +2070,6 @@ public class GUI1 extends javax.swing.JFrame {
 
         jLabel125.setText("Were you hungover?");
 
-        vomitDisplay3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vomitDisplay3ActionPerformed(evt);
-            }
-        });
-
-        noOfVomitDisplay4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noOfVomitDisplay4ActionPerformed(evt);
-            }
-        });
-
         eatenWhatDisplay4.setColumns(20);
         eatenWhatDisplay4.setRows(5);
         jScrollPane25.setViewportView(eatenWhatDisplay4);
@@ -1902,6 +2078,13 @@ public class GUI1 extends javax.swing.JFrame {
         drunkWhatDisplay4.setRows(5);
         jScrollPane26.setViewportView(drunkWhatDisplay4);
 
+        ViewECFButton3.setText("View Events Custom Details");
+        ViewECFButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewECFButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout vomitDetailsTab4Layout = new javax.swing.GroupLayout(vomitDetailsTab4);
         vomitDetailsTab4.setLayout(vomitDetailsTab4Layout);
         vomitDetailsTab4Layout.setHorizontalGroup(
@@ -1909,42 +2092,27 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(vomitDetailsTab4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel118)
-                    .addComponent(jLabel122)
-                    .addComponent(jLabel121)
-                    .addComponent(jLabel120)
-                    .addComponent(jLabel119)
-                    .addComponent(jLabel124)
-                    .addComponent(jLabel123)
-                    .addComponent(jLabel125))
-                .addGap(85, 85, 85)
-                .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(drunkDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eatenDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(violentDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(noOfVomitDisplay4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vomitDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hungoverDisplay3))
-                .addGap(10, 10, 10))
+                    .addGroup(vomitDetailsTab4Layout.createSequentialGroup()
+                        .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel122)
+                            .addComponent(jLabel121)
+                            .addComponent(jLabel124)
+                            .addComponent(jLabel123)
+                            .addComponent(jLabel125))
+                        .addGap(99, 99, 99)
+                        .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addComponent(drunkDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eatenDisplay3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hungoverDisplay3)))
+                    .addComponent(ViewECFButton3))
+                .addContainerGap())
         );
         vomitDetailsTab4Layout.setVerticalGroup(
             vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vomitDetailsTab4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel118)
-                    .addComponent(vomitDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel119)
-                    .addComponent(noOfVomitDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel120)
-                    .addComponent(violentDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel121)
                     .addComponent(eatenDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1964,6 +2132,8 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(vomitDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel125)
                     .addComponent(hungoverDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(ViewECFButton3)
                 .addContainerGap())
         );
 
@@ -2085,15 +2255,14 @@ public class GUI1 extends javax.swing.JFrame {
         dualEventDetailsDialogLayout.setHorizontalGroup(
             dualEventDetailsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dualEventDetailsDialogLayout.createSequentialGroup()
-                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane23))
         );
         dualEventDetailsDialogLayout.setVerticalGroup(
             dualEventDetailsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane18)
             .addComponent(jScrollPane23)
+            .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jLabel133.setText("New Field Type     :");
@@ -2179,36 +2348,84 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        customFieldList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane28.setViewportView(customFieldList);
+
+        javax.swing.GroupLayout cFListDialogLayout = new javax.swing.GroupLayout(cFListDialog.getContentPane());
+        cFListDialog.getContentPane().setLayout(cFListDialogLayout);
+        cFListDialogLayout.setHorizontalGroup(
+            cFListDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cFListDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        cFListDialogLayout.setVerticalGroup(
+            cFListDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cFListDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel55.setText("Error:                 Please select an item from both lists.");
+
+        javax.swing.GroupLayout select2EventErrorDialogLayout = new javax.swing.GroupLayout(select2EventErrorDialog.getContentPane());
+        select2EventErrorDialog.getContentPane().setLayout(select2EventErrorDialogLayout);
+        select2EventErrorDialogLayout.setHorizontalGroup(
+            select2EventErrorDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, select2EventErrorDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        select2EventErrorDialogLayout.setVerticalGroup(
+            select2EventErrorDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(select2EventErrorDialogLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel55)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel56.setText("Custom Fields saved");
+
+        javax.swing.GroupLayout cFBossSavedDialogLayout = new javax.swing.GroupLayout(cFBossSavedDialog.getContentPane());
+        cFBossSavedDialog.getContentPane().setLayout(cFBossSavedDialogLayout);
+        cFBossSavedDialogLayout.setHorizontalGroup(
+            cFBossSavedDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cFBossSavedDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        cFBossSavedDialogLayout.setVerticalGroup(
+            cFBossSavedDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CVS Tracker");
 
-        jLabel1.setText("Vomit Details");
+        jLabel1.setText("Diet Details");
 
         jLabel2.setText("Details On Your Condition");
 
-        jLabel4.setText("Did you vomit?");
-
-        vomitCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
-
-        createCustomFields.setText("Store Custom Info");
-        createCustomFields.addMouseListener(new java.awt.event.MouseAdapter() {
+        createEventDietButton.setText("Store Diet Info");
+        createEventDietButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createCustomFieldsMouseClicked(evt);
+                createEventDietButtonMouseClicked(evt);
             }
         });
-        createCustomFields.addActionListener(new java.awt.event.ActionListener() {
+        createEventDietButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createCustomFieldsActionPerformed(evt);
+                createEventDietButtonActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("How many times did you vomit?");
-
-        noOfVomitField.setText("0");
-
-        jLabel6.setText("Was it violent?");
-
-        violentCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         jLabel7.setText("Had you eaten beforehand?");
 
@@ -2367,6 +2584,36 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Overall Intensity");
+
+        intensitySlider.setMaximum(10);
+        intensitySlider.setMinimum(1);
+        intensitySlider.setMinorTickSpacing(1);
+        intensitySlider.setPaintLabels(true);
+        intensitySlider.setPaintTicks(true);
+        intensitySlider.setSnapToTicks(true);
+        intensitySlider.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySlider.setValue(1);
+
+        jLabel5.setText("1");
+
+        jLabel6.setText("10");
+
+        anxietySlider.setMaximum(10);
+        anxietySlider.setMinimum(1);
+        anxietySlider.setMinorTickSpacing(1);
+        anxietySlider.setPaintLabels(true);
+        anxietySlider.setPaintTicks(true);
+        anxietySlider.setSnapToTicks(true);
+        anxietySlider.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySlider.setValue(1);
+
+        jLabel76.setText("10");
+
+        jLabel77.setText("1");
+
+        jLabel78.setText("Anxiety Level");
+
         javax.swing.GroupLayout addEventTabLayout = new javax.swing.GroupLayout(addEventTab);
         addEventTab.setLayout(addEventTabLayout);
         addEventTabLayout.setHorizontalGroup(
@@ -2374,16 +2621,107 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(addEventTabLayout.createSequentialGroup()
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(175, 175, 175)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(createCondition)
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(goToCustomInputButton))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(createEvent)))
+                .addGap(604, 604, 604))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEventTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(drunkWhatField))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(eatenWhatField))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jLabel11)
                                 .addGap(18, 18, 18)
-                                .addComponent(drunkWhatField))
+                                .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(eatenWhatField))
+                                .addComponent(eatenCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(drunkCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addGap(226, 226, 226)
+                                .addComponent(createEventDietButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap())
+            .addGroup(addEventTabLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(sleptCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(areYouIllCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(anxiousCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(moodCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(18, 18, 18)
+                                .addComponent(locationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(hoursLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addGap(18, 18, 18)
+                                .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel78)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jLabel77)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(anxietySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel76))
+                                    .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addEventTabLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(18, 18, 18)
@@ -2393,94 +2731,14 @@ public class GUI1 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(hrsSleptField))
                             .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19))
+                                .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2))
                             .addGroup(addEventTabLayout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(sleptCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(areYouIllCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1)
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(eatenCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(violentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(noOfVomitField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(vomitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2)
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(drunkCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(anxiousCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(moodCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(locationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(hoursLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addComponent(jLabel23)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(181, 181, 181))))
-                    .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGap(243, 243, 243)
-                                .addComponent(createCondition))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGap(252, 252, 252)
-                                .addComponent(createCustomFields)))
-                        .addGap(255, 255, 255))
-                    .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(goToCustomInputButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(addEventTabLayout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(createEvent)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane3)))
+                        .addContainerGap())))
         );
         addEventTabLayout.setVerticalGroup(
             addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2488,18 +2746,6 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(vomitCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(noOfVomitField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(violentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(eatenCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2520,8 +2766,8 @@ public class GUI1 extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(createCustomFields)
-                .addGap(24, 24, 24)
+                .addComponent(createEventDietButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2553,32 +2799,54 @@ public class GUI1 extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createCondition)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(locationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(hoursLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(goToCustomInputButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(createEvent)
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(48, 48, 48))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEventTabLayout.createSequentialGroup()
+                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(31, 31, 31)))
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel78)
+                            .addComponent(jLabel77))
+                        .addGap(39, 39, 39)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(locationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(hoursLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(goToCustomInputButton)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(createEvent))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anxietySlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 368, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -2612,6 +2880,7 @@ public class GUI1 extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        eventList1.setSelectedIndices(new int[] {});
         eventList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 eventList1ValueChanged(evt);
@@ -2671,6 +2940,36 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        intensitySliderDisplay.setMaximum(10);
+        intensitySliderDisplay.setMinimum(1);
+        intensitySliderDisplay.setMinorTickSpacing(1);
+        intensitySliderDisplay.setPaintLabels(true);
+        intensitySliderDisplay.setPaintTicks(true);
+        intensitySliderDisplay.setSnapToTicks(true);
+        intensitySliderDisplay.setToolTipText("1 is not very - 10 is extremely intense");
+        intensitySliderDisplay.setValue(1);
+
+        jLabel136.setText("10");
+
+        jLabel137.setText("1");
+
+        jLabel138.setText("Overall Intensity");
+
+        anxietySliderDisplay.setMaximum(10);
+        anxietySliderDisplay.setMinimum(1);
+        anxietySliderDisplay.setMinorTickSpacing(1);
+        anxietySliderDisplay.setPaintLabels(true);
+        anxietySliderDisplay.setPaintTicks(true);
+        anxietySliderDisplay.setSnapToTicks(true);
+        anxietySliderDisplay.setToolTipText("1 is not very - 10 is extremely intense");
+        anxietySliderDisplay.setValue(1);
+
+        jLabel139.setText("10");
+
+        jLabel140.setText("1");
+
+        jLabel141.setText("Anxiety Intensity");
+
         javax.swing.GroupLayout generalDetailsTab2Layout = new javax.swing.GroupLayout(generalDetailsTab2);
         generalDetailsTab2.setLayout(generalDetailsTab2Layout);
         generalDetailsTab2Layout.setHorizontalGroup(
@@ -2678,6 +2977,28 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(generalDetailsTab2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addComponent(ViewECFButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel138)
+                            .addComponent(jLabel141))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel140)
+                            .addComponent(jLabel137))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                                .addComponent(intensitySliderDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel139))
+                            .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                                .addComponent(anxietySliderDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel136)))
+                        .addContainerGap())
                     .addGroup(generalDetailsTab2Layout.createSequentialGroup()
                         .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel70)
@@ -2688,21 +3009,38 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(jLabel75))
                         .addGap(64, 64, 64)
                         .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane14)
-                            .addComponent(daysLastedDisplay2)
-                            .addComponent(hrsLastedDisplay2)
-                            .addComponent(locationDisplay1)
-                            .addComponent(beginTimeDisplay1)
-                            .addComponent(dateDisplay2)))
-                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
-                        .addComponent(ViewECFButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                                .addComponent(dateDisplay2)
+                                .addGap(16, 16, 16))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab2Layout.createSequentialGroup()
+                                .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(beginTimeDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(locationDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hrsLastedDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(daysLastedDisplay2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane14))
+                                .addContainerGap())))))
         );
         generalDetailsTab2Layout.setVerticalGroup(
             generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
+                .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addComponent(jLabel138)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel137))
+                    .addComponent(intensitySliderDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel139))
+                .addGap(12, 12, 12)
+                .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel140)
+                    .addComponent(anxietySliderDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
+                        .addComponent(jLabel141)
+                        .addGap(9, 9, 9))
+                    .addComponent(jLabel136))
+                .addGap(18, 18, 18)
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel70)
                     .addComponent(beginTimeDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2721,23 +3059,17 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
                     .addComponent(dateDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(ViewECFButton)
                 .addContainerGap())
         );
 
         jTabbedPane4.addTab("General Details", generalDetailsTab2);
-
-        jLabel76.setText("Did you vomit?");
-
-        jLabel77.setText("How many times did you vomit?");
-
-        jLabel78.setText("Was it violent?");
 
         jLabel79.setText("Had you eaten beforehand?");
 
@@ -2748,18 +3080,6 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel82.setText("What did you drink?");
 
         jLabel83.setText("Were you hungover?");
-
-        vomitDisplay1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vomitDisplay1ActionPerformed(evt);
-            }
-        });
-
-        noOfVomitDisplay2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noOfVomitDisplay2ActionPerformed(evt);
-            }
-        });
 
         eatenWhatDisplay2.setColumns(20);
         eatenWhatDisplay2.setRows(5);
@@ -2776,42 +3096,24 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(vomitDetailsTab2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel76)
                     .addComponent(jLabel80)
                     .addComponent(jLabel79)
-                    .addComponent(jLabel78)
-                    .addComponent(jLabel77)
                     .addComponent(jLabel82)
                     .addComponent(jLabel81)
                     .addComponent(jLabel83))
-                .addGap(85, 85, 85)
+                .addGap(99, 99, 99)
                 .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane16)
-                    .addComponent(vomitDisplay1)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(eatenDisplay1)
                     .addComponent(drunkDisplay1)
                     .addComponent(hungoverDisplay1)
-                    .addComponent(jScrollPane15)
-                    .addComponent(noOfVomitDisplay2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(violentDisplay1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane15))
                 .addContainerGap())
         );
         vomitDetailsTab2Layout.setVerticalGroup(
             vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vomitDetailsTab2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel76)
-                    .addComponent(vomitDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel77)
-                    .addComponent(noOfVomitDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel78)
-                    .addComponent(violentDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(vomitDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel79)
                     .addComponent(eatenDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2834,7 +3136,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane4.addTab("Vomit Details", vomitDetailsTab2);
+        jTabbedPane4.addTab("Diet Details", vomitDetailsTab2);
 
         jLabel84.setText("Were you anxious?");
 
@@ -2912,11 +3214,11 @@ public class GUI1 extends javax.swing.JFrame {
         conditionDetailsTab2Layout.setVerticalGroup(
             conditionDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(conditionDetailsTab2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(conditionDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel84)
                     .addComponent(anxiousDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addGroup(conditionDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel85)
                     .addComponent(moodDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2950,6 +3252,7 @@ public class GUI1 extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        eventList3.setSelectedIndices(new int[] {});
         eventList3.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 eventList3ValueChanged(evt);
@@ -2978,6 +3281,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("View Custom Field List");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -2998,7 +3308,9 @@ public class GUI1 extends javax.swing.JFrame {
                             .addGroup(eventListTabLayout.createSequentialGroup()
                                 .addComponent(select2EventButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(saveCFButton))))
+                                .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jToggleButton1)
+                                    .addComponent(saveCFButton)))))
                     .addComponent(listLabel)
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addComponent(listScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3041,7 +3353,9 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(editEventButton)
                             .addComponent(select2EventButton)
                             .addComponent(saveCFButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jToggleButton1)
+                .addContainerGap(643, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("CVS Events", eventListTab);
@@ -3052,24 +3366,16 @@ public class GUI1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 1031, 699);
+        setBounds(0, 0, 1053, 699);
     }// </editor-fold>//GEN-END:initComponents
  
-    private void vomitDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vomitDisplayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vomitDisplayActionPerformed
-
-    private void noOfVomitDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfVomitDisplayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noOfVomitDisplayActionPerformed
-
     private void anxiousDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anxiousDisplayActionPerformed
@@ -3098,382 +3404,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dateDisplayActionPerformed
 
-    private void daysLastedDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedDisplay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_daysLastedDisplay1ActionPerformed
-
-    private void dateDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDisplay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateDisplay1ActionPerformed
-
-    private void noOfVomitDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfVomitDisplay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noOfVomitDisplay1ActionPerformed
-
-    private void hrsSleptDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hrsSleptDisplay1ActionPerformed
-
-    private void drunkCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkCombo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_drunkCombo1ActionPerformed
-
-    private void hungoverCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hungoverCombo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hungoverCombo1ActionPerformed
-
-    private void anxiousCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousCombo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anxiousCombo1ActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editAnxiousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxiousButtonActionPerformed
-        
-        anxiousString = anxiousCombo1.getSelectedItem().toString();
-        if ("yes".equals(anxiousString)){
-            selectedEvent.setConditionAnxious(true);
-        }
-        else {
-            selectedEvent.setConditionAnxious(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-    }//GEN-LAST:event_editAnxiousButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editMoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMoodButtonActionPerformed
-        // TODO add your handling code here:
-        
-       this.selectedEvent.setConditionMood(Mood.valueOf(
-        moodCombo1.getSelectedItem().toString()));
-       
-       infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editMoodButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editAreYouIllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAreYouIllButtonActionPerformed
-        // TODO add your handling code here:
-        
-        areYouIllString = areYouIllCombo1.getSelectedItem().toString();
-        if ("yes".equals(areYouIllString)){
-            selectedEvent.setConditionAreYouIll(true);
-        }
-        else {
-            selectedEvent.setConditionAreYouIll(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editAreYouIllButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSleptButtonActionPerformed
-        // TODO add your handling code here:
-        
-        sleptString = sleptCombo1.getSelectedItem().toString();
-        if ("yes".equals(sleptString)){
-            selectedEvent.setConditionSlept(true);
-        }
-        else {
-            selectedEvent.setConditionSlept(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editSleptButtonActionPerformed
-    
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editIllWithWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIllWithWhatButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setConditionIllWithWhat(illWithWhatDisplay1.getText());
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editIllWithWhatButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editHrsSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsSleptButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setConditionHrsSlept(Integer.parseInt(hrsSleptDisplay1.getText()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editHrsSleptButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editMedicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMedicationButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setConditionMedicationTaken(medicationDisplay1.getText());
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editMedicationButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editBeginTimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBeginTimeButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setEventBeginTime(EventBeginTime.valueOf(
-        beginTimeCombo1.getSelectedItem().toString()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editBeginTimeButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLocationButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setLocation(Location.valueOf(
-        locationCombo1.getSelectedItem().toString()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editLocationButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editHrsLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsLastedButtonActionPerformed
-        // TODO add your handling code here:
-        this.selectedEvent.setHoursLasted(Integer.parseInt(hrsLastedDisplay1.getText()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editHrsLastedButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editDaysLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDaysLastedButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setDaysLasted(Integer.parseInt(daysLastedDisplay1.getText()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editDaysLastedButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editNotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNotesButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setNotes(notesDisplay1.getText());
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editNotesButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editVomitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editVomitButtonActionPerformed
-        // TODO add your handling code here:
-        
-        vomitedString = vomitCombo2.getSelectedItem().toString();
-        if ("yes".equals(vomitedString)){
-            selectedEvent.setVomitVomited(true);
-        }
-        else {
-            selectedEvent.setVomitVomited(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editVomitButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editNoOfVomitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNoOfVomitButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setVomitNoOfVomit(Integer.parseInt(noOfVomitDisplay1.getText()));
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editNoOfVomitButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editViolentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editViolentButtonActionPerformed
-        // TODO add your handling code here:
-         
-        violentString = violentCombo1.getSelectedItem().toString();
-        if ("yes".equals(violentString)){
-            selectedEvent.setVomitViolent(true);
-        }
-        else {
-            selectedEvent.setVomitViolent(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editViolentButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editEatenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenButtonActionPerformed
-        // TODO add your handling code here:
-        
-        eatenString = eatenCombo1.getSelectedItem().toString();
-        if ("yes".equals(eatenString)){
-            selectedEvent.setVomitEatenBefore(true);
-        }
-        else {
-            selectedEvent.setVomitEatenBefore(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editEatenButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editEatenWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenWhatButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setVomitEatenWhat(eatenWhatDisplay1.getText());
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editEatenWhatButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editDrunkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkButtonActionPerformed
-        // TODO add your handling code here:
-        
-        drunkString = drunkCombo1.getSelectedItem().toString();
-        if ("yes".equals(drunkString)){
-            selectedEvent.setVomitDrunkAlcohol(true);
-        }
-        else {
-            selectedEvent.setVomitDrunkAlcohol(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editDrunkButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editDrunkWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkWhatButtonActionPerformed
-        // TODO add your handling code here:
-        
-        this.selectedEvent.setVomitDrunkWhat(drunkWhatDisplay1.getText());
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editDrunkWhatButtonActionPerformed
-
-    /**
-     * Edits CvsEvent attribute. 
-     * @param evt 
-     */
-    private void editHungoverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHungoverButtonActionPerformed
-        // TODO add your handling code here:
-        
-        hungoverString = hungoverCombo1.getSelectedItem().toString();
-        if ("yes".equals(hungoverString)){
-            selectedEvent.setVomitHungover(true);
-        }
-        else {
-            selectedEvent.setVomitHungover(false);
-        }
-        
-        infoStoredDialog.pack();
-        infoStoredDialog.setVisible(true);
-        infoStoredDialog.setLocation(500, 500);
-        
-    }//GEN-LAST:event_editHungoverButtonActionPerformed
-
+   
     private void hrsSleptDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hrsSleptDisplay2ActionPerformed
@@ -3489,14 +3420,6 @@ public class GUI1 extends javax.swing.JFrame {
     private void anxiousDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplay1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anxiousDisplay1ActionPerformed
-
-    private void noOfVomitDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfVomitDisplay2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noOfVomitDisplay2ActionPerformed
-
-    private void vomitDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vomitDisplay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vomitDisplay1ActionPerformed
 
     private void dateDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDisplay2ActionPerformed
         // TODO add your handling code here:
@@ -3517,6 +3440,12 @@ public class GUI1 extends javax.swing.JFrame {
     private void eventList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_eventList1ValueChanged
         this.selectedEvent = (Event) eventList1.getSelectedValue();
          
+        this.intensitySliderDisplay.setValue(selectedEvent.getOverallIntensity());
+        this.intensitySliderDisplay.setEnabled(false);
+        
+        this.anxietySliderDisplay.setValue(selectedEvent.getAnxietyLevel());
+        this.anxietySliderDisplay.setEnabled(false);
+        
         this.beginTimeDisplay1.setText(selectedEvent.getEventBeginTime().toString());
         this.beginTimeDisplay1.setEditable(false);
 
@@ -3537,16 +3466,7 @@ public class GUI1 extends javax.swing.JFrame {
 
         // populate vomit details
 
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
-
-        this.vomitDisplay1.setText(Boolean.toString(tempCF.getVomited()));
-        this.vomitDisplay1.setEditable(false);
-
-        this.noOfVomitDisplay2.setText(Integer.toString(tempCF.getNoOfVomit()));
-        this.noOfVomitDisplay2.setEditable(false);
-
-        this.violentDisplay1.setText(Boolean.toString(tempCF.getViolent()));
-        this.violentDisplay1.setEditable(false);
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
 
         this.eatenDisplay1.setText(Boolean.toString(tempCF.getEatenBefore()));
         this.eatenDisplay1.setEditable(false);
@@ -3613,13 +3533,9 @@ public class GUI1 extends javax.swing.JFrame {
 
         // populate vomit details
 
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
 
-        this.vomitCombo2.setSelectedItem(tempCF.getVomited());
 
-        this.noOfVomitDisplay1.setText(Integer.toString(tempCF.getNoOfVomit()));
-
-        this.violentCombo1.setSelectedItem(tempCF.getViolent());
 
         this.eatenCombo1.setSelectedItem(tempCF.getEatenBefore());
 
@@ -3675,6 +3591,12 @@ public class GUI1 extends javax.swing.JFrame {
     private void selectEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEventButtonActionPerformed
         //populate general details
 
+        this.intensitySliderDisplay1.setValue(selectedEvent.getOverallIntensity());
+        this.intensitySliderDisplay1.setEnabled(false);
+        
+        this.anxietySliderDisplay1.setValue(selectedEvent.getAnxietyLevel());
+        this.anxietySliderDisplay1.setEnabled(false);
+        
         this.beginTimeDisplay.setText(selectedEvent.getEventBeginTime().toString());
         this.beginTimeDisplay.setEditable(false);
 
@@ -3695,16 +3617,7 @@ public class GUI1 extends javax.swing.JFrame {
 
         // populate vomit details
 
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
-
-        this.vomitDisplay.setText(Boolean.toString(tempCF.getVomited()));
-        this.vomitDisplay.setEditable(false);
-
-        this.noOfVomitDisplay.setText(Integer.toString(tempCF.getNoOfVomit()));
-        this.noOfVomitDisplay.setEditable(false);
-
-        this.violentDisplay.setText(Boolean.toString(tempCF.getViolent()));
-        this.violentDisplay.setEditable(false);
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
 
         this.eatenDisplay.setText(Boolean.toString(tempCF.getEatenBefore()));
         this.eatenDisplay.setEditable(false);
@@ -3768,14 +3681,6 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dateDisplay3ActionPerformed
 
-    private void vomitDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vomitDisplay2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vomitDisplay2ActionPerformed
-
-    private void noOfVomitDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfVomitDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noOfVomitDisplay3ActionPerformed
-
     private void anxiousDisplay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplay2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anxiousDisplay2ActionPerformed
@@ -3792,200 +3697,160 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hrsSleptDisplay3ActionPerformed
 
-    private void beginTimeDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginTimeDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_beginTimeDisplay3ActionPerformed
-
-    private void daysLastedDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedDisplay4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_daysLastedDisplay4ActionPerformed
-
-    private void dateDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDisplay4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateDisplay4ActionPerformed
-
-    private void vomitDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vomitDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vomitDisplay3ActionPerformed
-
-    private void noOfVomitDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfVomitDisplay4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noOfVomitDisplay4ActionPerformed
-
-    private void anxiousDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anxiousDisplay3ActionPerformed
-
-    private void moodDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moodDisplay3ActionPerformed
-
-    private void illDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_illDisplay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_illDisplay3ActionPerformed
-
-    private void hrsSleptDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hrsSleptDisplay4ActionPerformed
-
     private void select2EventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select2EventButtonActionPerformed
       
       //Populate left display.
       
-        this.beginTimeDisplay2.setText(selectedEvent.getEventBeginTime().toString());
-        this.beginTimeDisplay2.setEditable(false);
+        if (eventList1.isSelectionEmpty() == false && eventList3.isSelectionEmpty()
+                == false) {
+            this.intensitySliderDisplay2.setValue(selectedEvent.getOverallIntensity());
+            this.intensitySliderDisplay2.setEnabled(false);
+            
+            this.anxietySliderDisplay2.setValue(selectedEvent.getAnxietyLevel());
+            this.anxietySliderDisplay2.setEnabled(false);
+            
+            this.beginTimeDisplay2.setText(selectedEvent.getEventBeginTime().toString());
+            this.beginTimeDisplay2.setEditable(false);
+            
+            this.locationDisplay2.setText(selectedEvent.getLocation().toString());
+            this.locationDisplay2.setEditable(false);
+            
+            this.hrsLastedDisplay3.setText(Integer.toString(selectedEvent.getHoursLasted()));
+            this.hrsLastedDisplay3.setEditable(false);
+            
+            this.daysLastedDisplay3.setText(Integer.toString(selectedEvent.getDaysLasted()));
+            this.daysLastedDisplay3.setEditable(false);
+            
+            this.notesDisplay3.setText(selectedEvent.getNotes());
+            this.notesDisplay3.setEditable(false);
+            
+            this.dateDisplay3.setText(selectedEvent.toString());
+            this.dateDisplay3.setEditable(false);
 
-        this.locationDisplay2.setText(selectedEvent.getLocation().toString());
-        this.locationDisplay2.setEditable(false);
+            // populate vomit details
+            EventDiet tempCF = this.selectedEvent.getCustomFields();
+            
+            this.eatenDisplay2.setText(Boolean.toString(tempCF.getEatenBefore()));
+            this.eatenDisplay2.setEditable(false);
+            
+            this.eatenWhatDisplay3.setText(tempCF.getEatenWhat());
+            this.eatenWhatDisplay3.setEditable(false);
+            
+            this.drunkDisplay2.setText(Boolean.toString(tempCF.getDrunkAlcohol()));
+            this.drunkDisplay2.setEditable(false);
+            
+            this.drunkWhatDisplay3.setText(tempCF.getDrunkWhat());
+            this.drunkWhatDisplay3.setEditable(false);
+            
+            this.hungoverDisplay2.setText(Boolean.toString(tempCF.getHungover()));
+            this.hungoverDisplay2.setEditable(false);
 
-        this.hrsLastedDisplay3.setText(Integer.toString(selectedEvent.getHoursLasted()));
-        this.hrsLastedDisplay3.setEditable(false);
+            //populate condition details
+            Condition tempCon = this.selectedEvent.getCondition();
+            
+            this.anxiousDisplay2.setText(Boolean.toString(tempCon.getAnxious()));
+            this.anxiousDisplay2.setEditable(false);
+            
+            this.moodDisplay2.setText(tempCon.getMood().toString());
+            this.moodDisplay2.setEditable(false);
+            
+            this.illDisplay2.setText(Boolean.toString(tempCon.getAreYouIll()));
+            this.illDisplay2.setEditable(false);
+            
+            this.illWithWhatDisplay3.setText(tempCon.getIllWithWhat());
+            this.illWithWhatDisplay3.setEditable(false);
+            
+            this.sleptDisplay2.setText(Boolean.toString(tempCon.getSlept()));
+            this.sleptDisplay2.setEditable(false);
+            
+            this.hrsSleptDisplay3.setText(Integer.toString(tempCon.getHrsSlept()));
+            this.hrsSleptDisplay3.setEditable(false);
+            
+            this.medicationDisplay3.setText(tempCon.getMedicationTaken());
+            this.medicationDisplay3.setEditable(false);
 
-        this.daysLastedDisplay3.setText(Integer.toString(selectedEvent.getDaysLasted()));
-        this.daysLastedDisplay3.setEditable(false);
+            //populates right display.
+            this.intensitySliderDisplay3.setValue(selectedEvent1.getOverallIntensity());
+            this.intensitySliderDisplay3.setEnabled(false);
+            
+            this.anxietySliderDisplay3.setValue(selectedEvent1.getAnxietyLevel());
+            this.anxietySliderDisplay3.setEnabled(false);
+            
+            this.beginTimeDisplay3.setText(selectedEvent1.getEventBeginTime().toString());
+            this.beginTimeDisplay3.setEditable(false);
+            
+            this.locationDisplay3.setText(selectedEvent1.getLocation().toString());
+            this.locationDisplay3.setEditable(false);
+            
+            this.hrsLastedDisplay4.setText(Integer.toString(selectedEvent1.getHoursLasted()));
+            this.hrsLastedDisplay4.setEditable(false);
+            
+            this.daysLastedDisplay4.setText(Integer.toString(selectedEvent1.getDaysLasted()));
+            this.daysLastedDisplay4.setEditable(false);
+            
+            this.notesDisplay4.setText(selectedEvent1.getNotes());
+            this.notesDisplay4.setEditable(false);
+            
+            this.dateDisplay4.setText(selectedEvent1.toString());
+            this.dateDisplay4.setEditable(false);
 
-        this.notesDisplay3.setText(selectedEvent.getNotes());
-        this.notesDisplay3.setEditable(false);
+            // populate vomit details
+            EventDiet tempCF1 = this.selectedEvent1.getCustomFields();
+            
+            this.eatenDisplay3.setText(Boolean.toString(tempCF1.getEatenBefore()));
+            this.eatenDisplay3.setEditable(false);
+            
+            this.eatenWhatDisplay4.setText(tempCF1.getEatenWhat());
+            this.eatenWhatDisplay4.setEditable(false);
+            
+            this.drunkDisplay3.setText(Boolean.toString(tempCF1.getDrunkAlcohol()));
+            this.drunkDisplay3.setEditable(false);
+            
+            this.drunkWhatDisplay4.setText(tempCF1.getDrunkWhat());
+            this.drunkWhatDisplay4.setEditable(false);
+            
+            this.hungoverDisplay3.setText(Boolean.toString(tempCF1.getHungover()));
+            this.hungoverDisplay3.setEditable(false);
 
-        this.dateDisplay3.setText(selectedEvent.toString());
-        this.dateDisplay3.setEditable(false);
+            //populate condition details
+            Condition tempCon1 = this.selectedEvent1.getCondition();
+            
+            this.anxiousDisplay3.setText(Boolean.toString(tempCon1.getAnxious()));
+            this.anxiousDisplay3.setEditable(false);
+            
+            this.moodDisplay3.setText(tempCon1.getMood().toString());
+            this.moodDisplay3.setEditable(false);
+            
+            this.illDisplay3.setText(Boolean.toString(tempCon1.getAreYouIll()));
+            this.illDisplay3.setEditable(false);
+            
+            this.illWithWhatDisplay4.setText(tempCon1.getIllWithWhat());
+            this.illWithWhatDisplay4.setEditable(false);
+            
+            this.sleptDisplay3.setText(Boolean.toString(tempCon1.getSlept()));
+            this.sleptDisplay3.setEditable(false);
+            
+            this.hrsSleptDisplay4.setText(Integer.toString(tempCon1.getHrsSlept()));
+            this.hrsSleptDisplay4.setEditable(false);
+            
+            this.medicationDisplay4.setText(tempCon1.getMedicationTaken());
+            this.medicationDisplay4.setEditable(false);
 
-        // populate vomit details
-
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
-
-        this.vomitDisplay2.setText(Boolean.toString(tempCF.getVomited()));
-        this.vomitDisplay2.setEditable(false);
-
-        this.noOfVomitDisplay3.setText(Integer.toString(tempCF.getNoOfVomit()));
-        this.noOfVomitDisplay3.setEditable(false);
-
-        this.violentDisplay2.setText(Boolean.toString(tempCF.getViolent()));
-        this.violentDisplay2.setEditable(false);
-
-        this.eatenDisplay2.setText(Boolean.toString(tempCF.getEatenBefore()));
-        this.eatenDisplay2.setEditable(false);
-
-        this.eatenWhatDisplay3.setText(tempCF.getEatenWhat());
-        this.eatenWhatDisplay3.setEditable(false);
-
-        this.drunkDisplay2.setText(Boolean.toString(tempCF.getDrunkAlcohol()));
-        this.drunkDisplay2.setEditable(false);
-
-        this.drunkWhatDisplay3.setText(tempCF.getDrunkWhat());
-        this.drunkWhatDisplay3.setEditable(false);
-
-        this.hungoverDisplay2.setText(Boolean.toString(tempCF.getHungover()));
-        this.hungoverDisplay2.setEditable(false);
-
-        //populate condition details
-
-        Condition tempCon = this.selectedEvent.getCondition();
-
-        this.anxiousDisplay2.setText(Boolean.toString(tempCon.getAnxious()));
-        this.anxiousDisplay2.setEditable(false);
-
-        this.moodDisplay2.setText(tempCon.getMood().toString());
-        this.moodDisplay2.setEditable(false);
-
-        this.illDisplay2.setText(Boolean.toString(tempCon.getAreYouIll()));
-        this.illDisplay2.setEditable(false);
-
-        this.illWithWhatDisplay3.setText(tempCon.getIllWithWhat());
-        this.illWithWhatDisplay3.setEditable(false);
-
-        this.sleptDisplay2.setText(Boolean.toString(tempCon.getSlept()));
-        this.sleptDisplay2.setEditable(false);
-
-        this.hrsSleptDisplay3.setText(Integer.toString(tempCon.getHrsSlept()));
-        this.hrsSleptDisplay3.setEditable(false);
-
-        this.medicationDisplay3.setText(tempCon.getMedicationTaken());
-        this.medicationDisplay3.setEditable(false);
-
-      //populates right display.
-        
-        this.beginTimeDisplay3.setText(selectedEvent1.getEventBeginTime().toString());
-        this.beginTimeDisplay3.setEditable(false);
-
-        this.locationDisplay3.setText(selectedEvent1.getLocation().toString());
-        this.locationDisplay3.setEditable(false);
-
-        this.hrsLastedDisplay4.setText(Integer.toString(selectedEvent1.getHoursLasted()));
-        this.hrsLastedDisplay4.setEditable(false);
-
-        this.daysLastedDisplay4.setText(Integer.toString(selectedEvent1.getDaysLasted()));
-        this.daysLastedDisplay4.setEditable(false);
-
-        this.notesDisplay4.setText(selectedEvent1.getNotes());
-        this.notesDisplay4.setEditable(false);
-
-        this.dateDisplay4.setText(selectedEvent1.toString());
-        this.dateDisplay4.setEditable(false);
-
-        // populate vomit details
-
-        CustomFields tempCF1 = this.selectedEvent1.getCustomFields();
-
-        this.vomitDisplay3.setText(Boolean.toString(tempCF1.getVomited()));
-        this.vomitDisplay3.setEditable(false);
-
-        this.noOfVomitDisplay4.setText(Integer.toString(tempCF1.getNoOfVomit()));
-        this.noOfVomitDisplay4.setEditable(false);
-
-        this.violentDisplay3.setText(Boolean.toString(tempCF1.getViolent()));
-        this.violentDisplay3.setEditable(false);
-
-        this.eatenDisplay3.setText(Boolean.toString(tempCF1.getEatenBefore()));
-        this.eatenDisplay3.setEditable(false);
-
-        this.eatenWhatDisplay4.setText(tempCF1.getEatenWhat());
-        this.eatenWhatDisplay4.setEditable(false);
-
-        this.drunkDisplay3.setText(Boolean.toString(tempCF1.getDrunkAlcohol()));
-        this.drunkDisplay3.setEditable(false);
-
-        this.drunkWhatDisplay4.setText(tempCF1.getDrunkWhat());
-        this.drunkWhatDisplay4.setEditable(false);
-
-        this.hungoverDisplay3.setText(Boolean.toString(tempCF1.getHungover()));
-        this.hungoverDisplay3.setEditable(false);
-
-        //populate condition details
-
-        Condition tempCon1 = this.selectedEvent1.getCondition();
-
-        this.anxiousDisplay3.setText(Boolean.toString(tempCon1.getAnxious()));
-        this.anxiousDisplay3.setEditable(false);
-
-        this.moodDisplay3.setText(tempCon1.getMood().toString());
-        this.moodDisplay3.setEditable(false);
-
-        this.illDisplay3.setText(Boolean.toString(tempCon1.getAreYouIll()));
-        this.illDisplay3.setEditable(false);
-
-        this.illWithWhatDisplay4.setText(tempCon1.getIllWithWhat());
-        this.illWithWhatDisplay4.setEditable(false);
-
-        this.sleptDisplay3.setText(Boolean.toString(tempCon1.getSlept()));
-        this.sleptDisplay3.setEditable(false);
-
-        this.hrsSleptDisplay4.setText(Integer.toString(tempCon1.getHrsSlept()));
-        this.hrsSleptDisplay4.setEditable(false);
-
-        this.medicationDisplay4.setText(tempCon1.getMedicationTaken());
-        this.medicationDisplay4.setEditable(false);
-
-        //display dialog box
-
-        dualEventDetailsDialog.pack();
-        dualEventDetailsDialog.setVisible(true);
+            //display dialog box
+            dualEventDetailsDialog.pack();
+            dualEventDetailsDialog.setVisible(true);
+        }
+        else {
+            select2EventErrorDialog.pack();
+            select2EventErrorDialog.setVisible(true);
+        }
     }//GEN-LAST:event_select2EventButtonActionPerformed
 
     private void addCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCFButtonActionPerformed
         createCFDialog.pack();
         createCFDialog.setVisible(true);
         tempMultiOptions.clear();
+        createCFDialog.setLocation(500, 500);
     }//GEN-LAST:event_addCFButtonActionPerformed
 
     private void fieldTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTypeComboActionPerformed
@@ -4011,7 +3876,10 @@ public class GUI1 extends javax.swing.JFrame {
             tempFieldName = newFieldNameField.getText();
         
             tempCustomField = cISTSCoord.customFieldBoss.createCustomFieldMulti(tempMultiOptions, 
-                tempFieldType, tempFieldName);}
+                tempFieldType, tempFieldName);
+            
+            cFModel.addElement(tempCustomField);
+        }
         
         else {
             tempFieldType = FieldType.valueOf(fieldTypeCombo.getSelectedItem().
@@ -4021,15 +3889,27 @@ public class GUI1 extends javax.swing.JFrame {
             
             tempCustomField = cISTSCoord.customFieldBoss.createCustomField(tempFieldType,
                     tempFieldName);
+            
+            cFModel.addElement(tempCustomField);
         }
         
         //this.GenerateCustomField(tempCustomField);
         this.validate();
         
+        
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+        createCFDialog.dispose();
     }//GEN-LAST:event_addNewCFButtonActionPerformed
 
     private void addToMultiOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToMultiOptionsButtonActionPerformed
         tempMultiOptions.add(multiChoiceField.getText());
+        
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+        multiChoiceField.setText("");
     }//GEN-LAST:event_addToMultiOptionsButtonActionPerformed
 
     private void daysLastedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedFieldActionPerformed
@@ -4067,17 +3947,29 @@ public class GUI1 extends javax.swing.JFrame {
             ());
 
         cISTSCoord.aNotes = notesArea.getText();
+        
+        cISTSCoord.aIntensity = intensitySlider.getValue();
+        
+        cISTSCoord.aAnxietyLVL = anxietySlider.getValue();
 
-        if (cISTSCoord.aCustomFields != null && cISTSCoord.aCondition != null)
+        
+        if (customFieldGUI != null && cISTSCoord.vomitCreated == true && 
+                cISTSCoord.conditionCreated == true 
+                && customFieldGUI.customFieldsCreated == true)
         {
             cISTSCoord.aEvent = new Event (cISTSCoord.aEventBeginTime,
                 cISTSCoord.aLocation, cISTSCoord.aHoursLasted,
                 cISTSCoord.aDaysLasted, cISTSCoord.aNotes,
-                cISTSCoord.aCustomFields, cISTSCoord.aCondition ,customFieldGUI.tempEventCF);
+                cISTSCoord.aCustomFields, cISTSCoord.aCondition ,customFieldGUI.
+                tempEventCF, cISTSCoord.aIntensity, cISTSCoord.aAnxietyLVL);
 
             cISTSCoord.events.add(cISTSCoord.aEvent);
 
             model.addElement(cISTSCoord.aEvent);
+            
+            cISTSCoord.setConditionCreated(false);
+            cISTSCoord.setVomitCreated(false);
+            customFieldGUI.setCustomFieldsCreated(false);
 
             eventCreatedDialog.pack();
             eventCreatedDialog.setVisible(true);
@@ -4156,6 +4048,8 @@ public class GUI1 extends javax.swing.JFrame {
             cISTSCoord.aMood, cISTSCoord.aAreYouIll,
             cISTSCoord.aIllWithWhat, cISTSCoord.aSlept,
             cISTSCoord.aHrsSlept, cISTSCoord.aMedicationTaken);
+        
+        cISTSCoord.setConditionCreated(true);
 
         infoStoredDialog.pack();
         infoStoredDialog.setVisible(true);
@@ -4189,25 +4083,8 @@ public class GUI1 extends javax.swing.JFrame {
      * @see Vomit
      * @param evt
      */
-    private void createCustomFieldsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCustomFieldsMouseClicked
+    private void createEventDietButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventDietButtonMouseClicked
         // TODO add your handling code here:
-        vomitedString = vomitCombo.getSelectedItem().toString();
-        if ("yes".equals(vomitedString)){
-            cISTSCoord.aVomited = true;
-        }
-        else {
-            cISTSCoord.aVomited = false;
-        }
-
-        cISTSCoord.aNoOfVomit = Integer.parseInt(noOfVomitField.getText());
-
-        violentString = violentCombo.getSelectedItem().toString();
-        if ("yes".equals(violentString)){
-            cISTSCoord.aViolent = true;
-        }
-        else {
-            cISTSCoord.aViolent = false;
-        }
 
         eatenString = eatenCombo.getSelectedItem().toString();
         if ("yes".equals(eatenString)){
@@ -4237,33 +4114,402 @@ public class GUI1 extends javax.swing.JFrame {
             cISTSCoord.aHungover = false;
         }
 
-        cISTSCoord.aCustomFields = new CustomFields(cISTSCoord.aVomited,
-            cISTSCoord.aNoOfVomit, cISTSCoord.aViolent,
-            cISTSCoord.aEatenBefore, cISTSCoord.aEatenWhat,
-            cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
+        cISTSCoord.aCustomFields = new EventDiet(cISTSCoord.aEatenBefore, 
+            cISTSCoord.aEatenWhat,cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
             cISTSCoord.aHungover);
+        
+        cISTSCoord.setVomitCreated(true);
 
         infoStoredDialog.pack();
         infoStoredDialog.setVisible(true);
         infoStoredDialog.setLocation(500, 500);
-    }//GEN-LAST:event_createCustomFieldsMouseClicked
+    }//GEN-LAST:event_createEventDietButtonMouseClicked
 
     private void goToCustomInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToCustomInputButtonActionPerformed
 
         customFieldGUI = new CustomFieldGUI(cISTSCoord.customFieldBoss);
     }//GEN-LAST:event_goToCustomInputButtonActionPerformed
 
-    private void createCustomFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomFieldsActionPerformed
+    private void createEventDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventDietButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_createCustomFieldsActionPerformed
+    }//GEN-LAST:event_createEventDietButtonActionPerformed
 
     private void ViewECFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButtonActionPerformed
-        customFieldGUIView = new CustomFieldGUIView(customFieldGUI.tempEventCF);
+        customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
     }//GEN-LAST:event_ViewECFButtonActionPerformed
 
     private void saveCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCFButtonActionPerformed
         cISTSCoord.saveCustomFieldBoss();
+        
+        cFBossSavedDialog.pack();
+        cFBossSavedDialog.setVisible(true);
+        cFBossSavedDialog.setLocation(500, 300);
     }//GEN-LAST:event_saveCFButtonActionPerformed
+
+    private void hrsSleptDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hrsSleptDisplay4ActionPerformed
+
+    private void illDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_illDisplay3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_illDisplay3ActionPerformed
+
+    private void moodDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodDisplay3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moodDisplay3ActionPerformed
+
+    private void anxiousDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplay3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anxiousDisplay3ActionPerformed
+
+    private void dateDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDisplay4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateDisplay4ActionPerformed
+
+    private void daysLastedDisplay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedDisplay4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daysLastedDisplay4ActionPerformed
+
+    private void beginTimeDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginTimeDisplay3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_beginTimeDisplay3ActionPerformed
+
+    private void ViewECFButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton1ActionPerformed
+        customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
+    }//GEN-LAST:event_ViewECFButton1ActionPerformed
+
+    private void ViewECFButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton2ActionPerformed
+         customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
+    }//GEN-LAST:event_ViewECFButton2ActionPerformed
+
+    private void ViewECFButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton3ActionPerformed
+         customFieldGUIView = new CustomFieldGUIView(selectedEvent1.getECF());
+    }//GEN-LAST:event_ViewECFButton3ActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editMedicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMedicationButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setConditionMedicationTaken(medicationDisplay1.getText());
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editMedicationButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editHrsSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsSleptButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setConditionHrsSlept(Integer.parseInt(hrsSleptDisplay1.getText()));
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editHrsSleptButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editIllWithWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIllWithWhatButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setConditionIllWithWhat(illWithWhatDisplay1.getText());
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editIllWithWhatButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editAreYouIllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAreYouIllButtonActionPerformed
+        // TODO add your handling code here:
+
+        areYouIllString = areYouIllCombo1.getSelectedItem().toString();
+        if ("yes".equals(areYouIllString)){
+            selectedEvent.setConditionAreYouIll(true);
+        }
+        else {
+            selectedEvent.setConditionAreYouIll(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editAreYouIllButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editMoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMoodButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setConditionMood(Mood.valueOf(
+            moodCombo1.getSelectedItem().toString()));
+
+    infoStoredDialog.pack();
+    infoStoredDialog.setVisible(true);
+    infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editMoodButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editAnxiousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxiousButtonActionPerformed
+
+        anxiousString = anxiousCombo1.getSelectedItem().toString();
+        if ("yes".equals(anxiousString)){
+            selectedEvent.setConditionAnxious(true);
+        }
+        else {
+            selectedEvent.setConditionAnxious(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editAnxiousButtonActionPerformed
+
+    private void anxiousCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousCombo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anxiousCombo1ActionPerformed
+
+    private void hrsSleptDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hrsSleptDisplay1ActionPerformed
+
+    private void editAnxietyLVLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxietyLVLButtonActionPerformed
+        this.selectedEvent.setAnxietyLevel(anxietySliderDisplay4.getValue());
+        
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editAnxietyLVLButtonActionPerformed
+
+    private void editIntensityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIntensityButtonActionPerformed
+        this.selectedEvent.setOverallIntensity(intensitySliderDisplay4.getValue());
+        
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editIntensityButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editNotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNotesButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setNotes(notesDisplay1.getText());
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editNotesButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editDaysLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDaysLastedButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setDaysLasted(Integer.parseInt(daysLastedDisplay1.getText()));
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editDaysLastedButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editHrsLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsLastedButtonActionPerformed
+        // TODO add your handling code here:
+        this.selectedEvent.setHoursLasted(Integer.parseInt(hrsLastedDisplay1.getText()));
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editHrsLastedButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLocationButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setLocation(Location.valueOf(
+            locationCombo1.getSelectedItem().toString()));
+
+    infoStoredDialog.pack();
+    infoStoredDialog.setVisible(true);
+    infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editLocationButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editBeginTimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBeginTimeButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setEventBeginTime(EventBeginTime.valueOf(
+            beginTimeCombo1.getSelectedItem().toString()));
+
+    infoStoredDialog.pack();
+    infoStoredDialog.setVisible(true);
+    infoStoredDialog.setLocation(500, 500);
+
+    }//GEN-LAST:event_editBeginTimeButtonActionPerformed
+
+    private void dateDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDisplay1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateDisplay1ActionPerformed
+
+    private void daysLastedDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLastedDisplay1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daysLastedDisplay1ActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editHungoverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHungoverButtonActionPerformed
+        // TODO add your handling code here:
+
+        hungoverString = hungoverCombo1.getSelectedItem().toString();
+        if ("yes".equals(hungoverString)){
+            selectedEvent.setEDHungover(true);
+        }
+        else {
+            selectedEvent.setEDHungover(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editHungoverButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editDrunkWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkWhatButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setEDDrunkWhat(drunkWhatDisplay1.getText());
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editDrunkWhatButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editEatenWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenWhatButtonActionPerformed
+        // TODO add your handling code here:
+
+        this.selectedEvent.setEDEatenWhat(eatenWhatDisplay1.getText());
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editEatenWhatButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editEatenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenButtonActionPerformed
+        // TODO add your handling code here:
+
+        eatenString = eatenCombo1.getSelectedItem().toString();
+        if ("yes".equals(eatenString)){
+            selectedEvent.setEDEatenBefore(true);
+        }
+        else {
+            selectedEvent.setEDEatenBefore(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editEatenButtonActionPerformed
+
+    /**
+     * Edits CvsEvent attribute. 
+     * @param evt 
+     */
+    private void editDrunkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkButtonActionPerformed
+        // TODO add your handling code here:
+
+        drunkString = drunkCombo1.getSelectedItem().toString();
+        if ("yes".equals(drunkString)){
+            selectedEvent.setEDDrunkAlcohol(true);
+        }
+        else {
+            selectedEvent.setEDDrunkAlcohol(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editDrunkButtonActionPerformed
+
+    private void hungoverCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hungoverCombo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hungoverCombo1ActionPerformed
+
+    private void drunkCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkCombo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drunkCombo1ActionPerformed
+
+    private void editSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSleptButtonActionPerformed
+        sleptString = sleptCombo1.getSelectedItem().toString();
+        if ("yes".equals(sleptString)){
+            selectedEvent.setConditionSlept(true);
+        }
+        else {
+            selectedEvent.setConditionSlept(false);
+        }
+
+        infoStoredDialog.pack();
+        infoStoredDialog.setVisible(true);
+        infoStoredDialog.setLocation(500, 500);
+    }//GEN-LAST:event_editSleptButtonActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        cFListDialog.pack();
+        cFListDialog.setVisible(true);
+        cFListDialog.setLocation(500, 500);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     
     /**
@@ -4309,10 +4555,19 @@ public class GUI1 extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton ViewECFButton;
+    private javax.swing.JToggleButton ViewECFButton1;
+    private javax.swing.JToggleButton ViewECFButton2;
+    private javax.swing.JToggleButton ViewECFButton3;
     private javax.swing.JButton addCFButton;
-    private javax.swing.JPanel addEventTab;
+    public javax.swing.JPanel addEventTab;
     private javax.swing.JButton addNewCFButton;
     private javax.swing.JButton addToMultiOptionsButton;
+    private javax.swing.JSlider anxietySlider;
+    private javax.swing.JSlider anxietySliderDisplay;
+    private javax.swing.JSlider anxietySliderDisplay1;
+    private javax.swing.JSlider anxietySliderDisplay2;
+    private javax.swing.JSlider anxietySliderDisplay3;
+    private javax.swing.JSlider anxietySliderDisplay4;
     private javax.swing.JComboBox<String> anxiousCombo;
     private javax.swing.JComboBox<String> anxiousCombo1;
     private javax.swing.JTextField anxiousDisplay;
@@ -4327,6 +4582,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField beginTimeDisplay1;
     private javax.swing.JTextField beginTimeDisplay2;
     private javax.swing.JTextField beginTimeDisplay3;
+    private javax.swing.JDialog cFBossSavedDialog;
+    private javax.swing.JDialog cFListDialog;
     private javax.swing.JPanel conditionDetailsTab;
     private javax.swing.JPanel conditionDetailsTab1;
     private javax.swing.JPanel conditionDetailsTab2;
@@ -4334,9 +4591,10 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JPanel conditionDetailsTab4;
     private javax.swing.JDialog createCFDialog;
     private javax.swing.JButton createCondition;
-    private javax.swing.JButton createCustomFields;
     private javax.swing.JButton createEvent;
+    private javax.swing.JButton createEventDietButton;
     private javax.swing.JDialog createEventError;
+    private javax.swing.JList<String> customFieldList;
     private javax.swing.JTextField dateDisplay;
     private javax.swing.JTextField dateDisplay1;
     private javax.swing.JTextField dateDisplay2;
@@ -4373,6 +4631,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextArea eatenWhatDisplay3;
     private javax.swing.JTextArea eatenWhatDisplay4;
     private javax.swing.JTextField eatenWhatField;
+    private javax.swing.JButton editAnxietyLVLButton;
     private javax.swing.JButton editAnxiousButton;
     private javax.swing.JButton editAreYouIllButton;
     private javax.swing.JButton editBeginTimeButton;
@@ -4387,14 +4646,12 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JButton editHrsSleptButton;
     private javax.swing.JButton editHungoverButton;
     private javax.swing.JButton editIllWithWhatButton;
+    private javax.swing.JButton editIntensityButton;
     private javax.swing.JButton editLocationButton;
     private javax.swing.JButton editMedicationButton;
     private javax.swing.JButton editMoodButton;
-    private javax.swing.JButton editNoOfVomitButton;
     private javax.swing.JButton editNotesButton;
     private javax.swing.JButton editSleptButton;
-    private javax.swing.JButton editViolentButton;
-    private javax.swing.JButton editVomitButton;
     private javax.swing.JDialog eventCreatedDialog;
     private javax.swing.JDialog eventDetailsDialog;
     private javax.swing.JList eventList1;
@@ -4436,7 +4693,12 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextArea illWithWhatDisplay4;
     private javax.swing.JTextField illWithWhatField;
     private javax.swing.JDialog infoStoredDialog;
-    private javax.swing.JButton jButton17;
+    private javax.swing.JSlider intensitySlider;
+    private javax.swing.JSlider intensitySliderDisplay;
+    private javax.swing.JSlider intensitySliderDisplay1;
+    private javax.swing.JSlider intensitySliderDisplay2;
+    private javax.swing.JSlider intensitySliderDisplay3;
+    private javax.swing.JSlider intensitySliderDisplay4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -4458,10 +4720,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
-    private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -4478,9 +4737,36 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel135;
+    private javax.swing.JLabel jLabel136;
+    private javax.swing.JLabel jLabel137;
+    private javax.swing.JLabel jLabel138;
+    private javax.swing.JLabel jLabel139;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel140;
+    private javax.swing.JLabel jLabel141;
+    private javax.swing.JLabel jLabel142;
+    private javax.swing.JLabel jLabel143;
+    private javax.swing.JLabel jLabel144;
+    private javax.swing.JLabel jLabel145;
+    private javax.swing.JLabel jLabel146;
+    private javax.swing.JLabel jLabel147;
+    private javax.swing.JLabel jLabel148;
+    private javax.swing.JLabel jLabel149;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel150;
+    private javax.swing.JLabel jLabel151;
+    private javax.swing.JLabel jLabel152;
+    private javax.swing.JLabel jLabel153;
+    private javax.swing.JLabel jLabel154;
+    private javax.swing.JLabel jLabel155;
+    private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel161;
+    private javax.swing.JLabel jLabel162;
+    private javax.swing.JLabel jLabel163;
+    private javax.swing.JLabel jLabel164;
+    private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -4525,7 +4811,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
@@ -4569,9 +4854,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -4593,6 +4875,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane26;
     private javax.swing.JScrollPane jScrollPane27;
+    private javax.swing.JScrollPane jScrollPane28;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4606,6 +4889,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel listLabel;
     private javax.swing.JDialog listSavedDialog;
     private javax.swing.JScrollPane listScrollPane4;
@@ -4630,12 +4914,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField moodDisplay3;
     private javax.swing.JTextField multiChoiceField;
     private javax.swing.JTextField newFieldNameField;
-    private javax.swing.JTextField noOfVomitDisplay;
-    private javax.swing.JTextField noOfVomitDisplay1;
-    private javax.swing.JTextField noOfVomitDisplay2;
-    private javax.swing.JTextField noOfVomitDisplay3;
-    private javax.swing.JTextField noOfVomitDisplay4;
-    private javax.swing.JTextField noOfVomitField;
     private javax.swing.JTextArea notesArea;
     private javax.swing.JTextArea notesDisplay;
     private javax.swing.JTextArea notesDisplay1;
@@ -4645,6 +4923,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JToggleButton saveCFButton;
     private javax.swing.JButton saveListButton;
     private javax.swing.JButton select2EventButton;
+    private javax.swing.JDialog select2EventErrorDialog;
     private javax.swing.JButton selectEventButton;
     private javax.swing.JComboBox<String> sleptCombo;
     private javax.swing.JComboBox<String> sleptCombo1;
@@ -4652,22 +4931,10 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField sleptDisplay1;
     private javax.swing.JTextField sleptDisplay2;
     private javax.swing.JTextField sleptDisplay3;
-    private javax.swing.JComboBox<String> violentCombo;
-    private javax.swing.JComboBox<String> violentCombo1;
-    private javax.swing.JTextField violentDisplay;
-    private javax.swing.JTextField violentDisplay1;
-    private javax.swing.JTextField violentDisplay2;
-    private javax.swing.JTextField violentDisplay3;
-    private javax.swing.JComboBox<String> vomitCombo;
-    private javax.swing.JComboBox<String> vomitCombo2;
     private javax.swing.JPanel vomitDetailsTab;
     private javax.swing.JPanel vomitDetailsTab1;
     private javax.swing.JPanel vomitDetailsTab2;
     private javax.swing.JPanel vomitDetailsTab3;
     private javax.swing.JPanel vomitDetailsTab4;
-    private javax.swing.JTextField vomitDisplay;
-    private javax.swing.JTextField vomitDisplay1;
-    private javax.swing.JTextField vomitDisplay2;
-    private javax.swing.JTextField vomitDisplay3;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import cists.Condition.Mood;
-import cists.CustomFields;
+import cists.EventDiet;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
 import javax.swing.DefaultComboBoxModel;
@@ -1798,7 +1798,7 @@ public class GUI extends javax.swing.JFrame {
             cISTSCoord.aHungover = false;
         }
         
-        cISTSCoord.aCustomFields = new CustomFields(cISTSCoord.aVomited, 
+        cISTSCoord.aCustomFields = new EventDiet(cISTSCoord.aVomited, 
         cISTSCoord.aNoOfVomit, cISTSCoord.aViolent, 
         cISTSCoord.aEatenBefore, cISTSCoord.aEatenWhat, 
         cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
@@ -1984,7 +1984,7 @@ public class GUI extends javax.swing.JFrame {
         
         // populate vomit details
         
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
         
         this.vomitDisplay.setText(Boolean.toString(tempCF.getVomited()));
         this.vomitDisplay.setEditable(false);
@@ -2280,7 +2280,7 @@ public class GUI extends javax.swing.JFrame {
         
         // populate vomit details
         
-        CustomFields tempCF = this.selectedEvent.getCustomFields();
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
         
         this.vomitCombo2.setSelectedItem(tempCF.getVomited());
         

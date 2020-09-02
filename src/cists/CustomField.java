@@ -80,4 +80,10 @@ public class CustomField implements Serializable{
     void clearList(){
         this.multiList.clear();
     }
+    
+    @Override
+    public String toString(){
+        String string = getFieldName() + "  " + getFieldType().toString();
+        return string;
+    }
 }
