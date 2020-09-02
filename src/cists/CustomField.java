@@ -6,6 +6,7 @@
 package cists;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class CustomField implements Serializable{
 
 //Variables
     
+    public static int count;
     public enum FieldType {
         textbox,
         yesNo,
@@ -30,13 +32,17 @@ public class CustomField implements Serializable{
     
     List<String> multiList;
     
+    
+    
     //Constructor
     public CustomField(FieldType aFieldType, String aFieldName, List<String> 
             aList) {
     
         fieldType = aFieldType;
         fieldName = aFieldName;
+        multiList = new ArrayList<>();
         multiList = aList;
+        count = count++;
         
         System.out.println("CustomField Created Successfully");
     }    
@@ -45,7 +51,7 @@ public class CustomField implements Serializable{
     
         fieldType = aFieldType;
         fieldName = aFieldName;
-        
+        count = count++;
         System.out.println("CustomField Created Successfully");
     }    
     

@@ -272,11 +272,12 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
     
     public void addMultiCombo(String aFieldName, List<String> aMultiList){
         
+        DefaultComboBoxModel comboModel = new javax.swing.DefaultComboBoxModel<>
+        (aMultiList.toArray(new String[0]));
         javax.swing.JLabel customLabel;
         javax.swing.JComboBox customMulti;
         customMulti = new javax.swing.JComboBox<>();
-        customMulti.setModel(new javax.swing.DefaultComboBoxModel<>
-        (aMultiList.toArray(new String[0])));
+        
         
         customLabel = new javax.swing.JLabel(aFieldName);
         
@@ -293,6 +294,7 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         this.cFPanel.add(customLabel);
         this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customMulti);
+        customMulti.setModel(comboModel);
         this.cFPanel.add(customLabelSPACE2);
         this.cFPanel.add(customLabelSPACE3);
         //this.customLabels.add(customLabel);
