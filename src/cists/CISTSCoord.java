@@ -12,7 +12,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import gui.GUI;
 import gui.GUI1;
 
 /**
@@ -335,6 +334,10 @@ public class CISTSCoord {
     
     public void setVomitCreated(Boolean a){
         this.vomitCreated = a;
+    }
+    
+    public void resetCFBoss(){
+        this.customFieldBoss = new CustomFieldBoss();
     }
     
     

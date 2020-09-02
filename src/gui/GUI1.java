@@ -1,6 +1,5 @@
 package gui;
 
-import CISTS.*;
 import static cists.Condition.Mood.happy;
 import static cists.CustomField.FieldType;
 import cists.CISTS;
@@ -433,6 +432,12 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel55 = new javax.swing.JLabel();
         cFBossSavedDialog = new javax.swing.JDialog();
         jLabel56 = new javax.swing.JLabel();
+        resetCustomFieldsDialog = new javax.swing.JDialog();
+        yesButton = new javax.swing.JToggleButton();
+        noButton = new javax.swing.JToggleButton();
+        jLabel57 = new javax.swing.JLabel();
+        cFBossResetDialog = new javax.swing.JDialog();
+        jLabel97 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
@@ -554,6 +559,7 @@ public class GUI1 extends javax.swing.JFrame {
         addCFButton = new javax.swing.JButton();
         saveCFButton = new javax.swing.JToggleButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        resetCFBossButton = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
 
@@ -636,7 +642,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Diet Details", vomitDetailsTab);
+        jTabbedPane1.addTab("Diet & Custom Details", vomitDetailsTab);
 
         jLabel33.setText("Were you anxious?");
 
@@ -1167,17 +1173,13 @@ public class GUI1 extends javax.swing.JFrame {
                             .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel164)
                                 .addComponent(jLabel165)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(generalDetailsTab1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(anxietySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel163)
-                                        .addComponent(jLabel166))
-                                    .addComponent(jLabel161, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(anxietySliderDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel163)
+                                .addComponent(jLabel166))
+                            .addComponent(jLabel161, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(43, 43, 43)))
                 .addGroup(generalDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
@@ -1293,24 +1295,21 @@ public class GUI1 extends javax.swing.JFrame {
                     .addComponent(jLabel61)
                     .addComponent(jLabel60)
                     .addComponent(jLabel62))
+                .addGap(85, 85, 85)
                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editEatenButton))
-                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editDrunkButton))
-                            .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                                .addComponent(hungoverCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editHungoverButton))))
+                        .addComponent(eatenCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editEatenButton))
                     .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addComponent(drunkCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editDrunkButton))
+                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
+                        .addComponent(hungoverCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editHungoverButton))
+                    .addGroup(vomitDetailsTab1Layout.createSequentialGroup()
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.LEADING))
@@ -1348,8 +1347,7 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel61)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vomitDetailsTab1Layout.createSequentialGroup()
-                        .addComponent(editDrunkWhatButton)))
+                    .addComponent(editDrunkWhatButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(vomitDetailsTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel62)
@@ -1787,7 +1785,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane5.addTab("Vomit Details", vomitDetailsTab3);
+        jTabbedPane5.addTab("Diet & Custom Details", vomitDetailsTab3);
 
         jLabel105.setText("Were you anxious?");
 
@@ -2010,9 +2008,9 @@ public class GUI1 extends javax.swing.JFrame {
         generalDetailsTab4Layout.setVerticalGroup(
             generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalDetailsTab4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(generalDetailsTab4Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel153)
                             .addComponent(intensitySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2020,17 +2018,14 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(anxietySliderDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel154)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel156)
+                        .addComponent(jLabel152))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalDetailsTab4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel156)
-                                .addComponent(jLabel152))
-                            .addGroup(generalDetailsTab4Layout.createSequentialGroup()
-                                .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel155)
-                                    .addComponent(jLabel151))
-                                .addGap(47, 47, 47)))))
+                        .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel155)
+                            .addComponent(jLabel151))
+                        .addGap(47, 47, 47)))
                 .addGap(22, 22, 22)
                 .addGroup(generalDetailsTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel112)
@@ -2137,7 +2132,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Vomit Details", vomitDetailsTab4);
+        jTabbedPane6.addTab("Diet & Custom Details", vomitDetailsTab4);
 
         jLabel126.setText("Were you anxious?");
 
@@ -2361,14 +2356,14 @@ public class GUI1 extends javax.swing.JFrame {
             cFListDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cFListDialogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addContainerGap())
         );
         cFListDialogLayout.setVerticalGroup(
             cFListDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cFListDialogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2408,11 +2403,76 @@ public class GUI1 extends javax.swing.JFrame {
             .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
+        yesButton.setText("Yes");
+        yesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesButtonActionPerformed(evt);
+            }
+        });
+
+        noButton.setText("No");
+        noButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel57.setText("Are you sure you want to permenently delete all custom fields?");
+
+        javax.swing.GroupLayout resetCustomFieldsDialogLayout = new javax.swing.GroupLayout(resetCustomFieldsDialog.getContentPane());
+        resetCustomFieldsDialog.getContentPane().setLayout(resetCustomFieldsDialogLayout);
+        resetCustomFieldsDialogLayout.setHorizontalGroup(
+            resetCustomFieldsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resetCustomFieldsDialogLayout.createSequentialGroup()
+                .addGroup(resetCustomFieldsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(resetCustomFieldsDialogLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(yesButton)
+                        .addGap(38, 38, 38)
+                        .addComponent(noButton))
+                    .addGroup(resetCustomFieldsDialogLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel57)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        resetCustomFieldsDialogLayout.setVerticalGroup(
+            resetCustomFieldsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetCustomFieldsDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel57)
+                .addGap(24, 24, 24)
+                .addGroup(resetCustomFieldsDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(noButton)
+                    .addComponent(yesButton))
+                .addGap(16, 16, 16))
+        );
+
+        jLabel97.setText("Custom Fields Deleted");
+
+        javax.swing.GroupLayout cFBossResetDialogLayout = new javax.swing.GroupLayout(cFBossResetDialog.getContentPane());
+        cFBossResetDialog.getContentPane().setLayout(cFBossResetDialogLayout);
+        cFBossResetDialogLayout.setHorizontalGroup(
+            cFBossResetDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cFBossResetDialogLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel97)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        cFBossResetDialogLayout.setVerticalGroup(
+            cFBossResetDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cFBossResetDialogLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel97)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CVS Tracker");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Diet Details");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Details On Your Condition");
 
         createEventDietButton.setText("Store Diet Info");
@@ -2530,6 +2590,7 @@ public class GUI1 extends javax.swing.JFrame {
         medicationTakenArea.setText("nothing");
         jScrollPane2.setViewportView(medicationTakenArea);
 
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel19.setText("General Information");
 
         jLabel20.setText("When did the event begin?");
@@ -2618,28 +2679,8 @@ public class GUI1 extends javax.swing.JFrame {
         addEventTab.setLayout(addEventTabLayout);
         addEventTabLayout.setHorizontalGroup(
             addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addEventTabLayout.createSequentialGroup()
-                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(createCondition)
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6))))
-                    .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(goToCustomInputButton))
-                    .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(createEvent)))
-                .addGap(604, 604, 604))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEventTabLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addEventTabLayout.createSequentialGroup()
                         .addComponent(jLabel10)
@@ -2650,76 +2691,27 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(eatenWhatField))
                     .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(eatenCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(drunkCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGap(226, 226, 226)
-                                .addComponent(createEventDietButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(eatenCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addEventTabLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(drunkCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(addEventTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addEventTabLayout.createSequentialGroup()
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(18, 18, 18)
-                                .addComponent(sleptCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
-                                .addComponent(areYouIllCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(anxiousCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(moodCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(18, 18, 18)
-                                .addComponent(locationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(18, 18, 18)
-                                .addComponent(hoursLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addGap(18, 18, 18)
-                                .addComponent(daysLastedField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel78)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(addEventTabLayout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(jLabel77)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(anxietySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel76))
-                                    .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(createEvent)
+                            .addComponent(goToCustomInputButton)
+                            .addComponent(createCondition))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(addEventTabLayout.createSequentialGroup()
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addEventTabLayout.createSequentialGroup()
@@ -2737,7 +2729,63 @@ public class GUI1 extends javax.swing.JFrame {
                             .addGroup(addEventTabLayout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3)))
+                                .addComponent(jScrollPane3))
+                            .addGroup(addEventTabLayout.createSequentialGroup()
+                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(createEventDietButton)
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sleptCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(areYouIllCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(anxiousCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(moodCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addEventTabLayout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel6))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addEventTabLayout.createSequentialGroup()
+                                            .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel78)
+                                                .addComponent(jLabel19))
+                                            .addGap(23, 23, 23)
+                                            .addComponent(jLabel77)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(anxietySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel76))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addEventTabLayout.createSequentialGroup()
+                                            .addComponent(jLabel20)
+                                            .addGap(61, 61, 61)
+                                            .addComponent(beginTimeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(addEventTabLayout.createSequentialGroup()
+                                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel22)
+                                            .addComponent(jLabel21)
+                                            .addComponent(jLabel23))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(daysLastedField)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(locationCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(hoursLastedField)))))
+                                .addGap(400, 400, 400)))
                         .addContainerGap())))
         );
         addEventTabLayout.setVerticalGroup(
@@ -2765,9 +2813,9 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(hungoverCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(20, 20, 20)
                 .addComponent(createEventDietButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2781,7 +2829,7 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(areYouIllCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(illWithWhatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2797,26 +2845,27 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(createCondition)
                 .addGap(25, 25, 25)
-                .addComponent(jLabel19)
+                .addComponent(createCondition)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel19)
+                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)))
                 .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(addEventTabLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(48, 48, 48))
+                                .addGap(31, 31, 31)
+                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel78)
+                                    .addComponent(jLabel77)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEventTabLayout.createSequentialGroup()
-                                .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(intensitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(31, 31, 31)))
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel78)
-                            .addComponent(jLabel77))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(anxietySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
@@ -2837,20 +2886,18 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(goToCustomInputButton)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(createEvent))
+                        .addGap(18, 18, 18)
+                        .addComponent(createEvent)
+                        .addGap(16, 16, 16))
                     .addGroup(addEventTabLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(anxietySlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 368, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel76)
+                        .addContainerGap(455, Short.MAX_VALUE))))
         );
 
-        jTabbedPane2.addTab("Add CVS Event", addEventTab);
+        jTabbedPane2.addTab("Add A New Event", addEventTab);
 
         listLabel.setText("CVS Events List");
 
@@ -2880,7 +2927,6 @@ public class GUI1 extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        eventList1.setSelectedIndices(new int[] {});
         eventList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 eventList1ValueChanged(evt);
@@ -3252,7 +3298,6 @@ public class GUI1 extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        eventList3.setSelectedIndices(new int[] {});
         eventList3.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 eventList3ValueChanged(evt);
@@ -3288,6 +3333,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        resetCFBossButton.setText("Reset Custom Fields");
+        resetCFBossButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetCFBossButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -3296,21 +3348,19 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(eventListTabLayout.createSequentialGroup()
-                        .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(editEventButton)
-                            .addComponent(selectEventButton))
-                        .addGap(43, 43, 43)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(eventListTabLayout.createSequentialGroup()
-                                .addComponent(saveListButton)
-                                .addGap(64, 64, 64)
-                                .addComponent(addCFButton))
-                            .addGroup(eventListTabLayout.createSequentialGroup()
-                                .addComponent(select2EventButton)
-                                .addGap(18, 18, 18)
-                                .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton1)
-                                    .addComponent(saveCFButton)))))
+                            .addComponent(selectEventButton)
+                            .addComponent(editEventButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveListButton)
+                            .addComponent(resetCFBossButton)
+                            .addComponent(select2EventButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveCFButton)
+                            .addComponent(jToggleButton1)
+                            .addComponent(addCFButton)))
                     .addComponent(listLabel)
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addComponent(listScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3323,7 +3373,7 @@ public class GUI1 extends javax.swing.JFrame {
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         eventListTabLayout.setVerticalGroup(
             eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3351,14 +3401,16 @@ public class GUI1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editEventButton)
-                            .addComponent(select2EventButton)
-                            .addComponent(saveCFButton))))
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addContainerGap(643, Short.MAX_VALUE))
+                            .addComponent(saveCFButton)
+                            .addComponent(select2EventButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1)
+                    .addComponent(resetCFBossButton))
+                .addContainerGap(720, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("CVS Events", eventListTab);
+        jTabbedPane2.addTab("CISTS HomePage", eventListTab);
 
         jScrollPane1.setViewportView(jTabbedPane2);
 
@@ -3366,14 +3418,14 @@ public class GUI1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 993, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 1053, 699);
+        setBounds(0, 0, 1009, 690);
     }// </editor-fold>//GEN-END:initComponents
  
     private void anxiousDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anxiousDisplayActionPerformed
@@ -4511,6 +4563,26 @@ public class GUI1 extends javax.swing.JFrame {
         cFListDialog.setLocation(500, 500);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
+        cISTSCoord.resetCFBoss();
+        customFields = cISTSCoord.customFieldBoss.getCustomFieldList();
+        cFModel.clear();
+        cFBossResetDialog.pack();
+        cFBossResetDialog.setVisible(true);
+        cFBossResetDialog.setLocation(500, 500);
+        resetCustomFieldsDialog.dispose();
+    }//GEN-LAST:event_yesButtonActionPerformed
+
+    private void resetCFBossButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCFBossButtonActionPerformed
+        resetCustomFieldsDialog.pack();
+        resetCustomFieldsDialog.setVisible(true);
+        resetCustomFieldsDialog.setLocation(500, 500);
+    }//GEN-LAST:event_resetCFBossButtonActionPerformed
+
+    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
+        resetCustomFieldsDialog.dispose();
+    }//GEN-LAST:event_noButtonActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -4582,6 +4654,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField beginTimeDisplay1;
     private javax.swing.JTextField beginTimeDisplay2;
     private javax.swing.JTextField beginTimeDisplay3;
+    private javax.swing.JDialog cFBossResetDialog;
     private javax.swing.JDialog cFBossSavedDialog;
     private javax.swing.JDialog cFListDialog;
     private javax.swing.JPanel conditionDetailsTab;
@@ -4811,6 +4884,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
@@ -4854,6 +4928,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -4914,12 +4989,15 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField moodDisplay3;
     private javax.swing.JTextField multiChoiceField;
     private javax.swing.JTextField newFieldNameField;
+    private javax.swing.JToggleButton noButton;
     private javax.swing.JTextArea notesArea;
     private javax.swing.JTextArea notesDisplay;
     private javax.swing.JTextArea notesDisplay1;
     private javax.swing.JTextArea notesDisplay2;
     private javax.swing.JTextArea notesDisplay3;
     private javax.swing.JTextArea notesDisplay4;
+    private javax.swing.JToggleButton resetCFBossButton;
+    private javax.swing.JDialog resetCustomFieldsDialog;
     private javax.swing.JToggleButton saveCFButton;
     private javax.swing.JButton saveListButton;
     private javax.swing.JButton select2EventButton;
@@ -4936,5 +5014,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JPanel vomitDetailsTab2;
     private javax.swing.JPanel vomitDetailsTab3;
     private javax.swing.JPanel vomitDetailsTab4;
+    private javax.swing.JToggleButton yesButton;
     // End of variables declaration//GEN-END:variables
 }
