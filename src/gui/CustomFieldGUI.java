@@ -270,13 +270,16 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         System.out.println("Slider Successfully Added");
     }
     
-    public void addMultiCombo(String aFieldName, List<String> aMultiList){
+    public void addMultiCombo(String aFieldName, List<String> aMultiList, 
+            String[] aMultiArray){
         
-        DefaultComboBoxModel comboModel = new javax.swing.DefaultComboBoxModel<>
-        (aMultiList.toArray(new String[0]));
+        //DefaultComboBoxModel comboModel = new javax.swing.DefaultComboBoxModel<>
+        //(aMultiList.toArray(new String[0]));
         javax.swing.JLabel customLabel;
         javax.swing.JComboBox customMulti;
         customMulti = new javax.swing.JComboBox<>();
+        customMulti.setModel(new javax.swing.DefaultComboBoxModel<>
+        (aMultiArray));
         
         
         customLabel = new javax.swing.JLabel(aFieldName);
@@ -294,13 +297,14 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         this.cFPanel.add(customLabel);
         this.cFPanel.add(customLabelSPACE);
         this.cFPanel.add(customMulti);
-        customMulti.setModel(comboModel);
+        
         this.cFPanel.add(customLabelSPACE2);
         this.cFPanel.add(customLabelSPACE3);
         //this.customLabels.add(customLabel);
         this.customMCLabels.add(customLabel);
         this.customInputs.add(customMulti);
         this.customMultiCombo.add(customMulti);
+        
         
         
         revalidate();
@@ -317,21 +321,7 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         //}
         
         aCustomFieldList.forEach((eachCF) -> {
-            if ("textbox".equals(eachCF.getFieldType().toString())){
-                addTextField(eachCF.getFieldName());
-        }
-            else if ("yesNo".equals(eachCF.getFieldType().toString())){
-                addYesNoField(eachCF.getFieldName());
-        }
-            else if ("multiChoice".equals(eachCF.getFieldType().toString())){
-                addMultiCombo(eachCF.getFieldName(), eachCF.getMultiList());
-        }
-            else if ("number".equals(eachCF.getFieldType().toString())){
-                addNumberField(eachCF.getFieldName());  
-        }
-            else {
-                addSlider(eachCF.getFieldName());
-        }
+            generateCustomField(eachCF);
         }
             );
     }
@@ -349,7 +339,8 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
                 addYesNoField(aCustomField.getFieldName());
         }
             else if ("multiChoice".equals(aCustomField.getFieldType().toString())){
-                addMultiCombo(aCustomField.getFieldName(), aCustomField.getMultiList());
+                addMultiCombo(aCustomField.getFieldName(), aCustomField.getMultiList(),
+                        aCustomField.getMultiArray());
         }
             else if ("number".equals(aCustomField.getFieldType().toString())){
                 addNumberField(aCustomField.getFieldName());  

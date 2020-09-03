@@ -26,11 +26,14 @@ public class CustomField implements Serializable{
         slider   
     }
     
+   
+    
     public FieldType fieldType;
     
     String fieldName;
     
     List<String> multiList;
+    String multiChoice[]; 
     
     
     
@@ -43,7 +46,7 @@ public class CustomField implements Serializable{
         multiList = new ArrayList<>();
         multiList = aList;
         count = count++;
-        
+        multiChoice = aList.toArray(new String[0]);
         System.out.println("CustomField Created Successfully");
     }    
     
@@ -55,6 +58,7 @@ public class CustomField implements Serializable{
         System.out.println("CustomField Created Successfully");
     }    
     
+     
 //Getters
     
     public FieldType getFieldType() {
@@ -66,7 +70,11 @@ public class CustomField implements Serializable{
     }
    
     public List<String> getMultiList() {
-        return this.multiList;
+        return multiList;
+    }
+    
+    public String[] getMultiArray() {
+        return this.multiChoice;
     }
     
 //Setters

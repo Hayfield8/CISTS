@@ -2782,9 +2782,8 @@ public class GUI1 extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(daysLastedField)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(locationCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(hoursLastedField)))))
+                                            .addComponent(locationCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(hoursLastedField, javax.swing.GroupLayout.Alignment.LEADING))))
                                 .addGap(400, 400, 400)))
                         .addContainerGap())))
         );
@@ -2886,7 +2885,7 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGroup(addEventTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                         .addComponent(goToCustomInputButton)
                         .addGap(18, 18, 18)
                         .addComponent(createEvent)
@@ -3588,30 +3587,67 @@ public class GUI1 extends javax.swing.JFrame {
         EventDiet tempCF = this.selectedEvent.getCustomFields();
 
 
-
-        this.eatenCombo1.setSelectedItem(tempCF.getEatenBefore());
+        if (tempCF.getEatenBefore() == true){
+            this.eatenCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.eatenCombo1.setSelectedItem("No");
+        }
 
         this.eatenWhatDisplay1.setText(tempCF.getEatenWhat());
 
-        this.drunkCombo1.setSelectedItem(tempCF.getDrunkAlcohol());
+        if (tempCF.getDrunkAlcohol() == true){
+            this.drunkCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.drunkCombo1.setSelectedItem("No");
+        }
 
         this.drunkWhatDisplay1.setText(tempCF.getDrunkWhat());
 
         this.hungoverCombo1.setSelectedItem(tempCF.getHungover());
+        if (tempCF.getHungover() == true){
+            this.hungoverCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.hungoverCombo1.setSelectedItem("No");
+        }
 
         //populate condition details
 
         Condition tempCon = this.selectedEvent.getCondition();
 
-        this.anxiousCombo1.setSelectedItem(tempCon.getAnxious());
+        if (tempCon.getAnxious() == true){
+            this.anxiousCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.anxiousCombo1.setSelectedItem("No");
+        }
 
         this.moodCombo1.setSelectedItem(tempCon.getMood());
 
         this.areYouIllCombo1.setSelectedItem(tempCon.getAreYouIll());
+        if (tempCon.getAreYouIll() == true){
+            this.areYouIllCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.areYouIllCombo1.setSelectedItem("No");
+        }
 
         this.illWithWhatDisplay1.setText(tempCon.getIllWithWhat());
 
-        this.sleptCombo1.setSelectedItem(tempCon.getSlept());
+        if (tempCon.getSlept() == true){
+            this.sleptCombo1.setSelectedItem("Yes");
+        }
+        
+        else {
+            this.sleptCombo1.setSelectedItem("No");
+        }
 
         this.hrsSleptDisplay1.setText(Integer.toString(tempCon.getHrsSlept()));
 
@@ -3903,6 +3939,7 @@ public class GUI1 extends javax.swing.JFrame {
         createCFDialog.setVisible(true);
         tempMultiOptions.clear();
         createCFDialog.setLocation(500, 500);
+        //tempMultiOptions.clear();
     }//GEN-LAST:event_addCFButtonActionPerformed
 
     private void fieldTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTypeComboActionPerformed
@@ -3927,10 +3964,11 @@ public class GUI1 extends javax.swing.JFrame {
         
             tempFieldName = newFieldNameField.getText();
         
-            tempCustomField = cISTSCoord.customFieldBoss.createCustomFieldMulti(tempMultiOptions, 
-                tempFieldType, tempFieldName);
+            tempCustomField = cISTSCoord.customFieldBoss.createCustomFieldMulti(
+                    tempMultiOptions, tempFieldType, tempFieldName);
             
             cFModel.addElement(tempCustomField);
+            
         }
         
         else {
@@ -4064,7 +4102,7 @@ public class GUI1 extends javax.swing.JFrame {
         //
 
         anxiousString = anxiousCombo.getSelectedItem().toString();
-        if ("yes".equals(anxiousString)){
+        if ("Yes".equals(anxiousString)){
             cISTSCoord.aAnxious = true;
         }
         else {
@@ -4075,7 +4113,7 @@ public class GUI1 extends javax.swing.JFrame {
             toString());
 
         areYouIllString = areYouIllCombo.getSelectedItem().toString();
-        if ("yes".equals(areYouIllString)){
+        if ("Yes".equals(areYouIllString)){
             cISTSCoord.aAreYouIll = true;
         }
         else {
@@ -4085,7 +4123,7 @@ public class GUI1 extends javax.swing.JFrame {
         cISTSCoord.aIllWithWhat = illWithWhatField.getText();
 
         sleptString = sleptCombo.getSelectedItem().toString();
-        if ("yes".equals(sleptString)){
+        if ("Yes".equals(sleptString)){
             cISTSCoord.aSlept = true;
         }
         else {
@@ -4139,7 +4177,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         eatenString = eatenCombo.getSelectedItem().toString();
-        if ("yes".equals(eatenString)){
+        if ("Yes".equals(eatenString)){
             cISTSCoord.aEatenBefore = true;
         }
         else {
@@ -4149,7 +4187,7 @@ public class GUI1 extends javax.swing.JFrame {
         cISTSCoord.aEatenWhat = eatenWhatField.getText();
 
         drunkString = drunkCombo.getSelectedItem().toString();
-        if ("yes".equals(drunkString)){
+        if ("Yes".equals(drunkString)){
             cISTSCoord.aDrunkAlcohol = true;
         }
         else {
@@ -4159,7 +4197,7 @@ public class GUI1 extends javax.swing.JFrame {
         cISTSCoord.aDrunkWhat = drunkWhatField.getText();
 
         hungoverString = hungoverCombo.getSelectedItem().toString();
-        if ("yes".equals(hungoverString)){
+        if ("Yes".equals(hungoverString)){
             cISTSCoord.aHungover = true;
         }
         else {
@@ -4291,7 +4329,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         areYouIllString = areYouIllCombo1.getSelectedItem().toString();
-        if ("yes".equals(areYouIllString)){
+        if ("Yes".equals(areYouIllString)){
             selectedEvent.setConditionAreYouIll(true);
         }
         else {
@@ -4327,7 +4365,7 @@ public class GUI1 extends javax.swing.JFrame {
     private void editAnxiousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxiousButtonActionPerformed
 
         anxiousString = anxiousCombo1.getSelectedItem().toString();
-        if ("yes".equals(anxiousString)){
+        if ("Yes".equals(anxiousString)){
             selectedEvent.setConditionAnxious(true);
         }
         else {
@@ -4455,7 +4493,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         hungoverString = hungoverCombo1.getSelectedItem().toString();
-        if ("yes".equals(hungoverString)){
+        if ("Yes".equals(hungoverString)){
             selectedEvent.setEDHungover(true);
         }
         else {
@@ -4503,7 +4541,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         eatenString = eatenCombo1.getSelectedItem().toString();
-        if ("yes".equals(eatenString)){
+        if ("Yes".equals(eatenString)){
             selectedEvent.setEDEatenBefore(true);
         }
         else {
@@ -4523,7 +4561,7 @@ public class GUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         drunkString = drunkCombo1.getSelectedItem().toString();
-        if ("yes".equals(drunkString)){
+        if ("Yes".equals(drunkString)){
             selectedEvent.setEDDrunkAlcohol(true);
         }
         else {
@@ -4545,7 +4583,7 @@ public class GUI1 extends javax.swing.JFrame {
 
     private void editSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSleptButtonActionPerformed
         sleptString = sleptCombo1.getSelectedItem().toString();
-        if ("yes".equals(sleptString)){
+        if ("Yes".equals(sleptString)){
             selectedEvent.setConditionSlept(true);
         }
         else {
