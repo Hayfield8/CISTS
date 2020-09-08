@@ -4,24 +4,13 @@ import java.io.Serializable;
 
 /**
  *
- * Vomit objects represents details about the user's vomiting during the event.
+ * EventDiet objects represents details about the user's dietary details during the event.
  *
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 20-05-2020
  * @version 1.0
  */
 public class EventDiet implements Serializable {
-    
-    
-    /**
-     * Number of times the user vomited during the event.
-     */
-    int noOfVomit = 0;
-    
-    /**
-     * Whether the vomiting was violent.
-     */
-    boolean violent = false;
     
     /**
      * Whether the user had eaten before the event began.
@@ -49,11 +38,8 @@ public class EventDiet implements Serializable {
     boolean hungover = false;
     
     /**
-     * Initialises a new instance of a Vomit class with the given details.
+     * Initialises a new instance of a EventDiet class with the given details.
      * 
-     * @param aVomited whether the user vomited
-     * @param aNoOfVomit number of times user vomited
-     * @param aViolent whether vomiting was violent
      * @param aEatenBefore whether the user had eaten
      * @param aEatenWhat what the user had eaten
      * @param aDrunkAlcohol whether the user drunk alcohol

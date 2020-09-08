@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Event objects represent a single CVS episode, each identifiable by date.
+ * Event objects represent a single CISTS episode, each identifiable by date.
  *
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 10-05-2020
  * @version 1.0
  */
 public class Event implements Serializable {
@@ -51,7 +51,14 @@ public class Event implements Serializable {
      */
     int daysLasted = 0;
     
+    /**
+     * The overall intensity of the event, 1-10.
+    */
     int overallIntensity = 0;
+    
+    /**
+     * The anxiety level during the event, 1-10.
+     */
     int anxietyLevel = 0;
            
     
@@ -66,10 +73,15 @@ public class Event implements Serializable {
     String notes = "";
     
     /**
-     * Link to vomit object.
-     * @see Vomit
+     * Link to eventDiet object.
+     * @see EventDiet
      */
     EventDiet eventDiet;
+    
+    /**
+     * Link to eventCustomFields object.
+     * @see EventCustomFields
+     */
     EventCustomFields eventCF;
    
     
@@ -86,8 +98,8 @@ public class Event implements Serializable {
     
     /**
      * 
-     * Initialises a new instance of a CvsEvent class with the given details and
-     * the given Vomit and Condition objects.
+     * Initialises a new instance of a Event class with the given details and
+     * the given EventDiet, EventCustomFields and Condition objects.
      * 
      * @param aEventBeginTime the event begin time
      * @param aLocation the location the event began
@@ -96,7 +108,9 @@ public class Event implements Serializable {
      * @param aNotes notes regarding the event
      * @param aCustomFields vomit object
      * @param aDaysLasted days the event lasted
-     * @param aEventCF
+     * @param aEventCF custom information created by user
+     * @param aIntensity intensity of event 1-10
+     * @param aAnxietyLevel anxiety level during event 1-10
      */
     
     public Event (EventBeginTime aEventBeginTime, Location aLocation, int 
@@ -161,22 +175,34 @@ public class Event implements Serializable {
         return this.notes;
     }
     
+    /**
+     * Returns the overallIntensity associated with this event.
+     * @return overallIntensity the overall intensity of this event 1-10.
+     */
     public int getOverallIntensity(){
         return this.overallIntensity;
     }
     
+    /**
+     * Returns the anxietyLevel associated with this event.
+     * @return anxietyLevel the level of anxiety during this event 1-10.
+     */
     public int getAnxietyLevel(){
         return this.anxietyLevel;
     }
     
     /**
-     * Returns the vomit object linked to this event.
-     * @return vomit
+     * Returns the eventDiet object linked to this event.
+     * @return eventDiet the diet information for this event.
      */
     public EventDiet getCustomFields(){
         return this.eventDiet;
     }
     
+    /**
+     * Returns the eventCustomField object linked to this event.
+     * @return eventCF the custom information for this event.
+     */
     public EventCustomFields getECF(){
         return this.eventCF;
     }
@@ -247,10 +273,18 @@ public class Event implements Serializable {
         this.notes = aNotes;
     }
     
+    /**
+     * Sets the overallIntensity of the event with the number provided.
+     * @param aIntensity the overall intensity of the event 1-10.
+     */
     public void setOverallIntensity(int aIntensity){
         this.overallIntensity = aIntensity;
     }
     
+    /**
+     * Sets the anxietyLevel of the event with the number provided.
+     * @param aAnxietyLevel the anxiety level at the time of event 1-10.
+     */
     public void setAnxietyLevel(int aAnxietyLevel){
         this.anxietyLevel = aAnxietyLevel;
     }
@@ -258,11 +292,11 @@ public class Event implements Serializable {
     
     
     
-//vomit setters
+//EventDiet setters
     
     
     /**
-     * Sets whether the user has eaten before the event began in the linked Vomit object
+     * Sets whether the user has eaten before the event began in the linked EventDiet object
      * with the answer provided.
      * @param aEatenBefore whether they had eaten before the event
      */
@@ -271,7 +305,7 @@ public class Event implements Serializable {
     }
     
     /**
-     * Sets what the user had eaten before the event in the linked Vomit object with
+     * Sets what the user had eaten before the event in the linked EventDiet object with
      * the string provided.
      * @param aEatenWhat what was eaten before the event began
      */
@@ -280,7 +314,7 @@ public class Event implements Serializable {
     }
     
     /**
-     * Sets whether the user had drunk alcohol before the event in the linked Vomit object
+     * Sets whether the user had drunk alcohol before the event in the linked EventDiet object
      * with the answer provided.
      * @param aDrunkAlcohol whether alcohol was drunk before the event or not
      */
@@ -289,7 +323,7 @@ public class Event implements Serializable {
     }
     
     /**
-     * Sets what alcohol the user had drunk before the event in the linked Vomit object with
+     * Sets what alcohol the user had drunk before the event in the linked EventDiet object with
      * with the string provided.
      * @param aDrunkWhat what the user drunk before the event 
      */
@@ -299,7 +333,7 @@ public class Event implements Serializable {
     
     /**
      * Sets whether the user was hung-over or not when the event began in the linked
-     * Vomit object with the answer provided.
+     * EventDiet object with the answer provided.
      * @param aHungover whether the user was hung-over during the event
      */
     public void setEDHungover(boolean aHungover){
@@ -386,8 +420,8 @@ public class Event implements Serializable {
     }
     
     /**
-     * Returns a string of the date and time this object was created as 
-     * representation of this object. Utilises the dateToString method.
+     * Returns a string of the date and time this object was created and the intensity
+     * as a representation of this object. Utilises the dateToString method.
      * @return strDate
      */
     @Override

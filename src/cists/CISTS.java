@@ -1,11 +1,7 @@
 package cists;
 
-import static cists.Condition.Mood.*;
-import static cists.Event.EventBeginTime.*;
-import static cists.Event.Location.*;
 import gui.GUI1;
 import java.io.Serializable;
-import java.util.*;
 
 /**
  *
@@ -13,7 +9,7 @@ import java.util.*;
  * This program allows the user to record information about their chronic illness
  * symptomatic events in order to compare and contrast in the hope to find triggers.
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 10-05-2020
  * @version 1.0
  * 
  */

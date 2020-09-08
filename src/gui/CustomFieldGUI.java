@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import cists.CustomField;
@@ -10,12 +5,10 @@ import cists.CustomFieldBoss;
 import cists.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -23,33 +16,88 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 /**
- *
+ * GUI to display the custom fields.
+ * 
  * @author m_hay
+ * @since 20-06-2020
+ * @version 1.0
+ * 
  */
 public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener {
  
+    /**
+     * new JPanel.
+     */
     JPanel cFPanel;
+    
+    /**
+     * variable to reference the EventCustomField object.
+     */
     EventCustomFields tempEventCF;
+    
+    /**
+     * whether the GUI components have been created.
+     */
     public Boolean customFieldsCreated = false;
     
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customTFLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customYNLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customMCLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customSLDLabels;
     
+    /**
+     * list of Swing components.
+     */
     public List<Object> customInputs;
+    
+    /**
+     * list of JTextFields.
+     */
     public List<javax.swing.JTextField> customTextFields;
+    
+    /**
+     * list of JComboBoxes.
+     */
     public List<javax.swing.JComboBox> customYesNos;
+    
+    /**
+     * list of JComboBoxes.
+     */
     public List<javax.swing.JComboBox> customMultiCombo;
+    
+    /**
+     * list of JSliders.
+     */
     public List<javax.swing.JSlider> customSliders;
     
-    
-    //public Box cFBox = Box.createVerticalBox(); 
-   
+    /**
+     * Creates a new CustomFieldGUI using the customFieldBoss, adds a button
+     * with a listener and calls the generateCustomFields() method to generate
+     * the form.
+     * @param aCFBoss CustomFieldBoss object.
+     */
     public CustomFieldGUI(CustomFieldBoss aCFBoss){
         super("Custom Fields Input Form");
-        //setLayout(new BorderLayout());
         this.cFPanel = new JPanel();
         this.cFPanel.setLayout(new BoxLayout(this.cFPanel, BoxLayout.Y_AXIS));
         add(cFPanel, BorderLayout.CENTER);
@@ -77,8 +125,8 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
     
     /**
      * action performed method for creation of ECF object.
+     * @param evt
      */
-
     public void actionPerformed(ActionEvent evt){
          List<String> customFieldNames; 
          List<String> customFieldInputs;
@@ -127,7 +175,7 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
     }
     
     /**
-     * methods to add input fields to the gui
+     * method to add text input fields to the GUI.
     */
     public void addTextField(String aFieldName){
         
@@ -160,12 +208,13 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         
         
         this.revalidate();
-        //this.customFieldsInputDialog.repaint();
-        //this.customFieldPanel.updateUI();
         
         System.out.println("TextField Successfully Added");
     }
     
+    /**
+     * method to add Yes/No input fields to the GUI.
+    */
     public void addYesNoField(String aFieldName){
         
         javax.swing.JLabel customLabel;
@@ -189,7 +238,6 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         this.cFPanel.add(customLabelSPACE2);
         this.cFPanel.add(customLabelSPACE3);
         
-        //this.customLabels.add(customLabel);
         this.customYNLabels.add(customLabel);
         this.customInputs.add(customCombo);
         this.customYesNos.add(customCombo);
@@ -200,6 +248,9 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         System.out.println("ComboBox Successfully Added");
     }
     
+    /**
+     * method to add number input fields to the GUI.
+    */
      public void addNumberField(String aFieldName){
         
         javax.swing.JLabel customLabel;
@@ -224,7 +275,6 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         this.cFPanel.add(customLabelSPACE2);
         this.cFPanel.add(customLabelSPACE3);
         
-        //this.customLabels.add(customLabel);
         this.customTFLabels.add(customLabel);
         this.customInputs.add(customField);
         this.customTextFields.add(customField);
@@ -237,6 +287,9 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         System.out.println("TextNumberField Successfully Added");
     }
     
+     /**
+     * method to add slider input fields to the GUI.
+    */
      public void addSlider(String aFieldName){
         
         javax.swing.JLabel customLabel;
@@ -270,11 +323,12 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         System.out.println("Slider Successfully Added");
     }
     
+     /**
+     * method to add multi-choice combo input fields to the GUI.
+    */
     public void addMultiCombo(String aFieldName, List<String> aMultiList, 
             String[] aMultiArray){
         
-        //DefaultComboBoxModel comboModel = new javax.swing.DefaultComboBoxModel<>
-        //(aMultiList.toArray(new String[0]));
         javax.swing.JLabel customLabel;
         javax.swing.JComboBox customMulti;
         customMulti = new javax.swing.JComboBox<>();
@@ -300,7 +354,6 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         
         this.cFPanel.add(customLabelSPACE2);
         this.cFPanel.add(customLabelSPACE3);
-        //this.customLabels.add(customLabel);
         this.customMCLabels.add(customLabel);
         this.customInputs.add(customMulti);
         this.customMultiCombo.add(customMulti);
@@ -313,25 +366,24 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
         System.out.println("MultiComboBox Successfully Added");
     } 
     
+    /**
+     * method that generates the custom fields from the list of customField objects.
+     * @param aCustomFieldList 
+     */
     public void generateCustomFields(List<CustomField> aCustomFieldList){
-        
-        //if (this.cFBox != null){
-         //   cFBox = Box.createVerticalBox();
-         //   this.customFieldPanel.add(cFBox);
-        //}
-        
+       
         aCustomFieldList.forEach((eachCF) -> {
             generateCustomField(eachCF);
         }
             );
     }
     
+    /**
+     * method that generates a custom field from the customField object.
+     * @param aCustomField 
+     */
     public void generateCustomField(CustomField aCustomField){
         
-        //if (this.cFBox != null){
-          //  cFBox = Box.createVerticalBox();
-            //this.customFieldPanel.add(cFBox);
-        //}
             if ("textbox".equals(aCustomField.getFieldType().toString())){
                 addTextField(aCustomField.getFieldName());
         }
@@ -351,10 +403,18 @@ public class CustomFieldGUI extends javax.swing.JFrame implements ActionListener
 
     }
     
+    /**
+     * returns whether the custom fields have been created.
+     * @return Boolean customFieldsCreated.
+     */
     public Boolean getCustomFieldsCreated(){
         return this.customFieldsCreated;
     }
     
+    /**
+     * sets whether a the custom fields have been created.
+     * @param a Boolean.
+     */
     public void setCustomFieldsCreated(Boolean a){
         this.customFieldsCreated = a;
     }

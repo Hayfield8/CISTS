@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cists;
 
-import gui.GUI1;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author m_hay
+ * CustomFieldBoss objects will manage all the CustomField objects and contains 
+ * methods to create customField objects.
+ *
+ * @author MJ Hayfield
+ * @since 11-06-2020
+ * @version 1.0
  */
 public class CustomFieldBoss implements Serializable{
     
@@ -21,12 +20,26 @@ public class CustomFieldBoss implements Serializable{
      */
     public List<CustomField> customFieldList;
     
+    /**
+     * List containing the multiple choice option for the creation of a multiple
+     * choice field.
+     */
     List<String> multiList;
     
+    /**
+     * Variable to be used when creating a new CustomField object. 
+     */
     CustomField tempCustomField; 
     
+    /**
+     * Count of the number of fields created.
+     */
     static int fieldCount = 0;
     
+    /**
+     * Initialises a new instance of the CustomFieldBoss class, called from the
+     * loadCustomFieldBoss() method if no save file can be found.
+     */
     public CustomFieldBoss(){
         
         customFieldList = new ArrayList<>();
@@ -34,6 +47,14 @@ public class CustomFieldBoss implements Serializable{
         
     } 
     
+    /**
+     * Creates a new multiple choice type of CustomField object with user entered
+     * information, calls constructor for CustomField.
+     * @param aMultiList list of Strings for the multiple choice options
+     * @param aFieldType Enum for the type of field
+     * @param aFieldName String, name of the field
+     * @return CustomField object
+     */
     public CustomField createCustomFieldMulti(List<String> aMultiList, CustomField.FieldType 
             aFieldType, String aFieldName){
         
@@ -44,6 +65,13 @@ public class CustomFieldBoss implements Serializable{
         return tempCustomField;
     }
     
+    /**
+     * Creates a new CustomField object with user entered information, 
+     * calls constructor for CustomField.
+     * @param aFieldType Enum for the type of field
+     * @param aFieldName String, name of the field
+     * @return CustomField object
+     */
     public CustomField createCustomField(CustomField.FieldType 
             aFieldType, String aFieldName){
         
@@ -54,14 +82,26 @@ public class CustomFieldBoss implements Serializable{
         return tempCustomField;
     }
     
+    /**
+     * Getter for the list of custom field objects.
+     * @return ArrayList of CustomField objects.
+     */
     public List<CustomField> getCustomFieldList(){
         return this.customFieldList;
     }
     
+    /**
+     * Getter for the custom field count.
+     * @return int representing the number of created custom fields.
+     */
     public int getFieldCount(){
         return CustomFieldBoss.fieldCount;
     }
     
+    /**
+     * Method to print out a list of each custom field represented by their name
+     * and type.
+     */
     public void displayCustomFields(){
         List<CustomField> aCustomFieldList;
         aCustomFieldList = this.getCustomFieldList();

@@ -1,55 +1,88 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
-import cists.CustomField;
-import cists.CustomFieldBoss;
 import cists.*;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Box;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 /**
- *
+ * GUI to display the custom fields.
+ * 
  * @author m_hay
+ * @since 20-06-2020
+ * @version 1.0
  */
 public class CustomFieldGUIView extends javax.swing.JFrame {
- 
+    /**
+     * new JPanel.
+     */
     JPanel cFPanel;
+    
+    /**
+     * variable to reference the EventCustomField object.
+     */
     EventCustomFields tempEventCF;
     
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customTFLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customYNLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customMCLabels;
+    
+    /**
+     * list of JLabels.
+     */
     public List<javax.swing.JLabel> customSLDLabels;
     
+    /**
+     * list of Swing components.
+     */
     public List<Object> customInputs;
+    
+    /**
+     * list of JTextFields.
+     */
     public List<javax.swing.JTextField> customTextFields;
+    
+    /**
+     * list of JComboBoxes.
+     */
     public List<javax.swing.JComboBox> customYesNos;
+    
+    /**
+     * list of JComboBoxes.
+     */
     public List<javax.swing.JComboBox> customMultiCombo;
+    
+    /**
+     * list of JSliders.
+     */
     public List<javax.swing.JSlider> customSliders;
     
-    
-    //public Box cFBox = Box.createVerticalBox(); 
-   
+    /**
+     * Creates a new CustomFieldGUIView using the customFieldBoss, and calls the
+     * displayEventCF() method to generate the form.
+     * @param aEventCF eventCustomFields object.
+     */
     public CustomFieldGUIView(EventCustomFields aEventCF){
         super("Custom Fields Input Form");
-        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.cFPanel = new JPanel();
         this.cFPanel.setLayout(new BoxLayout(this.cFPanel, BoxLayout.Y_AXIS));
         add(cFPanel);
@@ -76,58 +109,10 @@ public class CustomFieldGUIView extends javax.swing.JFrame {
     }
     
     /**
-     * action performed method for creation of ECF object.
+     * Method that iterates through the two eventCF lists, adding the names to 
+     * a JLabel and a fills a JTextField with the details. 
+     * @param aEventCF 
      */
-
-   // public void actionPerformed(ActionEvent evt){
-        // List<String> customFieldNames; 
-        // List<String> customFieldInputs;
-         
-        // customFieldNames = new ArrayList<>();
-        // customFieldInputs = new ArrayList<>();
-         
-        // for (JTextField eachCFInput : customTextFields){
-        //    customFieldInputs.add(eachCFInput.getText());  
-        // }
-         
-        // for (JComboBox eachCFInput : customYesNos){
-        //    customFieldInputs.add(eachCFInput.getSelectedItem().toString());  
-        // }
-         
-        // for (JComboBox eachCFInput : customMultiCombo){
-        //    customFieldInputs.add(eachCFInput.getSelectedItem().toString());  
-        // }
-         
-        // for (JSlider eachCFInput : customSliders){
-        //    customFieldInputs.add(Integer.toString(eachCFInput.getValue()));  
-        // }
-        // 
-        // for (JLabel eachCFLabel : customTFLabels){
-        //    customFieldNames.add(eachCFLabel.getText());  
-        // }
-         
-        // for (JLabel eachCFLabel : customYNLabels){
-        //    customFieldNames.add(eachCFLabel.getText());  
-        // }
-         
-        // for (JLabel eachCFLabel : customMCLabels){
-        //    customFieldNames.add(eachCFLabel.getText());  
-        // }
-         
-        // for (JLabel eachCFLabel : customSLDLabels){
-        //    customFieldNames.add(eachCFLabel.getText());  
-        // }
-         
-        // tempEventCF = new EventCustomFields(customFieldNames ,customFieldInputs);
-         
-        // JOptionPane.showMessageDialog(null, "Custom Inputs Saved Successully.");
-    //}
-    
-    /**
-     * methods to add input fields to the gui
-    */
-    
-    
     public void displayEventCF(EventCustomFields aEventCF){
         
         for (int i = 0 ; i != aEventCF.customFieldNames.size() ; i++){

@@ -3865,7 +3865,7 @@
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="saveCFButton" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cFListButton" min="-2" max="-2" attributes="0"/>
                                       <Component id="addCFButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3928,7 +3928,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cFListButton" min="-2" max="-2" attributes="0"/>
                               <Component id="resetCFBossButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="720" max="32767" attributes="0"/>
@@ -4623,12 +4623,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveCFButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+                <Component class="javax.swing.JToggleButton" name="cFListButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View Custom Field List"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cFListButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="resetCFBossButton">

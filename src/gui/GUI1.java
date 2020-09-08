@@ -1,17 +1,12 @@
 package gui;
 
-import static cists.Condition.Mood.happy;
 import static cists.CustomField.FieldType;
-import cists.CISTS;
 import cists.Event;
-import static cists.Event.EventBeginTime.morning;
 import cists.Event.Location.*;
-import static cists.Event.Location.home;
 import cists.CISTSCoord;
 import cists.Condition;
 import java.util.*;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 import cists.Condition.Mood;
 import cists.CustomField;
 import cists.EventDiet;
@@ -23,10 +18,10 @@ import javax.swing.DefaultComboBoxModel;
 
 
 /**
- * GUI for the CVS Tracker system. 
+ * GUI for CISTS. 
  * 
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 20-06-2020
  * @version 1.0
  */
 public class GUI1 extends javax.swing.JFrame {
@@ -107,28 +102,61 @@ public class GUI1 extends javax.swing.JFrame {
      * List to hold the events created by the user.
      */
     List<Event> events;
-    List<CustomField> customFields;
-    public List<javax.swing.JLabel> customLabels; 
-    public List<Object> customInputs;
-    public List<String> tempMultiOptions;
-    
-    int customCount = 0;
-    public Box cFBox = Box.createVerticalBox(); 
-    CustomFieldGUI customFieldGUI;
-    CustomFieldGUIView customFieldGUIView;
-    
-    
     
     /**
-     * List model used to populate the jList.
+     * List to hold the customFields created by the user.
+     */
+    List<CustomField> customFields;
+    
+    /**
+     * List to hold the custom labels generated form the customField objects.
+     */
+    public List<javax.swing.JLabel> customLabels; 
+    
+    /**
+     * List to hold the custom input components generated from the customField
+     * objects.
+     */
+    public List<Object> customInputs;
+    
+    /**
+     * List to hold the multiple choice options added by the user.
+     */
+    public List<String> tempMultiOptions;
+    
+    /**
+     * count of custom generated fields.
+     */
+    int customCount = 0;
+    
+    /**
+     * box to hold the generated fields.
+     */
+    public Box cFBox = Box.createVerticalBox(); 
+    
+    /**
+     * variable to reference the customFieldGUI window.
+     */
+    CustomFieldGUI customFieldGUI;
+    
+    /**
+     * variable to reference the customFieldGUIView window.
+     */
+    CustomFieldGUIView customFieldGUIView;
+    
+    /**
+     * List model used to populate the events jList.
      */
     DefaultListModel model;
     
+    /**
+     * List model used to populate the customFields JList.
+     */
     DefaultListModel cFModel;
 
     /**
      * Creates new form GUI loads and displays the events list, loads the new
-     * event form and sets the list model to populate the jList.
+     * event form and sets the list models to populate the jLists.
      */
     public GUI1() {
         
@@ -558,7 +586,7 @@ public class GUI1 extends javax.swing.JFrame {
         select2EventButton = new javax.swing.JButton();
         addCFButton = new javax.swing.JButton();
         saveCFButton = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        cFListButton = new javax.swing.JToggleButton();
         resetCFBossButton = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
@@ -3325,10 +3353,10 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("View Custom Field List");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        cFListButton.setText("View Custom Field List");
+        cFListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                cFListButtonActionPerformed(evt);
             }
         });
 
@@ -3358,7 +3386,7 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveCFButton)
-                            .addComponent(jToggleButton1)
+                            .addComponent(cFListButton)
                             .addComponent(addCFButton)))
                     .addComponent(listLabel)
                     .addGroup(eventListTabLayout.createSequentialGroup()
@@ -3404,7 +3432,7 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(select2EventButton))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1)
+                    .addComponent(cFListButton)
                     .addComponent(resetCFBossButton))
                 .addContainerGap(720, Short.MAX_VALUE))
         );
@@ -3753,6 +3781,11 @@ public class GUI1 extends javax.swing.JFrame {
         eventDetailsDialog.setVisible(true);
     }//GEN-LAST:event_selectEventButtonActionPerformed
 
+    /**
+     * Set the selectedEvent to the currently selected item on the list whenever
+     * a change of selection is made.
+     * @param evt 
+     */
     private void eventList3ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_eventList3ValueChanged
          this.selectedEvent1 = (Event) eventList3.getSelectedValue();
     }//GEN-LAST:event_eventList3ValueChanged
@@ -3784,7 +3817,11 @@ public class GUI1 extends javax.swing.JFrame {
     private void hrsSleptDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hrsSleptDisplay3ActionPerformed
-
+    /**
+     * Displays the dual event details window and populates it with the details of the 
+     * selected events. 
+     * @param evt 
+     */
     private void select2EventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select2EventButtonActionPerformed
       
       //Populate left display.
@@ -3933,7 +3970,10 @@ public class GUI1 extends javax.swing.JFrame {
             select2EventErrorDialog.setVisible(true);
         }
     }//GEN-LAST:event_select2EventButtonActionPerformed
-
+/**
+ * opens the create a custom field dialog.
+ * @param evt 
+ */
     private void addCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCFButtonActionPerformed
         createCFDialog.pack();
         createCFDialog.setVisible(true);
@@ -3949,7 +3989,10 @@ public class GUI1 extends javax.swing.JFrame {
     private void newFieldNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFieldNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newFieldNameFieldActionPerformed
-
+/**
+ * Creates a new custom field object from the user entered form data.
+ * @param evt 
+ */
     private void addNewCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewCFButtonActionPerformed
         
         CustomField tempCustomField;
@@ -3992,7 +4035,10 @@ public class GUI1 extends javax.swing.JFrame {
         infoStoredDialog.setLocation(500, 500);
         createCFDialog.dispose();
     }//GEN-LAST:event_addNewCFButtonActionPerformed
-
+/**
+ * adds a string onto the end of the multiple choice list.
+ * @param evt 
+ */
     private void addToMultiOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToMultiOptionsButtonActionPerformed
         tempMultiOptions.add(multiChoiceField.getText());
         
@@ -4016,9 +4062,9 @@ public class GUI1 extends javax.swing.JFrame {
 
     /**
      * Creates a new instance of the Event class and adds it to the event list
-     * if the user has created a Vomit and Condition object otherwise it prompts
+     * if the user has created a EventDiet, EventCustomFields and Condition object otherwise it prompts
      * the user to create them when they have clicked the button.
-     * @see CvsEvent
+     * @see Event
      * @param evt 
      */
     private void createEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventMouseClicked
@@ -4043,7 +4089,7 @@ public class GUI1 extends javax.swing.JFrame {
         cISTSCoord.aAnxietyLVL = anxietySlider.getValue();
 
         
-        if (customFieldGUI != null && cISTSCoord.vomitCreated == true && 
+        if (customFieldGUI != null && cISTSCoord.eventDietCreated == true && 
                 cISTSCoord.conditionCreated == true 
                 && customFieldGUI.customFieldsCreated == true)
         {
@@ -4058,7 +4104,7 @@ public class GUI1 extends javax.swing.JFrame {
             model.addElement(cISTSCoord.aEvent);
             
             cISTSCoord.setConditionCreated(false);
-            cISTSCoord.setVomitCreated(false);
+            cISTSCoord.setEventDietCreated(false);
             customFieldGUI.setCustomFieldsCreated(false);
 
             eventCreatedDialog.pack();
@@ -4168,9 +4214,9 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_eatenWhatFieldActionPerformed
 
     /**
-     * Creates a new instance of the vomit class when the user has clicked the 
+     * Creates a new instance of the EventDiet class when the user has clicked the 
      * button.
-     * @see Vomit
+     * @see EventDiet
      * @param evt
      */
     private void createEventDietButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventDietButtonMouseClicked
@@ -4208,13 +4254,16 @@ public class GUI1 extends javax.swing.JFrame {
             cISTSCoord.aEatenWhat,cISTSCoord.aDrunkAlcohol, cISTSCoord.aDrunkWhat,
             cISTSCoord.aHungover);
         
-        cISTSCoord.setVomitCreated(true);
+        cISTSCoord.setEventDietCreated(true);
 
         infoStoredDialog.pack();
         infoStoredDialog.setVisible(true);
         infoStoredDialog.setLocation(500, 500);
     }//GEN-LAST:event_createEventDietButtonMouseClicked
-
+/**
+ * opens the custom field input window.
+ * @param evt 
+ */
     private void goToCustomInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToCustomInputButtonActionPerformed
 
         customFieldGUI = new CustomFieldGUI(cISTSCoord.customFieldBoss);
@@ -4223,11 +4272,17 @@ public class GUI1 extends javax.swing.JFrame {
     private void createEventDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventDietButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createEventDietButtonActionPerformed
-
+/**
+ * opens the custom field view window.
+ * @param evt 
+ */
     private void ViewECFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButtonActionPerformed
         customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
     }//GEN-LAST:event_ViewECFButtonActionPerformed
-
+/**
+ * saves the customFieldBoss.
+ * @param evt 
+ */
     private void saveCFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCFButtonActionPerformed
         cISTSCoord.saveCustomFieldBoss();
         
@@ -4263,21 +4318,30 @@ public class GUI1 extends javax.swing.JFrame {
     private void beginTimeDisplay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginTimeDisplay3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_beginTimeDisplay3ActionPerformed
-
+/**
+ * opens the custom field view window.
+ * @param evt 
+ */   
     private void ViewECFButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton1ActionPerformed
         customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
     }//GEN-LAST:event_ViewECFButton1ActionPerformed
-
+/**
+ * opens the custom field view window.
+ * @param evt 
+ */
     private void ViewECFButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton2ActionPerformed
          customFieldGUIView = new CustomFieldGUIView(selectedEvent.getECF());
     }//GEN-LAST:event_ViewECFButton2ActionPerformed
-
+/**
+ * opens the custom field view window.
+ * @param evt 
+ */
     private void ViewECFButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewECFButton3ActionPerformed
          customFieldGUIView = new CustomFieldGUIView(selectedEvent1.getECF());
     }//GEN-LAST:event_ViewECFButton3ActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editMedicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMedicationButtonActionPerformed
@@ -4292,7 +4356,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editMedicationButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editHrsSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsSleptButtonActionPerformed
@@ -4307,7 +4371,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editHrsSleptButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editIllWithWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIllWithWhatButtonActionPerformed
@@ -4322,7 +4386,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editIllWithWhatButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editAreYouIllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAreYouIllButtonActionPerformed
@@ -4343,7 +4407,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editAreYouIllButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editMoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMoodButtonActionPerformed
@@ -4359,7 +4423,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editMoodButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editAnxiousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxiousButtonActionPerformed
@@ -4384,7 +4448,10 @@ public class GUI1 extends javax.swing.JFrame {
     private void hrsSleptDisplay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrsSleptDisplay1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hrsSleptDisplay1ActionPerformed
-
+/**
+     * Edits Event attribute. 
+     * @param evt 
+     */
     private void editAnxietyLVLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnxietyLVLButtonActionPerformed
         this.selectedEvent.setAnxietyLevel(anxietySliderDisplay4.getValue());
         
@@ -4392,7 +4459,10 @@ public class GUI1 extends javax.swing.JFrame {
         infoStoredDialog.setVisible(true);
         infoStoredDialog.setLocation(500, 500);
     }//GEN-LAST:event_editAnxietyLVLButtonActionPerformed
-
+/**
+     * Edits Event attribute. 
+     * @param evt 
+     */
     private void editIntensityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIntensityButtonActionPerformed
         this.selectedEvent.setOverallIntensity(intensitySliderDisplay4.getValue());
         
@@ -4402,7 +4472,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editIntensityButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editNotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNotesButtonActionPerformed
@@ -4417,7 +4487,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editNotesButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editDaysLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDaysLastedButtonActionPerformed
@@ -4432,7 +4502,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editDaysLastedButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editHrsLastedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHrsLastedButtonActionPerformed
@@ -4446,7 +4516,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editHrsLastedButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLocationButtonActionPerformed
@@ -4462,7 +4532,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editLocationButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editBeginTimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBeginTimeButtonActionPerformed
@@ -4486,7 +4556,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_daysLastedDisplay1ActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editHungoverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHungoverButtonActionPerformed
@@ -4506,7 +4576,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editHungoverButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editDrunkWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkWhatButtonActionPerformed
@@ -4520,7 +4590,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editDrunkWhatButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editEatenWhatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenWhatButtonActionPerformed
@@ -4534,7 +4604,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editEatenWhatButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editEatenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEatenButtonActionPerformed
@@ -4554,7 +4624,7 @@ public class GUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_editEatenButtonActionPerformed
 
     /**
-     * Edits CvsEvent attribute. 
+     * Edits Event attribute. 
      * @param evt 
      */
     private void editDrunkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrunkButtonActionPerformed
@@ -4580,7 +4650,10 @@ public class GUI1 extends javax.swing.JFrame {
     private void drunkCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drunkCombo1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_drunkCombo1ActionPerformed
-
+    /**
+     * Edits Event attribute. 
+     * @param evt 
+     */
     private void editSleptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSleptButtonActionPerformed
         sleptString = sleptCombo1.getSelectedItem().toString();
         if ("Yes".equals(sleptString)){
@@ -4594,13 +4667,20 @@ public class GUI1 extends javax.swing.JFrame {
         infoStoredDialog.setVisible(true);
         infoStoredDialog.setLocation(500, 500);
     }//GEN-LAST:event_editSleptButtonActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+/**
+ * opens the custom field list window.
+ * @param evt 
+ */
+    private void cFListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cFListButtonActionPerformed
         cFListDialog.pack();
         cFListDialog.setVisible(true);
         cFListDialog.setLocation(500, 500);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_cFListButtonActionPerformed
 
+    /**
+     * resets the custom field boss.
+     * @param evt 
+     */
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         cISTSCoord.resetCFBoss();
         customFields = cISTSCoord.customFieldBoss.getCustomFieldList();
@@ -4610,13 +4690,19 @@ public class GUI1 extends javax.swing.JFrame {
         cFBossResetDialog.setLocation(500, 500);
         resetCustomFieldsDialog.dispose();
     }//GEN-LAST:event_yesButtonActionPerformed
-
+/**
+ * opens a yes no dialog.
+ * @param evt 
+ */
     private void resetCFBossButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCFBossButtonActionPerformed
         resetCustomFieldsDialog.pack();
         resetCustomFieldsDialog.setVisible(true);
         resetCustomFieldsDialog.setLocation(500, 500);
     }//GEN-LAST:event_resetCFBossButtonActionPerformed
-
+/**
+ * closes the window.
+ * @param evt 
+ */
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         resetCustomFieldsDialog.dispose();
     }//GEN-LAST:event_noButtonActionPerformed
@@ -4694,6 +4780,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField beginTimeDisplay3;
     private javax.swing.JDialog cFBossResetDialog;
     private javax.swing.JDialog cFBossSavedDialog;
+    private javax.swing.JToggleButton cFListButton;
     private javax.swing.JDialog cFListDialog;
     private javax.swing.JPanel conditionDetailsTab;
     private javax.swing.JPanel conditionDetailsTab1;
@@ -5002,7 +5089,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel listLabel;
     private javax.swing.JDialog listSavedDialog;
     private javax.swing.JScrollPane listScrollPane4;

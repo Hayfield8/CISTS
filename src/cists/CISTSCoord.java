@@ -1,7 +1,6 @@
 
 package cists;
 
-import static cists.CISTS.gui1;
 import cists.Condition.Mood;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
@@ -12,13 +11,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import gui.GUI1;
 
 /**
- * Coordinating object for the CVS Tracker system.
+ * Coordinating object for CISTS.
  *
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 10-05-2020
  * @version 1.0
  */
 public class CISTSCoord {
@@ -34,61 +32,43 @@ public class CISTSCoord {
      */
     public CustomFieldBoss customFieldBoss;
     
-//variables to create vomit
-   
+//variables to create EventDiet
+       
     /**
-    * Variable used to create vomit object.
-    * @see Vomit
-    */ 
-    public boolean aVomited;
-   
-    /**
-    * Variable used to create the cf object.
-    * @see Vomit
-    */ 
-    public int aNoOfVomit;
-    
-    /**
-    * Variable used to create vomit object.
-    * @see Vomit
-    */ 
-    public boolean aViolent;
-    
-    /**
-    * Variable used to create vomit object.
-    * @see Vomit
+    * Variable used to create EventDiet object.
+    * @see EventDiet
     */ 
     public boolean aEatenBefore;
     
-    /**
-    * Variable used to create vomit object.
-    * @see Vomit
+   /**
+    * Variable used to create EventDiet object.
+    * @see EventDiet
     */ 
     public String aEatenWhat;
     
     /**
-    * Variable used to create vomit object.
-    * @see Vomit
+    * Variable used to create EventDiet object.
+    * @see EventDiet
     */ 
     public boolean aDrunkAlcohol;
     
     /**
-    * Variable used to create vomit object.
-    * @see Vomit
+    * Variable used to create EventDiet object.
+    * @see EventDiet
     */ 
     public String aDrunkWhat;
     
     /**
-    * Variable used to create vomit object.
-    * @see Vomit
+    * Variable used to create EventDiet object.
+    * @see EventDiet
     */ 
     public boolean aHungover;
    
-//vomit obj variable
+//EventDiet obj variable
     
        /**
-    * Vomit object used to create CvsEvent object.
-    * @see Vomit
+    * EventObject object used to create CvsEvent object.
+    * @see EventDiet
     */ 
     public EventDiet aCustomFields;
    
@@ -144,57 +124,71 @@ public class CISTSCoord {
     */ 
     public Condition aCondition;
    
-//variables to create cvsEvent
+//variables to create Event
    
     /**
-    * Variable used to create CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
     */ 
     public EventBeginTime aEventBeginTime;
     
     /**
-    * Variable used to create CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
     */ 
     public Location aLocation;
     
     /**
-    * Variable used to create CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
     */ 
     public int aHoursLasted;
     
     /**
-    * Variable used to create CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
     */ 
     public int aDaysLasted;
     
     /**
-    * Variable used to create CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
     */ 
     public String aNotes;
-   
-//cvsEvent obj variable;
     
     /**
-    * CvsEvent object.
-    * @see CvsEvent
+    * Variable used to create Event object.
+    * @see Event
+    */ 
+    public int aIntensity;
+    
+    /**
+    * Variable used to create Event object.
+    * @see Event
+    */ 
+    public int aAnxietyLVL;
+    
+//Event obj variable;
+    
+    /**
+    * Event object.
+    * @see Event
     */ 
     public Event aEvent;
     
+    /**
+    * Variable used to track if a Condition object has been created.
+    */ 
     public Boolean conditionCreated = false;
     
-    public Boolean vomitCreated = false;
-    
-    public int aIntensity;
-    
-    public int aAnxietyLVL;
-   
+    /**
+    * Variable used to track if a EventDiet object has been created.
+    */ 
+    public Boolean eventDietCreated = false;
    
     /**
-     * Creates a new instance of the CvsTrackerCoord class.
+     * Constructor. Creates a new instance of the CISTSCoord class. Initialises
+     * events array and loads the saved CustomFieldBoss object.
      */
     public CISTSCoord(){
         
@@ -204,7 +198,7 @@ public class CISTSCoord {
     }
     
     /**
-     * Returns a list populated with all the cvsEvent objects created by the user.
+     * Returns a list populated with all the Event objects created by the user.
      * @return events
      */
     public ArrayList<Event> getEvents(){
@@ -224,7 +218,8 @@ public class CISTSCoord {
     }
     
     /**
-     * Saves the list containing all the events created by the user.
+     * Saves the list containing all the events created by the user to a file
+     * named EventsData in the program folder.
      */
     public void saveEventsList(){
         
@@ -247,7 +242,7 @@ public class CISTSCoord {
     }
     
     /**
-     * Loads and adds saved events to the events list, used on startup.
+     * Loads EventData file and adds saved events to the events list, used on startup.
      */
     public void loadEventsList(){
         
@@ -272,7 +267,7 @@ public class CISTSCoord {
     }
     
     /**
-     * Saves the CustomFieldBoss. 
+     * Saves the CustomFieldBoss to a file named CFBossData in the program folder. 
      */
     public void saveCustomFieldBoss(){
         
@@ -292,6 +287,10 @@ public class CISTSCoord {
         }
     }
     
+    /**
+     * Loads CFBossData file if it exists if not it creates a new customFieldboss
+     * , used on startup.
+     */
     public CustomFieldBoss loadCustomFieldBoss(){
         
         try
@@ -316,32 +315,47 @@ public class CISTSCoord {
         return customFieldBoss;
     }          
 
+    
+    /**
+     * getter for the conditionCreated variable.
+     * @return Boolean
+     */
     public Boolean getConditionCreated(){
         return this.conditionCreated;
     }
     
     
-    
-    public Boolean getVomitCreated(){
-        return this.vomitCreated;
+    /**
+     * getter for the eventDietCreated variable.
+     * @return Boolean
+     */
+    public Boolean getEventDietCreated(){
+        return this.eventDietCreated;
     }
     
+    /**
+     * setter for the conditionCreated variable.
+     * @param a Boolean
+     */
     public void setConditionCreated(Boolean a){
         this.conditionCreated = a;
     }
     
     
-    
-    public void setVomitCreated(Boolean a){
-        this.vomitCreated = a;
+    /**
+     * setter for the eventDietCreated variable.
+     * @param a Boolean
+     */
+    public void setEventDietCreated(Boolean a){
+        this.eventDietCreated = a;
     }
     
+    /**
+     * method that replaces the current CFBoss with a new one.
+     */
     public void resetCFBoss(){
         this.customFieldBoss = new CustomFieldBoss();
     }
-    
-    
-    
     
 }
 
