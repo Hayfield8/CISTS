@@ -8,7 +8,7 @@ import java.io.Serializable;
  * the event.
  *
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 20-05-2020
  * @version 1.0
  */
 public class Condition implements Serializable {

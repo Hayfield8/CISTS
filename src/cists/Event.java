@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Event objects represent a single CVS episode, each identifiable by date.
+ * Event objects represent a single CISTS episode, each identifiable by date.
  *
  * @author MJ Hayfield
- * @since 20-07-2019
+ * @since 10-05-2020
  * @version 1.0
  */
 public class Event implements Serializable {
@@ -52,6 +52,17 @@ public class Event implements Serializable {
     int daysLasted = 0;
     
     /**
+     * The overall intensity of the event, 1-10.
+    */
+    int overallIntensity = 0;
+    
+    /**
+     * The anxiety level during the event, 1-10.
+     */
+    int anxietyLevel = 0;
+           
+    
+    /**
      * The date when the event started.
      */
     Date date;
@@ -62,10 +73,17 @@ public class Event implements Serializable {
     String notes = "";
     
     /**
-     * Link to vomit object.
-     * @see Vomit
+     * Link to eventDiet object.
+     * @see EventDiet
      */
-    CustomFields customFields;
+    EventDiet eventDiet;
+    
+    /**
+     * Link to eventCustomFields object.
+     * @see EventCustomFields
+     */
+    EventCustomFields eventCF;
+   
     
     /**
      * Link to condition object.
@@ -80,8 +98,8 @@ public class Event implements Serializable {
     
     /**
      * 
-     * Initialises a new instance of a CvsEvent class with the given details and
-     * the given Vomit and Condition objects.
+     * Initialises a new instance of a Event class with the given details and
+     * the given EventDiet, EventCustomFields and Condition objects.
      * 
      * @param aEventBeginTime the event begin time
      * @param aLocation the location the event began
@@ -90,11 +108,14 @@ public class Event implements Serializable {
      * @param aNotes notes regarding the event
      * @param aCustomFields vomit object
      * @param aDaysLasted days the event lasted
+     * @param aEventCF custom information created by user
+     * @param aIntensity intensity of event 1-10
+     * @param aAnxietyLevel anxiety level during event 1-10
      */
     
     public Event (EventBeginTime aEventBeginTime, Location aLocation, int 
-    aHoursLasted, int aDaysLasted, String aNotes, CustomFields aCustomFields,
-    Condition aCondition){
+    aHoursLasted, int aDaysLasted, String aNotes, EventDiet aCustomFields,
+    Condition aCondition, EventCustomFields aEventCF, int aIntensity, int aAnxietyLevel){
         
         eventBeginTime = aEventBeginTime;
         location = aLocation;
@@ -102,9 +123,12 @@ public class Event implements Serializable {
         daysLasted = aDaysLasted;
         date = new Date();
         notes = aNotes;
-        customFields = aCustomFields;
+        eventDiet = aCustomFields;
         condition = aCondition;
         count = count++;
+        overallIntensity = aIntensity;
+        anxietyLevel = aAnxietyLevel;
+        eventCF = aEventCF;
         
         System.out.println("CvsEvent created successfully");
     }
@@ -152,11 +176,35 @@ public class Event implements Serializable {
     }
     
     /**
-     * Returns the vomit object linked to this event.
-     * @return vomit
+     * Returns the overallIntensity associated with this event.
+     * @return overallIntensity the overall intensity of this event 1-10.
      */
-    public CustomFields getCustomFields(){
-        return this.customFields;
+    public int getOverallIntensity(){
+        return this.overallIntensity;
+    }
+    
+    /**
+     * Returns the anxietyLevel associated with this event.
+     * @return anxietyLevel the level of anxiety during this event 1-10.
+     */
+    public int getAnxietyLevel(){
+        return this.anxietyLevel;
+    }
+    
+    /**
+     * Returns the eventDiet object linked to this event.
+     * @return eventDiet the diet information for this event.
+     */
+    public EventDiet getCustomFields(){
+        return this.eventDiet;
+    }
+    
+    /**
+     * Returns the eventCustomField object linked to this event.
+     * @return eventCF the custom information for this event.
+     */
+    public EventCustomFields getECF(){
+        return this.eventCF;
     }
     
     /**
@@ -225,79 +273,71 @@ public class Event implements Serializable {
         this.notes = aNotes;
     }
     
-//vomit setters
-    
-    
     /**
-     * Sets whether the user vomited during the event in the linked Vomit object
-     * with the answer provided.
-     * @param aVomited whether the user vomited or not
+     * Sets the overallIntensity of the event with the number provided.
+     * @param aIntensity the overall intensity of the event 1-10.
      */
-     public void setVomitVomited(boolean aVomited){
-        this.customFields.setVomited(aVomited);
-    }
-    
-     /**
-      * Sets the number of times the user vomited during the event in the linked Vomit object
-      * with the number provided.
-      * @param aNoOfVomit the number of times the user vomited
-      */
-    public void setVomitNoOfVomit(int aNoOfVomit){
-        this.customFields.setNoOfVomit(aNoOfVomit);
+    public void setOverallIntensity(int aIntensity){
+        this.overallIntensity = aIntensity;
     }
     
     /**
-     * Sets whether the vomiting was violent or not in the linked Vomit object with 
-     * the answer provided.
-     * @param aViolent whether the vomited was violent or not
+     * Sets the anxietyLevel of the event with the number provided.
+     * @param aAnxietyLevel the anxiety level at the time of event 1-10.
      */
-    public void setVomitViolent(boolean aViolent){
-        this.customFields.setViolent(aViolent);
+    public void setAnxietyLevel(int aAnxietyLevel){
+        this.anxietyLevel = aAnxietyLevel;
     }
     
+    
+    
+    
+//EventDiet setters
+    
+    
     /**
-     * Sets whether the user has eaten before the event began in the linked Vomit object
+     * Sets whether the user has eaten before the event began in the linked EventDiet object
      * with the answer provided.
      * @param aEatenBefore whether they had eaten before the event
      */
-    public void setVomitEatenBefore(boolean aEatenBefore){
-        this.customFields.setEatenBefore(aEatenBefore);
+    public void setEDEatenBefore(boolean aEatenBefore){
+        this.eventDiet.setEatenBefore(aEatenBefore);
     }
     
     /**
-     * Sets what the user had eaten before the event in the linked Vomit object with
+     * Sets what the user had eaten before the event in the linked EventDiet object with
      * the string provided.
      * @param aEatenWhat what was eaten before the event began
      */
-    public void setVomitEatenWhat(String aEatenWhat){
-        this.customFields.setEatenWhat(aEatenWhat);
+    public void setEDEatenWhat(String aEatenWhat){
+        this.eventDiet.setEatenWhat(aEatenWhat);
     }
     
     /**
-     * Sets whether the user had drunk alcohol before the event in the linked Vomit object
+     * Sets whether the user had drunk alcohol before the event in the linked EventDiet object
      * with the answer provided.
      * @param aDrunkAlcohol whether alcohol was drunk before the event or not
      */
-    public void setVomitDrunkAlcohol(boolean aDrunkAlcohol){
-        this.customFields.setDrunkAlcohol(aDrunkAlcohol);
+    public void setEDDrunkAlcohol(boolean aDrunkAlcohol){
+        this.eventDiet.setDrunkAlcohol(aDrunkAlcohol);
     }
     
     /**
-     * Sets what alcohol the user had drunk before the event in the linked Vomit object with
+     * Sets what alcohol the user had drunk before the event in the linked EventDiet object with
      * with the string provided.
      * @param aDrunkWhat what the user drunk before the event 
      */
-    public void setVomitDrunkWhat(String aDrunkWhat){
-        this.customFields.setDrunkWhat(aDrunkWhat);
+    public void setEDDrunkWhat(String aDrunkWhat){
+        this.eventDiet.setDrunkWhat(aDrunkWhat);
     }
     
     /**
      * Sets whether the user was hung-over or not when the event began in the linked
-     * Vomit object with the answer provided.
+     * EventDiet object with the answer provided.
      * @param aHungover whether the user was hung-over during the event
      */
-    public void setVomitHungover(boolean aHungover){
-        this.customFields.setHungover(aHungover);
+    public void setEDHungover(boolean aHungover){
+        this.eventDiet.setHungover(aHungover);
     }
     
 // condition setters
@@ -380,13 +420,96 @@ public class Event implements Serializable {
     }
     
     /**
-     * Returns a string of the date and time this object was created as 
-     * representation of this object. Utilises the dateToString method.
+     * Returns a string of the date and time this object was created and the intensity
+     * as a representation of this object. Utilises the dateToString method.
      * @return strDate
      */
     @Override
     public String toString(){
-        return this.dateToString();
+        
+        String string = this.dateToString()+ " : " + 
+                Integer.toString(this.getOverallIntensity());
+        return string;
+        
+    }
+    
+    /**
+     * creates a string summary of the event object.
+     * @return String
+     */
+    public String stringSummary(){
+        
+        String eatenString;
+        if(this.eventDiet.getEatenBefore() == true){
+            eatenString = "The user had eaten " + this.eventDiet.getEatenWhat()
+                    + ". ";
+        }
+        else {
+            eatenString = "The user had not eaten.";
+        }
+        
+        String drunkString;
+        if(this.eventDiet.getDrunkAlcohol()== true){
+            drunkString = "The user had drunk this alcohol before, " + 
+                    this.eventDiet.getDrunkWhat() + ". ";
+        }
+        else {
+            drunkString = "The user had not drunk alcohol.";
+        }
+        
+        String hungoverString;
+        if(this.eventDiet.getHungover() == true){
+            hungoverString = "The user was hungover. ";
+        }
+        else {
+            hungoverString = "The user was not hungover. ";
+        }
+        
+        String illString;
+        if(this.condition.areYouIll == true){
+            illString = "The user was ill with " + this.condition.getIllWithWhat()
+                    + ". ";
+        }
+        else {
+            illString = "The user was not ill. ";
+        }
+        
+        String sleptString;
+        if(this.condition.getSlept() == true){
+            sleptString = "The user had slept for " + 
+                    Integer.toString(this.condition.getHrsSlept())
+                    + " hours. ";
+        }
+        else {
+            sleptString = "The user had not slept prior. ";
+        }
+        
+        String customFieldString;
+        customFieldString = null;
+        for (int i = 0 ; i != this.eventCF.customFieldNames.size() ; i++) {
+            customFieldString = customFieldString + this.eventCF.customFieldNames.get(i) + 
+                    "   :   " + this.eventCF.customFieldInputs.get(i) + "   ...   ";
+            
+        }
+        
+        
+        String stringSummary = "";
+        stringSummary = "This event began on " + this.dateToString() + ", in the "
+                + this.getEventBeginTime().toString() + 
+                " and lasted for " + Integer.toString(this.getDaysLasted()) + 
+                " days and " + Integer.toString(this.getHoursLasted()) + 
+                " hours, while the user was at " + this.getLocation().toString() 
+                + ". The intensity of the event (out of 10) was "  + 
+                Integer.toString(this.getOverallIntensity()) + " with "
+                + "an anxiety level of " + Integer.toString(this.getAnxietyLevel())
+                + ". The user was in a " + this.condition.getMood().toString() +
+                " mood. " + eatenString + drunkString + hungoverString + illString
+                + sleptString + " The user left the following comments : " + 
+                this.getNotes() + ".    The user added the following custom information:"
+                + "   " + customFieldString + " Summary end." ;
+        
+        System.out.println("summary created");
+        return stringSummary;
         
     }
 }
