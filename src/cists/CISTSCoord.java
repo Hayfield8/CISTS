@@ -1,4 +1,3 @@
-
 package cists;
 
 import cists.Condition.Mood;
@@ -21,10 +20,8 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
-import javafx.scene.text.TextAlignment;
 
 /**
  * Coordinating object for CISTS.
