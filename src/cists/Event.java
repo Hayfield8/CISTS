@@ -432,4 +432,84 @@ public class Event implements Serializable {
         return string;
         
     }
+    
+    /**
+     * creates a string summary of the event object.
+     * @return String
+     */
+    public String stringSummary(){
+        
+        String eatenString;
+        if(this.eventDiet.getEatenBefore() == true){
+            eatenString = "The user had eaten " + this.eventDiet.getEatenWhat()
+                    + ". ";
+        }
+        else {
+            eatenString = "The user had not eaten.";
+        }
+        
+        String drunkString;
+        if(this.eventDiet.getDrunkAlcohol()== true){
+            drunkString = "The user had drunk this alcohol before, " + 
+                    this.eventDiet.getDrunkWhat() + ". ";
+        }
+        else {
+            drunkString = "The user had not drunk alcohol.";
+        }
+        
+        String hungoverString;
+        if(this.eventDiet.getHungover() == true){
+            hungoverString = "The user was hungover. ";
+        }
+        else {
+            hungoverString = "The user was not hungover. ";
+        }
+        
+        String illString;
+        if(this.condition.areYouIll == true){
+            illString = "The user was ill with " + this.condition.getIllWithWhat()
+                    + ". ";
+        }
+        else {
+            illString = "The user was not ill. ";
+        }
+        
+        String sleptString;
+        if(this.condition.getSlept() == true){
+            sleptString = "The user had slept for " + 
+                    Integer.toString(this.condition.getHrsSlept())
+                    + " hours. ";
+        }
+        else {
+            sleptString = "The user had not slept prior. ";
+        }
+        
+        String customFieldString;
+        customFieldString = null;
+        for (int i = 0 ; i != this.eventCF.customFieldNames.size() ; i++) {
+            customFieldString = customFieldString + this.eventCF.customFieldNames.get(i) + 
+                    "   :   " + this.eventCF.customFieldInputs.get(i) + "   ...   ";
+            
+        }
+        
+        
+        String stringSummary = "";
+        stringSummary = "This event began on " + this.dateToString() + ", in the "
+                + this.getEventBeginTime().toString() + 
+                " and lasted for " + Integer.toString(this.getDaysLasted()) + 
+                " days and " + Integer.toString(this.getHoursLasted()) + 
+                " hours, while the user was at " + this.getLocation().toString() 
+                + ". The intensity of the event (out of 10) was "  + 
+                Integer.toString(this.getOverallIntensity()) + " with "
+                + "an anxiety level of " + Integer.toString(this.getAnxietyLevel())
+                + ". The user was in a " + this.condition.getMood().toString() +
+                " mood. " + eatenString + drunkString + hungoverString + illString
+                + sleptString + " The user left the following comments : " + 
+                this.getNotes() + ".    The user added the following custom information:"
+                + "   " + customFieldString + " Summary end." ;
+        
+        System.out.println("summary created");
+        return stringSummary;
+        
+    }
 }

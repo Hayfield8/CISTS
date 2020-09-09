@@ -185,6 +185,7 @@ public class GUI1 extends javax.swing.JFrame {
       
       eventList1.setModel(model);
       eventList3.setModel(model);
+      eventList4.setModel(model);
       customFieldList.setModel(cFModel);
     }
     
@@ -466,6 +467,10 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         cFBossResetDialog = new javax.swing.JDialog();
         jLabel97 = new javax.swing.JLabel();
+        summarySelectionDialog = new javax.swing.JDialog();
+        jScrollPane29 = new javax.swing.JScrollPane();
+        eventList4 = new javax.swing.JList();
+        createSummaryFinalButton = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
@@ -588,6 +593,7 @@ public class GUI1 extends javax.swing.JFrame {
         saveCFButton = new javax.swing.JToggleButton();
         cFListButton = new javax.swing.JToggleButton();
         resetCFBossButton = new javax.swing.JToggleButton();
+        eventSummaryButton = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
 
@@ -2494,6 +2500,46 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        eventList4.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        eventList4.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                eventList4ValueChanged(evt);
+            }
+        });
+        jScrollPane29.setViewportView(eventList4);
+
+        createSummaryFinalButton.setText("Create Summary PDF");
+        createSummaryFinalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createSummaryFinalButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout summarySelectionDialogLayout = new javax.swing.GroupLayout(summarySelectionDialog.getContentPane());
+        summarySelectionDialog.getContentPane().setLayout(summarySelectionDialogLayout);
+        summarySelectionDialogLayout.setHorizontalGroup(
+            summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(createSummaryFinalButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        summarySelectionDialogLayout.setVerticalGroup(
+            summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(createSummaryFinalButton)
+                .addGap(0, 22, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CVS Tracker");
 
@@ -3367,6 +3413,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        eventSummaryButton.setText("Create Summary of Events");
+        eventSummaryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventSummaryButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -3377,7 +3430,8 @@ public class GUI1 extends javax.swing.JFrame {
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selectEventButton)
-                            .addComponent(editEventButton))
+                            .addComponent(editEventButton)
+                            .addComponent(eventSummaryButton))
                         .addGap(18, 18, 18)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveListButton)
@@ -3433,7 +3487,9 @@ public class GUI1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cFListButton)
-                    .addComponent(resetCFBossButton))
+                    .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(resetCFBossButton)
+                        .addComponent(eventSummaryButton)))
                 .addContainerGap(720, Short.MAX_VALUE))
         );
 
@@ -4707,6 +4763,35 @@ public class GUI1 extends javax.swing.JFrame {
         resetCustomFieldsDialog.dispose();
     }//GEN-LAST:event_noButtonActionPerformed
 
+    private void eventList4ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_eventList4ValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventList4ValueChanged
+/**
+ * creates a PDF summary of the selected events.
+ * @param evt 
+ */
+    private void createSummaryFinalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSummaryFinalButtonActionPerformed
+     List<Event> selectedEvents;
+     selectedEvents = new ArrayList<>();
+     for (Object eachEvent : eventList4.getSelectedValuesList()){
+         Event tempEvent = (Event) eachEvent;
+         selectedEvents.add(tempEvent);
+     }
+     
+     cISTSCoord.creatPDFSummary(selectedEvents);
+     System.out.println("Summary Created");
+     summarySelectionDialog.dispose();
+    }//GEN-LAST:event_createSummaryFinalButtonActionPerformed
+/**
+ * Opens the summary selection window.
+ * @param evt 
+ */
+    private void eventSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSummaryButtonActionPerformed
+            summarySelectionDialog.pack();
+            summarySelectionDialog.setVisible(true);
+            summarySelectionDialog.setLocation(500, 500);
+    }//GEN-LAST:event_eventSummaryButtonActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -4792,6 +4877,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JButton createEvent;
     private javax.swing.JButton createEventDietButton;
     private javax.swing.JDialog createEventError;
+    private javax.swing.JToggleButton createSummaryFinalButton;
     private javax.swing.JList<String> customFieldList;
     private javax.swing.JTextField dateDisplay;
     private javax.swing.JTextField dateDisplay1;
@@ -4854,7 +4940,9 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JDialog eventDetailsDialog;
     private javax.swing.JList eventList1;
     private javax.swing.JList eventList3;
+    private javax.swing.JList eventList4;
     private javax.swing.JPanel eventListTab;
+    private javax.swing.JToggleButton eventSummaryButton;
     private javax.swing.JComboBox<String> fieldTypeCombo;
     private javax.swing.JPanel generalDetailsTab;
     private javax.swing.JPanel generalDetailsTab1;
@@ -5076,6 +5164,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane26;
     private javax.swing.JScrollPane jScrollPane27;
     private javax.swing.JScrollPane jScrollPane28;
+    private javax.swing.JScrollPane jScrollPane29;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -5133,6 +5222,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField sleptDisplay1;
     private javax.swing.JTextField sleptDisplay2;
     private javax.swing.JTextField sleptDisplay3;
+    private javax.swing.JDialog summarySelectionDialog;
     private javax.swing.JPanel vomitDetailsTab;
     private javax.swing.JPanel vomitDetailsTab1;
     private javax.swing.JPanel vomitDetailsTab2;

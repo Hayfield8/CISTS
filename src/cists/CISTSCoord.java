@@ -4,6 +4,7 @@ package cists;
 import cists.Condition.Mood;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
+import com.itextpdf.text.Chunk;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,6 +12,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.io.FileOutputStream;
+ 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import javafx.scene.text.TextAlignment;
 
 /**
  * Coordinating object for CISTS.
@@ -185,7 +199,12 @@ public class CISTSCoord {
     * Variable used to track if a EventDiet object has been created.
     */ 
     public Boolean eventDietCreated = false;
-   
+    
+    /**
+     * Document for the summary
+     */
+    public Document eventSummaryDoc;
+    
     /**
      * Constructor. Creates a new instance of the CISTSCoord class. Initialises
      * events array and loads the saved CustomFieldBoss object.
@@ -355,6 +374,44 @@ public class CISTSCoord {
      */
     public void resetCFBoss(){
         this.customFieldBoss = new CustomFieldBoss();
+    }
+    
+    /**
+     * creates a PDF document with a summary of each selected Event.
+     * @param aEvents list of selected events
+     */
+    public void creatPDFSummary(List<Event> aEvents){
+        eventSummaryDoc = new Document();
+        
+        try {
+            
+            PdfWriter writer = PdfWriter.getInstance(eventSummaryDoc, new 
+            FileOutputStream("EventSummary.pdf"));
+            eventSummaryDoc.open();
+            eventSummaryDoc.addTitle("Events Summary");
+            eventSummaryDoc.addHeader("Events Summary", "Events Summary");
+            Font font = new Font(FontFamily.HELVETICA, 13, Font.BOLD);
+            Font font2 = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
+            Paragraph title = new Paragraph("Events Summary", font);
+            title.setAlignment(Element.ALIGN_CENTER);
+            Paragraph newEvent = new Paragraph("Next Event Summary", font2);
+            newEvent.setAlignment(Element.ALIGN_CENTER);
+            eventSummaryDoc.add(title);
+            eventSummaryDoc.add(Chunk.NEWLINE);
+            for (Event eachEvent : aEvents){
+                eventSummaryDoc.add(newEvent);
+                eventSummaryDoc.add(Chunk.NEWLINE);
+                eventSummaryDoc.add(new Paragraph(eachEvent.stringSummary()));
+                eventSummaryDoc.add(Chunk.NEWLINE);
+                eventSummaryDoc.add(Chunk.NEWLINE);
+            }
+            eventSummaryDoc.close();
+            writer.close();
+        }
+        catch (DocumentException | FileNotFoundException e)
+        {
+         e.printStackTrace();
+        }
     }
     
 }

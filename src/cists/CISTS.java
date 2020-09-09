@@ -27,7 +27,7 @@ public class CISTS implements Serializable {
         
         
         openGUI();
-        gui1.setSize(1100, 700);
+        gui1.setSize(1150, 700);
     
         
     }
