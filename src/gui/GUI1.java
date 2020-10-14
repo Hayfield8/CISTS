@@ -4835,14 +4835,6 @@ public class GUI1 extends javax.swing.JFrame {
         model.removeElement(this.selectedEvent);
         System.out.println("event removed from model.");    
         
-            
-            //this.eventList1.clearSelection();
-            //System.out.println("selection cleared.");
-            //this.selectedEvent = null;
-            //System.out.println("selectedEvent set to null.");
-            //this.eventList1.revalidate();
-            //this.eventList1.repaint();
-            //this.eventList1.setSelectedIndex(0);
     }
     
     private void displayEvent(){
