@@ -87,20 +87,6 @@ public class CustomFieldGUIView extends javax.swing.JFrame {
         this.cFPanel.setLayout(new BoxLayout(this.cFPanel, BoxLayout.Y_AXIS));
         add(cFPanel);
         
-        //JButton createCFButton = new JButton("Store Custom Info");
-        //add(createCFButton, BorderLayout.SOUTH);
-        //createCFButton.addActionListener(this);
-        
-        //customInputs = new ArrayList<>();
-        //customTFLabels = new ArrayList<>();
-       //customYNLabels = new ArrayList<>();
-        //customMCLabels = new ArrayList<>();
-        //customSLDLabels = new ArrayList<>();
-        //customTextFields = new ArrayList<>();
-        //customYesNos = new ArrayList<>();
-        //customMultiCombo = new ArrayList<>();
-        //customSliders = new ArrayList<>();
-        
         displayEventCF(aEventCF);
         setSize(400, 800);
         setLocation(500, 200);
@@ -135,7 +121,6 @@ public class CustomFieldGUIView extends javax.swing.JFrame {
         this.cFPanel.add(customField);
         this.cFPanel.add(customLabelSPACE1);
         this.cFPanel.add(customLabelSPACE2);
-        //this.customFieldsInputDialog.add(cFBox);
         this.cFPanel.setVisible(true);
         }
         

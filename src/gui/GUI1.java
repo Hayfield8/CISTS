@@ -467,10 +467,16 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         cFBossResetDialog = new javax.swing.JDialog();
         jLabel97 = new javax.swing.JLabel();
+        deleteEventDialog = new javax.swing.JDialog();
+        yesButton1 = new javax.swing.JToggleButton();
+        noButton1 = new javax.swing.JToggleButton();
+        jLabel98 = new javax.swing.JLabel();
         summarySelectionDialog = new javax.swing.JDialog();
         jScrollPane29 = new javax.swing.JScrollPane();
         eventList4 = new javax.swing.JList();
         createSummaryFinalButton = new javax.swing.JToggleButton();
+        eventDeletedDialog = new javax.swing.JDialog();
+        jLabel99 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
@@ -594,6 +600,7 @@ public class GUI1 extends javax.swing.JFrame {
         cFListButton = new javax.swing.JToggleButton();
         resetCFBossButton = new javax.swing.JToggleButton();
         eventSummaryButton = new javax.swing.JToggleButton();
+        deleteEventButton = new javax.swing.JToggleButton();
 
         eventDetailsDialog.setTitle("Event Information");
 
@@ -2451,7 +2458,7 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel57.setText("Are you sure you want to permenently delete all custom fields?");
+        jLabel57.setText("Are you sure you want to permenently delete the selected event?");
 
         javax.swing.GroupLayout resetCustomFieldsDialogLayout = new javax.swing.GroupLayout(resetCustomFieldsDialog.getContentPane());
         resetCustomFieldsDialog.getContentPane().setLayout(resetCustomFieldsDialogLayout);
@@ -2500,6 +2507,50 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        yesButton1.setText("Yes");
+        yesButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesButton1ActionPerformed(evt);
+            }
+        });
+
+        noButton1.setText("No");
+        noButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel98.setText("Are you sure you want to permenently delete the selected event?");
+
+        javax.swing.GroupLayout deleteEventDialogLayout = new javax.swing.GroupLayout(deleteEventDialog.getContentPane());
+        deleteEventDialog.getContentPane().setLayout(deleteEventDialogLayout);
+        deleteEventDialogLayout.setHorizontalGroup(
+            deleteEventDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteEventDialogLayout.createSequentialGroup()
+                .addGroup(deleteEventDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteEventDialogLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(yesButton1)
+                        .addGap(38, 38, 38)
+                        .addComponent(noButton1))
+                    .addGroup(deleteEventDialogLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel98)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        deleteEventDialogLayout.setVerticalGroup(
+            deleteEventDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deleteEventDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel98)
+                .addGap(24, 24, 24)
+                .addGroup(deleteEventDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(noButton1)
+                    .addComponent(yesButton1))
+                .addGap(16, 16, 16))
+        );
+
         eventList4.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -2538,6 +2589,25 @@ public class GUI1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(createSummaryFinalButton)
                 .addGap(0, 22, Short.MAX_VALUE))
+        );
+
+        jLabel99.setText("Event Deleted");
+
+        javax.swing.GroupLayout eventDeletedDialogLayout = new javax.swing.GroupLayout(eventDeletedDialog.getContentPane());
+        eventDeletedDialog.getContentPane().setLayout(eventDeletedDialogLayout);
+        eventDeletedDialogLayout.setHorizontalGroup(
+            eventDeletedDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventDeletedDialogLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel99)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        eventDeletedDialogLayout.setVerticalGroup(
+            eventDeletedDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventDeletedDialogLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel99)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3097,9 +3167,6 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(generalDetailsTab2Layout.createSequentialGroup()
-                        .addComponent(ViewECFButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(generalDetailsTab2Layout.createSequentialGroup()
                         .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel138)
                             .addComponent(jLabel141))
@@ -3125,7 +3192,8 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(jLabel72)
                             .addComponent(jLabel73)
                             .addComponent(jLabel74)
-                            .addComponent(jLabel75))
+                            .addComponent(jLabel75)
+                            .addComponent(ViewECFButton))
                         .addGap(64, 64, 64)
                         .addGroup(generalDetailsTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(generalDetailsTab2Layout.createSequentialGroup()
@@ -3420,6 +3488,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        deleteEventButton.setText("Delete Event");
+        deleteEventButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEventButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventListTabLayout = new javax.swing.GroupLayout(eventListTab);
         eventListTab.setLayout(eventListTabLayout);
         eventListTabLayout.setHorizontalGroup(
@@ -3435,9 +3510,9 @@ public class GUI1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveListButton)
-                            .addComponent(resetCFBossButton)
-                            .addComponent(select2EventButton))
-                        .addGap(18, 18, 18)
+                            .addComponent(select2EventButton)
+                            .addComponent(deleteEventButton))
+                        .addGap(24, 24, 24)
                         .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveCFButton)
                             .addComponent(cFListButton)
@@ -3453,8 +3528,11 @@ public class GUI1 extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(eventListTabLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(eventListTabLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(resetCFBossButton)))
+                .addGap(19, 19, 19))
         );
         eventListTabLayout.setVerticalGroup(
             eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3486,10 +3564,12 @@ public class GUI1 extends javax.swing.JFrame {
                             .addComponent(select2EventButton))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cFListButton)
                     .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(resetCFBossButton)
-                        .addComponent(eventSummaryButton)))
+                        .addComponent(cFListButton)
+                        .addComponent(resetCFBossButton))
+                    .addGroup(eventListTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(eventSummaryButton)
+                        .addComponent(deleteEventButton)))
                 .addContainerGap(720, Short.MAX_VALUE))
         );
 
@@ -3574,74 +3654,6 @@ public class GUI1 extends javax.swing.JFrame {
  */
     private void eventList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_eventList1ValueChanged
         this.selectedEvent = (Event) eventList1.getSelectedValue();
-         
-        this.intensitySliderDisplay.setValue(selectedEvent.getOverallIntensity());
-        this.intensitySliderDisplay.setEnabled(false);
-        
-        this.anxietySliderDisplay.setValue(selectedEvent.getAnxietyLevel());
-        this.anxietySliderDisplay.setEnabled(false);
-        
-        this.beginTimeDisplay1.setText(selectedEvent.getEventBeginTime().toString());
-        this.beginTimeDisplay1.setEditable(false);
-
-        this.locationDisplay1.setText(selectedEvent.getLocation().toString());
-        this.locationDisplay1.setEditable(false);
-
-        this.hrsLastedDisplay2.setText(Integer.toString(selectedEvent.getHoursLasted()));
-        this.hrsLastedDisplay2.setEditable(false);
-
-        this.daysLastedDisplay2.setText(Integer.toString(selectedEvent.getDaysLasted()));
-        this.daysLastedDisplay2.setEditable(false);
-
-        this.notesDisplay2.setText(selectedEvent.getNotes());
-        this.notesDisplay2.setEditable(false);
-
-        this.dateDisplay2.setText(selectedEvent.toString());
-        this.dateDisplay2.setEditable(false);
-
-        // populate vomit details
-
-        EventDiet tempCF = this.selectedEvent.getCustomFields();
-
-        this.eatenDisplay1.setText(Boolean.toString(tempCF.getEatenBefore()));
-        this.eatenDisplay1.setEditable(false);
-
-        this.eatenWhatDisplay2.setText(tempCF.getEatenWhat());
-        this.eatenWhatDisplay2.setEditable(false);
-
-        this.drunkDisplay1.setText(Boolean.toString(tempCF.getDrunkAlcohol()));
-        this.drunkDisplay1.setEditable(false);
-
-        this.drunkWhatDisplay2.setText(tempCF.getDrunkWhat());
-        this.drunkWhatDisplay2.setEditable(false);
-
-        this.hungoverDisplay1.setText(Boolean.toString(tempCF.getHungover()));
-        this.hungoverDisplay1.setEditable(false);
-
-        //populate condition details
-
-        Condition tempCon = this.selectedEvent.getCondition();
-
-        this.anxiousDisplay1.setText(Boolean.toString(tempCon.getAnxious()));
-        this.anxiousDisplay1.setEditable(false);
-
-        this.moodDisplay1.setText(tempCon.getMood().toString());
-        this.moodDisplay1.setEditable(false);
-
-        this.illDisplay1.setText(Boolean.toString(tempCon.getAreYouIll()));
-        this.illDisplay1.setEditable(false);
-
-        this.illWithWhatDisplay2.setText(tempCon.getIllWithWhat());
-        this.illWithWhatDisplay2.setEditable(false);
-
-        this.sleptDisplay1.setText(Boolean.toString(tempCon.getSlept()));
-        this.sleptDisplay1.setEditable(false);
-
-        this.hrsSleptDisplay2.setText(Integer.toString(tempCon.getHrsSlept()));
-        this.hrsSleptDisplay2.setEditable(false);
-
-        this.medicationDisplay2.setText(tempCon.getMedicationTaken());
-        this.medicationDisplay2.setEditable(false);
     }//GEN-LAST:event_eventList1ValueChanged
 
     /**
@@ -3762,7 +3774,9 @@ public class GUI1 extends javax.swing.JFrame {
      */
     private void selectEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEventButtonActionPerformed
         //populate general details
-
+        
+        this.displayEvent();
+        
         this.intensitySliderDisplay1.setValue(selectedEvent.getOverallIntensity());
         this.intensitySliderDisplay1.setEnabled(false);
         
@@ -3833,8 +3847,8 @@ public class GUI1 extends javax.swing.JFrame {
 
         //display dialog box
 
-        eventDetailsDialog.pack();
-        eventDetailsDialog.setVisible(true);
+        //eventDetailsDialog.pack();
+        //eventDetailsDialog.setVisible(true);
     }//GEN-LAST:event_selectEventButtonActionPerformed
 
     /**
@@ -4792,6 +4806,114 @@ public class GUI1 extends javax.swing.JFrame {
             summarySelectionDialog.setLocation(500, 500);
     }//GEN-LAST:event_eventSummaryButtonActionPerformed
 
+    private void deleteEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEventButtonActionPerformed
+       this.deleteEventDialog.pack();
+       this.deleteEventDialog.setVisible(true);
+       this.deleteEventDialog.setLocation(500, 500); 
+    }//GEN-LAST:event_deleteEventButtonActionPerformed
+
+    private void yesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButton1ActionPerformed
+       this.deleteEvent();
+       this.eventDeletedDialog.pack();
+       this.eventDeletedDialog.setVisible(true);
+       this.eventDeletedDialog.setLocation(500, 500);
+       this.deleteEventDialog.dispose();
+    }//GEN-LAST:event_yesButton1ActionPerformed
+
+    private void noButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButton1ActionPerformed
+        this.deleteEventDialog.dispose();
+    }//GEN-LAST:event_noButton1ActionPerformed
+
+    private void deleteEvent(){
+        
+        cISTSCoord.events.remove(this.selectedEvent);
+        System.out.println("event removed from list.");
+            
+        this.events = cISTSCoord.getEvents();
+        System.out.println("GUI events list refreshed");
+        
+        model.removeElement(this.selectedEvent);
+        System.out.println("event removed from model.");    
+        
+            
+            //this.eventList1.clearSelection();
+            //System.out.println("selection cleared.");
+            //this.selectedEvent = null;
+            //System.out.println("selectedEvent set to null.");
+            //this.eventList1.revalidate();
+            //this.eventList1.repaint();
+            //this.eventList1.setSelectedIndex(0);
+    }
+    
+    private void displayEvent(){
+        this.intensitySliderDisplay.setValue(selectedEvent.getOverallIntensity());
+        this.intensitySliderDisplay.setEnabled(false);
+        
+        this.anxietySliderDisplay.setValue(selectedEvent.getAnxietyLevel());
+        this.anxietySliderDisplay.setEnabled(false);
+        
+        this.beginTimeDisplay1.setText(selectedEvent.getEventBeginTime().toString());
+        this.beginTimeDisplay1.setEditable(false);
+
+        this.locationDisplay1.setText(selectedEvent.getLocation().toString());
+        this.locationDisplay1.setEditable(false);
+
+        this.hrsLastedDisplay2.setText(Integer.toString(selectedEvent.getHoursLasted()));
+        this.hrsLastedDisplay2.setEditable(false);
+
+        this.daysLastedDisplay2.setText(Integer.toString(selectedEvent.getDaysLasted()));
+        this.daysLastedDisplay2.setEditable(false);
+
+        this.notesDisplay2.setText(selectedEvent.getNotes());
+        this.notesDisplay2.setEditable(false);
+
+        this.dateDisplay2.setText(selectedEvent.toString());
+        this.dateDisplay2.setEditable(false);
+
+        // populate vomit details
+
+        EventDiet tempCF = this.selectedEvent.getCustomFields();
+
+        this.eatenDisplay1.setText(Boolean.toString(tempCF.getEatenBefore()));
+        this.eatenDisplay1.setEditable(false);
+
+        this.eatenWhatDisplay2.setText(tempCF.getEatenWhat());
+        this.eatenWhatDisplay2.setEditable(false);
+
+        this.drunkDisplay1.setText(Boolean.toString(tempCF.getDrunkAlcohol()));
+        this.drunkDisplay1.setEditable(false);
+
+        this.drunkWhatDisplay2.setText(tempCF.getDrunkWhat());
+        this.drunkWhatDisplay2.setEditable(false);
+
+        this.hungoverDisplay1.setText(Boolean.toString(tempCF.getHungover()));
+        this.hungoverDisplay1.setEditable(false);
+
+        //populate condition details
+
+        Condition tempCon = this.selectedEvent.getCondition();
+
+        this.anxiousDisplay1.setText(Boolean.toString(tempCon.getAnxious()));
+        this.anxiousDisplay1.setEditable(false);
+
+        this.moodDisplay1.setText(tempCon.getMood().toString());
+        this.moodDisplay1.setEditable(false);
+
+        this.illDisplay1.setText(Boolean.toString(tempCon.getAreYouIll()));
+        this.illDisplay1.setEditable(false);
+
+        this.illWithWhatDisplay2.setText(tempCon.getIllWithWhat());
+        this.illWithWhatDisplay2.setEditable(false);
+
+        this.sleptDisplay1.setText(Boolean.toString(tempCon.getSlept()));
+        this.sleptDisplay1.setEditable(false);
+
+        this.hrsSleptDisplay2.setText(Integer.toString(tempCon.getHrsSlept()));
+        this.hrsSleptDisplay2.setEditable(false);
+
+        this.medicationDisplay2.setText(tempCon.getMedicationTaken());
+        this.medicationDisplay2.setEditable(false);
+    }
     
     /**
      * @param args the command line arguments
@@ -4890,6 +5012,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField daysLastedDisplay3;
     private javax.swing.JTextField daysLastedDisplay4;
     private javax.swing.JTextField daysLastedField;
+    private javax.swing.JToggleButton deleteEventButton;
+    private javax.swing.JDialog deleteEventDialog;
     private javax.swing.JComboBox<String> drunkCombo;
     private javax.swing.JComboBox<String> drunkCombo1;
     private javax.swing.JTextField drunkDisplay;
@@ -4937,6 +5061,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JButton editNotesButton;
     private javax.swing.JButton editSleptButton;
     private javax.swing.JDialog eventCreatedDialog;
+    private javax.swing.JDialog eventDeletedDialog;
     private javax.swing.JDialog eventDetailsDialog;
     private javax.swing.JList eventList1;
     private javax.swing.JList eventList3;
@@ -5142,6 +5267,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -5203,6 +5330,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JTextField multiChoiceField;
     private javax.swing.JTextField newFieldNameField;
     private javax.swing.JToggleButton noButton;
+    private javax.swing.JToggleButton noButton1;
     private javax.swing.JTextArea notesArea;
     private javax.swing.JTextArea notesDisplay;
     private javax.swing.JTextArea notesDisplay1;
@@ -5229,5 +5357,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JPanel vomitDetailsTab3;
     private javax.swing.JPanel vomitDetailsTab4;
     private javax.swing.JToggleButton yesButton;
+    private javax.swing.JToggleButton yesButton1;
     // End of variables declaration//GEN-END:variables
 }
