@@ -5,12 +5,21 @@
  */
 package gui;
 
-import org.jfree.chart.*;
+import gui.GUI1;
+import cists.Event;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * GUI class to create and display charts.
@@ -22,6 +31,42 @@ import java.awt.EventQueue;
  */
 public class Chart extends javax.swing.JFrame{
     
+    /**
+     * Constructor
+     */
+    public Chart(){
     
+    }
+    
+    private CategoryDataset createAnxietyLVLDataset(List<Event> events){
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (Event eachEvent : events){
+            dataset.addValue(eachEvent.getAnxietyLevel(), eachEvent.getDate(), 
+                    String.valueOf(eachEvent.getOverallIntensity()));
+        }
+        return dataset;
+    }
+    
+    private JFreeChart createChart(CategoryDataset dataset, String name, String 
+            xLabel, String yLabel){
+        
+        JFreeChart barChart = ChartFactory.createBarChart(
+                name, xLabel, yLabel, dataset, PlotOrientation.VERTICAL,
+                true, true, false
+        );
+        
+        return barChart;
+    }
+    
+    public List<Event> getSelectedList(){
+        
+        List<Event> selectedEvents;
+     selectedEvents = new ArrayList<>();
+     for (Object eachEvent : eventList4.getSelectedValuesList()){
+         Event tempEvent = (Event) eachEvent;
+         selectedEvents.add(tempEvent);
+     }
+    }
     
 }
