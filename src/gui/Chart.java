@@ -38,7 +38,7 @@ public class Chart extends javax.swing.JFrame{
     
     }
     
-    private CategoryDataset createAnxietyLVLDataset(List<Event> events){
+    public CategoryDataset createAnxLVLCatDataset(List<Event> events){
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (Event eachEvent : events){
@@ -48,7 +48,7 @@ public class Chart extends javax.swing.JFrame{
         return dataset;
     }
     
-    private JFreeChart createChart(CategoryDataset dataset, String name, String 
+    public JFreeChart createChart(CategoryDataset dataset, String name, String 
             xLabel, String yLabel){
         
         JFreeChart barChart = ChartFactory.createBarChart(
@@ -58,15 +58,6 @@ public class Chart extends javax.swing.JFrame{
         
         return barChart;
     }
-    
-    public List<Event> getSelectedList(){
-        
-        List<Event> selectedEvents;
-     selectedEvents = new ArrayList<>();
-     for (Object eachEvent : eventList4.getSelectedValuesList()){
-         Event tempEvent = (Event) eachEvent;
-         selectedEvents.add(tempEvent);
-     }
-    }
+  
     
 }

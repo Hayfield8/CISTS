@@ -12,8 +12,15 @@ import cists.CustomField;
 import cists.EventDiet;
 import cists.Event.EventBeginTime;
 import cists.Event.Location;
+import java.awt.BorderLayout;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
 
 
 
@@ -153,7 +160,13 @@ public class GUI1 extends javax.swing.JFrame {
      * List model used to populate the customFields JList.
      */
     DefaultListModel cFModel;
-
+    
+    /**
+     * Object to display a JFreeChart.
+     */
+    ChartGUI chartGUI;
+    
+    
     /**
      * Creates new form GUI loads and displays the events list, loads the new
      * event form and sets the list models to populate the jLists.
@@ -475,6 +488,7 @@ public class GUI1 extends javax.swing.JFrame {
         jScrollPane29 = new javax.swing.JScrollPane();
         eventList4 = new javax.swing.JList();
         createSummaryFinalButton = new javax.swing.JToggleButton();
+        chartButton = new javax.swing.JButton();
         eventDeletedDialog = new javax.swing.JDialog();
         jLabel99 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -2570,6 +2584,13 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        chartButton.setText("Create Chart");
+        chartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chartButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout summarySelectionDialogLayout = new javax.swing.GroupLayout(summarySelectionDialog.getContentPane());
         summarySelectionDialog.getContentPane().setLayout(summarySelectionDialogLayout);
         summarySelectionDialogLayout.setHorizontalGroup(
@@ -2578,17 +2599,24 @@ public class GUI1 extends javax.swing.JFrame {
                 .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(summarySelectionDialogLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(createSummaryFinalButton)
+                .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(createSummaryFinalButton))
+                    .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(chartButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         summarySelectionDialogLayout.setVerticalGroup(
             summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(summarySelectionDialogLayout.createSequentialGroup()
                 .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createSummaryFinalButton)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chartButton)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         jLabel99.setText("Event Deleted");
@@ -4824,6 +4852,18 @@ public class GUI1 extends javax.swing.JFrame {
         this.deleteEventDialog.dispose();
     }//GEN-LAST:event_noButton1ActionPerformed
 
+    private void chartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chartButtonActionPerformed
+        List<Event> selectedEvents;
+     selectedEvents = new ArrayList<>();
+     for (Object eachEvent : eventList4.getSelectedValuesList()){
+         Event tempEvent = (Event) eachEvent;
+         selectedEvents.add(tempEvent);
+     }
+     
+     chartGUI = new ChartGUI(selectedEvents, cISTSCoord);
+     
+    }//GEN-LAST:event_chartButtonActionPerformed
+
     private void deleteEvent(){
         
         cISTSCoord.events.remove(this.selectedEvent);
@@ -4981,6 +5021,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JDialog cFBossSavedDialog;
     private javax.swing.JToggleButton cFListButton;
     private javax.swing.JDialog cFListDialog;
+    private javax.swing.JButton chartButton;
     private javax.swing.JPanel conditionDetailsTab;
     private javax.swing.JPanel conditionDetailsTab1;
     private javax.swing.JPanel conditionDetailsTab2;
