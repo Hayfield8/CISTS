@@ -166,6 +166,12 @@ public class GUI1 extends javax.swing.JFrame {
      */
     ChartGUI chartGUI;
     
+    /**
+     * Strings for chart creation.
+     */
+    String chartTypeString;
+    String xAxisString;
+    String yAxisString;
     
     /**
      * Creates new form GUI loads and displays the events list, loads the new
@@ -489,8 +495,18 @@ public class GUI1 extends javax.swing.JFrame {
         eventList4 = new javax.swing.JList();
         createSummaryFinalButton = new javax.swing.JToggleButton();
         chartButton = new javax.swing.JButton();
+        xAxisCombo = new javax.swing.JComboBox<>();
+        jLabel118 = new javax.swing.JLabel();
+        chartTypeCombo = new javax.swing.JComboBox<>();
+        jLabel119 = new javax.swing.JLabel();
+        yAxisCombo = new javax.swing.JComboBox<>();
+        jLabel157 = new javax.swing.JLabel();
+        jLabel158 = new javax.swing.JLabel();
+        chartTitleField = new javax.swing.JTextField();
         eventDeletedDialog = new javax.swing.JDialog();
         jLabel99 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel120 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         addEventTab = new javax.swing.JPanel();
@@ -2591,6 +2607,47 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
+        xAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        xAxisCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xAxisComboActionPerformed(evt);
+            }
+        });
+        xAxisCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                xAxisComboPropertyChange(evt);
+            }
+        });
+
+        jLabel118.setText("X Axis");
+
+        chartTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bar Chart", "XY Line Chart" }));
+        chartTypeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chartTypeComboActionPerformed(evt);
+            }
+        });
+        chartTypeCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                chartTypeComboPropertyChange(evt);
+            }
+        });
+
+        jLabel119.setText("Chart Type");
+
+        yAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        yAxisCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                yAxisComboPropertyChange(evt);
+            }
+        });
+
+        jLabel157.setText("Y Axis");
+
+        jLabel158.setText("Chart Title");
+
+        chartTitleField.setText("Chart");
+
         javax.swing.GroupLayout summarySelectionDialogLayout = new javax.swing.GroupLayout(summarySelectionDialog.getContentPane());
         summarySelectionDialog.getContentPane().setLayout(summarySelectionDialogLayout);
         summarySelectionDialogLayout.setHorizontalGroup(
@@ -2601,22 +2658,59 @@ public class GUI1 extends javax.swing.JFrame {
             .addGroup(summarySelectionDialogLayout.createSequentialGroup()
                 .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(summarySelectionDialogLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(createSummaryFinalButton))
+                        .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(chartButton))
+                            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(createSummaryFinalButton)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(summarySelectionDialogLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(chartButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel119)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(chartTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(summarySelectionDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel118)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(xAxisCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summarySelectionDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel157)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(yAxisCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summarySelectionDialogLayout.createSequentialGroup()
+                                .addComponent(jLabel158)
+                                .addGap(18, 18, 18)
+                                .addComponent(chartTitleField)))))
+                .addContainerGap())
         );
         summarySelectionDialogLayout.setVerticalGroup(
             summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(summarySelectionDialogLayout.createSequentialGroup()
                 .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel119)
+                    .addComponent(chartTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel118)
+                    .addComponent(xAxisCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel157)
+                    .addComponent(yAxisCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summarySelectionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel158)
+                    .addComponent(chartTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(createSummaryFinalButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chartButton)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addComponent(chartButton))
         );
 
         jLabel99.setText("Event Deleted");
@@ -2637,6 +2731,10 @@ public class GUI1 extends javax.swing.JFrame {
                 .addComponent(jLabel99)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel120.setText("Chart Type");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CVS Tracker");
@@ -4854,15 +4952,49 @@ public class GUI1 extends javax.swing.JFrame {
 
     private void chartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chartButtonActionPerformed
         List<Event> selectedEvents;
-     selectedEvents = new ArrayList<>();
-     for (Object eachEvent : eventList4.getSelectedValuesList()){
-         Event tempEvent = (Event) eachEvent;
-         selectedEvents.add(tempEvent);
-     }
-     
-     chartGUI = new ChartGUI(selectedEvents, cISTSCoord);
+        selectedEvents = new ArrayList<>();
+        for (Object eachEvent : eventList4.getSelectedValuesList()){
+            Event tempEvent = (Event) eachEvent;
+            selectedEvents.add(tempEvent);
+        }
+        
+        if(){
+        } 
+        
+        chartGUI = new ChartGUI(selectedEvents, cISTSCoord, chartTypeString, xAxisString, yAxisString);
      
     }//GEN-LAST:event_chartButtonActionPerformed
+
+    private void chartTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chartTypeComboActionPerformed
+      
+    }//GEN-LAST:event_chartTypeComboActionPerformed
+
+    private void chartTypeComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_chartTypeComboPropertyChange
+        // TODO add your handling code here:
+        
+        chartTypeString = chartTypeCombo.getSelectedItem().toString();
+        
+        if ("Bar Chart".equals(chartTypeString)){
+            this.xAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Date", "Time of Day", "Mood", "Hungover", "Location", "Overall Intensity"}));
+            this.yAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Overall Intensity", "Hours Slept", "Anxiety Lvl", "Days Lasted", "Time Lasted" }));
+        }
+        else if ("XY Line Chart".equals(chartTypeString)){
+            this.xAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Overall Intensity", "Hours Slept", "Anxiety Lvl", "Days Lasted", "Time Lasted" }));
+            this.yAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Overall Intensity", "Hours Slept", "Anxiety Lvl", "Days Lasted", "Time Lasted" }));
+        } 
+    }//GEN-LAST:event_chartTypeComboPropertyChange
+
+    private void xAxisComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xAxisComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xAxisComboActionPerformed
+
+    private void xAxisComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_xAxisComboPropertyChange
+        xAxisString = this.xAxisCombo.getSelectedItem().toString();
+    }//GEN-LAST:event_xAxisComboPropertyChange
+
+    private void yAxisComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_yAxisComboPropertyChange
+        yAxisString = this.yAxisCombo.getSelectedItem().toString();
+    }//GEN-LAST:event_yAxisComboPropertyChange
 
     private void deleteEvent(){
         
@@ -5022,6 +5154,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JToggleButton cFListButton;
     private javax.swing.JDialog cFListDialog;
     private javax.swing.JButton chartButton;
+    private javax.swing.JTextField chartTitleField;
+    private javax.swing.JComboBox<String> chartTypeCombo;
     private javax.swing.JPanel conditionDetailsTab;
     private javax.swing.JPanel conditionDetailsTab1;
     private javax.swing.JPanel conditionDetailsTab2;
@@ -5143,6 +5277,7 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JSlider intensitySliderDisplay2;
     private javax.swing.JSlider intensitySliderDisplay3;
     private javax.swing.JSlider intensitySliderDisplay4;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -5164,7 +5299,10 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -5204,6 +5342,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
+    private javax.swing.JLabel jLabel157;
+    private javax.swing.JLabel jLabel158;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
@@ -5389,6 +5529,8 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JPanel vomitDetailsTab2;
     private javax.swing.JPanel vomitDetailsTab3;
     private javax.swing.JPanel vomitDetailsTab4;
+    private javax.swing.JComboBox<String> xAxisCombo;
+    private javax.swing.JComboBox<String> yAxisCombo;
     private javax.swing.JToggleButton yesButton;
     private javax.swing.JToggleButton yesButton1;
     // End of variables declaration//GEN-END:variables
