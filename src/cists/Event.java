@@ -231,6 +231,45 @@ public class Event implements Serializable {
         return this.date;
     }
     
+    /**
+     * returns the mood of the user when the event was created.
+     * @return String mood
+     */
+    public String getMood(){
+        String mood = this.condition.getMood().toString();
+        return mood;
+    }
+    
+    /**
+     * returns whether the user was hungover or not.
+     */
+    public boolean getHungover(){
+        boolean hungover = this.eventDiet.getHungover();
+        return hungover;
+    }
+    
+    public int getHoursSlept(){
+        int hrsSlept = this.condition.getHrsSlept();
+        return hrsSlept;
+    }
+    
+    
+    public String getHungoverString(){
+        String hungoverString;
+        boolean hungover = this.eventDiet.getHungover();
+        if (hungover == true){
+            hungoverString = "Was Hungover";
+        }
+        else if (hungover == false){
+            hungoverString = "Was Not Hungover";
+        }
+        else{
+            hungoverString = "No Data";
+        }
+        return hungoverString;
+    }
+    
+    
 //setters
     
     /**

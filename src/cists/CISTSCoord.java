@@ -21,6 +21,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import gui.Chart;
 import java.io.FileNotFoundException;
 
 /**
@@ -202,6 +203,8 @@ public class CISTSCoord {
      */
     public Document eventSummaryDoc;
     
+    public Chart chartManager;
+    
     /**
      * Constructor. Creates a new instance of the CISTSCoord class. Initialises
      * events array and loads the saved CustomFieldBoss object.
@@ -210,6 +213,7 @@ public class CISTSCoord {
         
         events = new ArrayList<>();
         customFieldBoss = loadCustomFieldBoss();
+        chartManager = new Chart();
         
     }
     
