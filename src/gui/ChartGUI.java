@@ -32,24 +32,25 @@ public class ChartGUI extends javax.swing.JFrame implements ActionListener{
     CategoryDataset barDataset;
     XYDataset lineDataset;
     CISTSCoord cISTSCoord;
+    JFreeChart chart;
     
-    public ChartGUI(List<Event> selectedEvents, CISTSCoord coord, String chartType, String xAxis, String yAxis){
+    public ChartGUI(List<Event> selectedEvents, CISTSCoord coord, String chartType, String xAxis, String yAxis, String chartTitle){
         cISTSCoord = coord;
         chartEvents = selectedEvents;
         
+        
         if ("Bar Chart".equals(chartType)){
-            barDataset = cISTSCoord.chartManager.createCatDataset(selectedEvents);
+            barDataset = cISTSCoord.chartManager.createCatDataset(selectedEvents, xAxis, yAxis);
+            chart = cISTSCoord.chartManager.createBarChart(barDataset, chartTitle, xAxis, yAxis);
+            System.out.println("Bar Chart Created");
         }
         else if("XY Line Chart".equals(chartType)){
-            lineDataset = cISTSCoord.chartManager.createXYSeries(selectedEvents);
+            lineDataset = cISTSCoord.chartManager.createXYSeries(selectedEvents, xAxis, yAxis);
+            chart = cISTSCoord.chartManager.createLineChart(lineDataset, chartTitle, xAxis, yAxis);
+            System.out.println("Line Chart Created");
         }
-       
         
-        
-        //JFreeChart chart = cISTSCoord.chartManager.createBarChart(dataset, "Chart", "X", "Y");
-        JFreeChart chart = cISTSCoord.chartManager.createLineChart(lineDataset, "Chart", "Overall Intensity", "Anx Lvl");
-        
-         System.out.println("Chart Created");
+         
         
         this.chartJPanel = new JPanel();
          

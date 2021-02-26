@@ -235,13 +235,161 @@ public class Chart extends javax.swing.JFrame{
         return dataset;
     }
     
-    public XYDataset createXYSeries(List<Event> events){
+    public XYDataset createXYSeries(List<Event> events, String xAxis, String yAxis){
         
         XYSeriesCollection dataset = new XYSeriesCollection();
-        XYSeries series1 = new XYSeries("Anxiety Lvl against Overall Intensity");
-        for (Event eachEvent : events){
-            series1.add(eachEvent.getOverallIntensity(), eachEvent.getAnxietyLevel());
+        XYSeries series1 = new XYSeries(xAxis + " against " + yAxis);
+        
+        if(xAxis.equals(overallIntensity) && yAxis.equals(overallIntensity)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getOverallIntensity(), eachEvent.getOverallIntensity());
+            }     
         }
+        
+        else if(xAxis.equals(overallIntensity) && yAxis.equals(hoursSlept)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getOverallIntensity(), eachEvent.getHoursSlept());
+            }     
+        }
+        
+        else if(xAxis.equals(overallIntensity) && yAxis.equals(anxietyLvl)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getOverallIntensity(), eachEvent.getAnxietyLevel());
+            }     
+        }
+        
+        else if(xAxis.equals(overallIntensity) && yAxis.equals(daysLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getOverallIntensity(), eachEvent.getDaysLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(overallIntensity) && yAxis.equals(timeLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getOverallIntensity(), eachEvent.getHoursLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(hoursSlept) && yAxis.equals(overallIntensity)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursSlept(), eachEvent.getOverallIntensity());
+            }     
+        }
+        
+        else if(xAxis.equals(hoursSlept) && yAxis.equals(hoursSlept)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursSlept(), eachEvent.getHoursSlept());
+            }     
+        }
+        
+        else if(xAxis.equals(hoursSlept) && yAxis.equals(anxietyLvl)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursSlept(), eachEvent.getAnxietyLevel());
+            }     
+        }
+        
+        else if(xAxis.equals(hoursSlept) && yAxis.equals(daysLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursSlept(), eachEvent.getDaysLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(hoursSlept) && yAxis.equals(timeLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursSlept(), eachEvent.getHoursLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(anxietyLvl) && yAxis.equals(overallIntensity)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getAnxietyLevel(), eachEvent.getOverallIntensity());
+            }     
+        }
+        
+        else if(xAxis.equals(anxietyLvl) && yAxis.equals(hoursSlept)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getAnxietyLevel(), eachEvent.getHoursSlept());
+            }     
+        }
+        
+        else if(xAxis.equals(anxietyLvl) && yAxis.equals(anxietyLvl)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getAnxietyLevel(), eachEvent.getAnxietyLevel());
+            }     
+        }
+        
+        else if(xAxis.equals(anxietyLvl) && yAxis.equals(daysLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getAnxietyLevel(), eachEvent.getDaysLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(anxietyLvl) && yAxis.equals(timeLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getAnxietyLevel(), eachEvent.getHoursLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(daysLasted) && yAxis.equals(overallIntensity)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getDaysLasted(), eachEvent.getOverallIntensity());
+            }     
+        }
+        
+        else if(xAxis.equals(daysLasted) && yAxis.equals(hoursSlept)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getDaysLasted(), eachEvent.getHoursSlept());
+            }     
+        }
+        
+        else if(xAxis.equals(daysLasted) && yAxis.equals(anxietyLvl)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getDaysLasted(), eachEvent.getAnxietyLevel());
+            }     
+        }
+        
+        else if(xAxis.equals(daysLasted) && yAxis.equals(daysLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getDaysLasted(), eachEvent.getDaysLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(daysLasted) && yAxis.equals(timeLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getDaysLasted(), eachEvent.getHoursLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(timeLasted) && yAxis.equals(overallIntensity)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursLasted(), eachEvent.getOverallIntensity());
+            }     
+        }
+        
+        else if(xAxis.equals(timeLasted) && yAxis.equals(hoursSlept)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursLasted(), eachEvent.getHoursSlept());
+            }     
+        }
+        
+        else if(xAxis.equals(timeLasted) && yAxis.equals(anxietyLvl)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursLasted(), eachEvent.getAnxietyLevel());
+            }     
+        }
+        
+        else if(xAxis.equals(timeLasted) && yAxis.equals(daysLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursLasted(), eachEvent.getDaysLasted());
+            }     
+        }
+        
+        else if(xAxis.equals(timeLasted) && yAxis.equals(timeLasted)){
+            for (Event eachEvent : events){
+                series1.add(eachEvent.getHoursLasted(), eachEvent.getHoursLasted());
+            }     
+        }
+        
         dataset.addSeries(series1);
         return dataset;
     }

@@ -172,6 +172,7 @@ public class GUI1 extends javax.swing.JFrame {
     String chartTypeString;
     String xAxisString;
     String yAxisString;
+    String chartTitleString;
     
     /**
      * Creates new form GUI loads and displays the events list, loads the new
@@ -505,7 +506,6 @@ public class GUI1 extends javax.swing.JFrame {
         chartTitleField = new javax.swing.JTextField();
         eventDeletedDialog = new javax.swing.JDialog();
         jLabel99 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel120 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -2636,6 +2636,11 @@ public class GUI1 extends javax.swing.JFrame {
         jLabel119.setText("Chart Type");
 
         yAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        yAxisCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yAxisComboActionPerformed(evt);
+            }
+        });
         yAxisCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 yAxisComboPropertyChange(evt);
@@ -2732,12 +2737,10 @@ public class GUI1 extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel120.setText("Chart Type");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CVS Tracker");
+        setTitle("CISTS");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Diet Details");
@@ -3607,7 +3610,7 @@ public class GUI1 extends javax.swing.JFrame {
             }
         });
 
-        eventSummaryButton.setText("Create Summary of Events");
+        eventSummaryButton.setText("Create Summary/Charts");
         eventSummaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventSummaryButtonActionPerformed(evt);
@@ -4958,21 +4961,15 @@ public class GUI1 extends javax.swing.JFrame {
             selectedEvents.add(tempEvent);
         }
         
-        if(){
-        } 
+        chartTitleString = this.chartTitleField.getText();
         
-        chartGUI = new ChartGUI(selectedEvents, cISTSCoord, chartTypeString, xAxisString, yAxisString);
+        chartGUI = new ChartGUI(selectedEvents, cISTSCoord, chartTypeString, xAxisString, yAxisString, chartTitleString);
      
     }//GEN-LAST:event_chartButtonActionPerformed
 
     private void chartTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chartTypeComboActionPerformed
-      
-    }//GEN-LAST:event_chartTypeComboActionPerformed
-
-    private void chartTypeComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_chartTypeComboPropertyChange
-        // TODO add your handling code here:
-        
-        chartTypeString = chartTypeCombo.getSelectedItem().toString();
+              chartTypeString = chartTypeCombo.getSelectedItem().toString();
+        System.out.println(chartTypeString);
         
         if ("Bar Chart".equals(chartTypeString)){
             this.xAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Date", "Time of Day", "Mood", "Hungover", "Location", "Overall Intensity"}));
@@ -4982,19 +4979,29 @@ public class GUI1 extends javax.swing.JFrame {
             this.xAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Overall Intensity", "Hours Slept", "Anxiety Lvl", "Days Lasted", "Time Lasted" }));
             this.yAxisCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Overall Intensity", "Hours Slept", "Anxiety Lvl", "Days Lasted", "Time Lasted" }));
         } 
+    }//GEN-LAST:event_chartTypeComboActionPerformed
+
+    private void chartTypeComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_chartTypeComboPropertyChange
+   
     }//GEN-LAST:event_chartTypeComboPropertyChange
 
     private void xAxisComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xAxisComboActionPerformed
-        // TODO add your handling code here:
+       xAxisString = this.xAxisCombo.getSelectedItem().toString();
+       System.out.println(xAxisString);
     }//GEN-LAST:event_xAxisComboActionPerformed
 
     private void xAxisComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_xAxisComboPropertyChange
-        xAxisString = this.xAxisCombo.getSelectedItem().toString();
+        
     }//GEN-LAST:event_xAxisComboPropertyChange
 
     private void yAxisComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_yAxisComboPropertyChange
-        yAxisString = this.yAxisCombo.getSelectedItem().toString();
+
     }//GEN-LAST:event_yAxisComboPropertyChange
+
+    private void yAxisComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yAxisComboActionPerformed
+        yAxisString = this.yAxisCombo.getSelectedItem().toString();
+       System.out.println(yAxisString);
+    }//GEN-LAST:event_yAxisComboActionPerformed
 
     private void deleteEvent(){
         
@@ -5277,7 +5284,6 @@ public class GUI1 extends javax.swing.JFrame {
     private javax.swing.JSlider intensitySliderDisplay2;
     private javax.swing.JSlider intensitySliderDisplay3;
     private javax.swing.JSlider intensitySliderDisplay4;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
