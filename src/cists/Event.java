@@ -106,7 +106,7 @@ public class Event implements Serializable {
      * @param aHoursLasted hours the event lasted
      * @param aCondition condition object
      * @param aNotes notes regarding the event
-     * @param aCustomFields vomit object
+     * @param aDiet vomit object
      * @param aDaysLasted days the event lasted
      * @param aEventCF custom information created by user
      * @param aIntensity intensity of event 1-10
@@ -114,7 +114,7 @@ public class Event implements Serializable {
      */
     
     public Event (EventBeginTime aEventBeginTime, Location aLocation, int 
-    aHoursLasted, int aDaysLasted, String aNotes, EventDiet aCustomFields,
+    aHoursLasted, int aDaysLasted, String aNotes, EventDiet aDiet,
     Condition aCondition, EventCustomFields aEventCF, int aIntensity, int aAnxietyLevel){
         
         eventBeginTime = aEventBeginTime;
@@ -123,7 +123,7 @@ public class Event implements Serializable {
         daysLasted = aDaysLasted;
         date = new Date();
         notes = aNotes;
-        eventDiet = aCustomFields;
+        eventDiet = aDiet;
         condition = aCondition;
         count = count++;
         overallIntensity = aIntensity;
