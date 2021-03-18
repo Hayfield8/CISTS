@@ -36,7 +36,7 @@ public class CISTSCoord {
     /**
      * List containing all CvsEvent objects.
      */
-    public List<Event> events; 
+    public ArrayList<Event> events; 
     
     /**
      * Variable used for the CFB.
@@ -408,6 +408,7 @@ public class CISTSCoord {
             }
             eventSummaryDoc.close();
             writer.close();
+            System.out.println("PDF created successfully");
         }
         catch (DocumentException | FileNotFoundException e)
         {
